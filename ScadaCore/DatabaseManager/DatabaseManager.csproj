@@ -6,4 +6,8 @@
     <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ScadaModel\ScadaModel.csproj" />
+  </ItemGroup>
+
 </Project>
