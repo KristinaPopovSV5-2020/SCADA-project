@@ -71,6 +71,7 @@
     <Compile Include="InputTag.cs" />
     <Compile Include="OutputTag.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SimulationDriver.cs" />
     <Compile Include="Tag.cs" />
     <Compile Include="User.cs" />
   </ItemGroup>
