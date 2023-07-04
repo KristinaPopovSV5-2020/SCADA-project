@@ -14,6 +14,8 @@ namespace DatabaseManager
         public Login()
         {
             InitializeComponent();
+            this.error.Text = "Wrong username or password";
+            this.error.Visible = false;
         }
 
         private void loginBtn_Click(object sender, EventArgs e)
@@ -23,6 +25,7 @@ namespace DatabaseManager
             List<User> users = new List<User>();
             users.Add(zor);
             users.Add(masa);
+            
 
             foreach (User u in users)
             {
@@ -30,7 +33,35 @@ namespace DatabaseManager
                     DbManagerForm newForm = new DbManagerForm();
                     newForm.Show();
                 }
+                else
+                {
+                    this.error.Visible = true;
+                }
             }
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void Username_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void password_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Login_Load(object sender, EventArgs e)
+        {
 
         }
     }
