@@ -17,5 +17,6 @@ namespace ScadaModel
         [OperationContract]
         void AddTag(Tag tag);
 
+
     }
 }
