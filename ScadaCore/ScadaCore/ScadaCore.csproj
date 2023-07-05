@@ -99,17 +99,9 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DatabaseManager\DatabaseManager.csproj">
-      <Project>{04635a52-ba26-4e7c-8235-e2591dd155c9}</Project>
-      <Name>DatabaseManager</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Models\Models.csproj">
       <Project>{aadd525a-9da1-43d1-a6db-3a8383a37f61}</Project>
       <Name>Models</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Trending\Trending.csproj">
-      <Project>{318b5719-6171-45df-bdf1-2643ccec8cbf}</Project>
-      <Name>Trending</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
