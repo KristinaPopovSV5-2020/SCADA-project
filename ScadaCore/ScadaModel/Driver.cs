@@ -9,5 +9,12 @@ namespace ScadaModel
     [DataContract]
     public class Driver
     {
+        private string id;
+
+        public string Id
+        {
+            get { return id; }
+            set { id = value; }
+        }
     }
 }
