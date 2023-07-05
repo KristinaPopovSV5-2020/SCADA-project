@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.Serialization;
-using System.Web;
+using System.Text;
 
-namespace ScadaModel
+namespace Models
 {
     public enum TypeOfAlarm
     {
@@ -74,7 +73,7 @@ namespace ScadaModel
             set { time = value; }
         }
 
-       
+
         public TypeOfAlarm Type
         {
             get { return type; }
@@ -99,6 +98,6 @@ namespace ScadaModel
             set { tagValue = value; }
         }
 
-       
+
     }
 }

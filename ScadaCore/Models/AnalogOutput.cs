@@ -4,13 +4,12 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.Web;
 
-namespace ScadaModel
+namespace Models
 {
-    public class AnalogInput: InputTag
-    {
 
-        [DataMember]
-        private List<Alarm> alarms;
+    [DataContract]
+    public class AnalogOutput: OutputTag
+    {
 
         [DataMember]
         private double lowLimit;
@@ -21,27 +20,22 @@ namespace ScadaModel
         [DataMember]
         private string units;
 
-
-        public AnalogInput(): base() { }
-    
+        public AnalogOutput(): base() { }
 
 
-     
-        public AnalogInput(string tagName, string desc, string ioAddress, Driver driver, int scanTime,
-            bool scan, List<Alarm> alarms, double lowLimit, double highLimit, string units) : base(tagName, desc, ioAddress, driver,  scanTime,
-             scan) {
-            this.alarms = alarms;
+        public AnalogOutput(string tagName, string desc, string ioAddress, double initialValue, double lowLimit, double highLimit, string units) : base(tagName, desc, ioAddress, initialValue)
+        {
+            
             this.lowLimit = lowLimit;
             this.highLimit = highLimit;
             this.units = units;
         }
 
-        public List<Alarm>  Alarms { get; set; }
-
         public double LowLimit { get; set; }
         public double HighLimit { get; set; }
 
         public string Units { get; set; }
+
 
 
     }

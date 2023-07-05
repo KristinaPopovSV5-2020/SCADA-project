@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Web;
 
-namespace ScadaModel
+namespace Models
 {
     public class UserManager
     {

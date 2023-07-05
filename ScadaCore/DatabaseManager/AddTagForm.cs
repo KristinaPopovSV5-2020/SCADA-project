@@ -19,5 +19,10 @@ namespace DatabaseManager
         {
 
         }
+
+        private void AddTagForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

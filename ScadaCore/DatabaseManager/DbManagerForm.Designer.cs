@@ -37,17 +37,19 @@ namespace DatabaseManager
             // listBoxTags
             // 
             this.listBoxTags.FormattingEnabled = true;
-            this.listBoxTags.ItemHeight = 25;
-            this.listBoxTags.Location = new System.Drawing.Point(25, 63);
+            this.listBoxTags.ItemHeight = 20;
+            this.listBoxTags.Location = new System.Drawing.Point(20, 50);
+            this.listBoxTags.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.listBoxTags.Name = "listBoxTags";
-            this.listBoxTags.Size = new System.Drawing.Size(316, 304);
+            this.listBoxTags.Size = new System.Drawing.Size(254, 244);
             this.listBoxTags.TabIndex = 0;
             // 
             // addTag
             // 
-            this.addTag.Location = new System.Drawing.Point(25, 389);
+            this.addTag.Location = new System.Drawing.Point(20, 311);
+            this.addTag.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.addTag.Name = "addTag";
-            this.addTag.Size = new System.Drawing.Size(112, 34);
+            this.addTag.Size = new System.Drawing.Size(90, 27);
             this.addTag.TabIndex = 1;
             this.addTag.Text = "New Tag";
             this.addTag.UseVisualStyleBackColor = true;
@@ -56,22 +58,25 @@ namespace DatabaseManager
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(25, 19);
+            this.label1.Location = new System.Drawing.Point(20, 15);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(47, 25);
+            this.label1.Size = new System.Drawing.Size(38, 20);
             this.label1.TabIndex = 2;
             this.label1.Text = "Tags";
             // 
             // DbManagerForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(640, 360);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.addTag);
             this.Controls.Add(this.listBoxTags);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "DbManagerForm";
             this.Text = "DbManagerForm";
+            this.Load += new System.EventHandler(this.DbManagerForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
