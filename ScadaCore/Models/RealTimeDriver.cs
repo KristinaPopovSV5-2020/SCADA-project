@@ -20,11 +20,6 @@ namespace Models
         public RealTimeDriver()
         {
             addrValues = new Dictionary<string, double>();
-
-            for (int i = 0; i<= numberOfAddresses; i++)
-            {
-                addrValues["address" + i.ToString()] = 0;
-            }
         }
 
         public double ReturnValue(string address)
