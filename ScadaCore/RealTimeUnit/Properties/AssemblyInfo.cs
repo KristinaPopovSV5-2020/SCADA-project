@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("neka")]
+[assembly: AssemblyTitle("RealTimeUnit")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("neka")]
+[assembly: AssemblyProduct("RealTimeUnit")]
 [assembly: AssemblyCopyright("Copyright ©  2023")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("31ef69f5-5fb3-4e16-8572-d17f9e4036cf")]
+[assembly: Guid("2761c8d3-dd5a-4149-9169-71cabf6490e2")]
 
 // Version information for an assembly consists of the following four values:
 //
