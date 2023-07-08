@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
-using System.Web;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace ScadaCore
+namespace Models
 {
     [DataContract]
-    public class SimulationDriver
+    public class SimulationDriver: Driver
     {
-
         [DataMember]
         private List<string> addresses;
 
@@ -44,7 +44,7 @@ namespace ScadaCore
             try
             {
                 int i = addresses.IndexOf(address);
-                
+
             }
             catch (Exception e)
             {
@@ -97,9 +97,6 @@ namespace ScadaCore
             get { return addresses; }
             set { addresses = value; }
         }
-
-
-
 
     }
 }

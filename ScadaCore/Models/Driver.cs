@@ -7,6 +7,8 @@ using System.Web;
 namespace Models
 {
     [DataContract]
+    [KnownType(typeof(RealTimeDriver))]
+    [KnownType(typeof(SimulationDriver))]
     public class Driver
     {
         private string id;

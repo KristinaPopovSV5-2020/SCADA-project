@@ -11,6 +11,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Trending", "Trending\Trendi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models", "Models\Models.csproj", "{AADD525A-9DA1-43D1-A6DB-3A8383A37F61}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RealTimeUnit", "RealTimeUnit\RealTimeUnit.csproj", "{2761C8D3-DD5A-4149-9169-71CABF6490E2}"
+	ProjectSection(ProjectDependencies) = postProject
+		{E00724FD-ABAF-4A02-8C41-F64518F9AA36} = {E00724FD-ABAF-4A02-8C41-F64518F9AA36}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +38,10 @@ Global
 		{AADD525A-9DA1-43D1-A6DB-3A8383A37F61}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AADD525A-9DA1-43D1-A6DB-3A8383A37F61}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AADD525A-9DA1-43D1-A6DB-3A8383A37F61}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2761C8D3-DD5A-4149-9169-71CABF6490E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2761C8D3-DD5A-4149-9169-71CABF6490E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2761C8D3-DD5A-4149-9169-71CABF6490E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2761C8D3-DD5A-4149-9169-71CABF6490E2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

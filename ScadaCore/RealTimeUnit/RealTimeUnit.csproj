@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{AADD525A-9DA1-43D1-A6DB-3A8383A37F61}</ProjectGuid>
+    <ProjectGuid>{2761C8D3-DD5A-4149-9169-71CABF6490E2}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Models</RootNamespace>
-    <AssemblyName>Models</AssemblyName>
+    <RootNamespace>RealTimeUnit</RootNamespace>
+    <AssemblyName>RealTimeUnit</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -36,6 +36,7 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -44,34 +45,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Alarm.cs" />
-    <Compile Include="AlarmManager.cs" />
-    <Compile Include="AnalogInput.cs" />
-    <Compile Include="AnalogOutput.cs" />
-    <Compile Include="DigitalInput.cs" />
-    <Compile Include="DigitalOutput.cs" />
-    <Compile Include="Driver.cs" />
-    <Compile Include="InputTag.cs" />
-    <Compile Include="OutputTag.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RealTimeDriver.cs" />
-    <Compile Include="SimulationDriver.cs" />
-    <Compile Include="Tag.cs" />
-    <Compile Include="TagManager.cs" />
-    <Compile Include="User.cs" />
-    <Compile Include="UserManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Database\alarms.txt" />
-    <Content Include="Database\analogInputTags.txt" />
-    <Content Include="Database\analogOutputTags.txt" />
-    <Content Include="Database\digitalInputTags.txt" />
-    <Content Include="Database\digitalOutputTags.txt" />
-    <Content Include="Database\users.txt" />
+    <ProjectReference Include="..\Models\Models.csproj">
+      <Project>{aadd525a-9da1-43d1-a6db-3a8383a37f61}</Project>
+      <Name>Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ScadaCore\ScadaCore.csproj">
+      <Project>{e00724fd-abaf-4a02-8c41-f64518f9aa36}</Project>
+      <Name>ScadaCore</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
