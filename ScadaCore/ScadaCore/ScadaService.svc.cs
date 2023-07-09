@@ -10,47 +10,15 @@ namespace ScadaCore
 {
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "Service" in code, svc and config file together.
     // NOTE: In order to launch WCF Test Client for testing this service, please select Service.svc or Service.svc.cs at the Solution Explorer and start debugging.
-    public class ScadaService : IDbManager, IRTU
+    public class ScadaService : IDbManager, ITrending
     {
-        static RealTimeDriver realTimeDriver = new RealTimeDriver();
-        static SimulationDriver simulationDriver = new SimulationDriver();
+        static Dictionary<string, Tag> tags = new Dictionary<string, Tag>(); 
 
-        static Dictionary<int, string> realTimeUnits = new Dictionary<int, string>();
+        static ITrendingCB trending = null;
 
-        public static AlarmManager alarmManager = new AlarmManager();
-        public TagManager tagManager = new TagManager(alarmManager);
-        public UserManager userManager = new UserManager();
-        //public static SimulationDriver simulationDriver;
-
-
-        public bool addAddress(string address)
+        public void initTrending()
         {
-            lock (realTimeDriver)
-            {
-                if (realTimeDriver.checkAddressAvailable(address))
-                {
-                    realTimeUnits[realTimeUnits.Count + 1] = address;
-                    return true;
-                }
-            }
-
-            return false;
-        }
-
-        public List<string> getAvailableAddresses()
-        {
-            lock (realTimeDriver)
-            {
-                return realTimeDriver.getAvailableAddress();
-            }
-        }
-
-        public void sendToService(string address, double value)
-        {
-            lock (realTimeDriver)
-            {
-                realTimeDriver.WriteValue(address, value);
-            }
+            trending = OperationContext.Current.GetCallbackChannel<ITrendingCB>();
         }
 
         void IDbManager.AddTag(Tag tag)
