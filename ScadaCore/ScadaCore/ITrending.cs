@@ -10,7 +10,7 @@ namespace ScadaCore
     public interface ITrendingCB
     {
         [OperationContract(IsOneWay = true)]
-        void addTagValue(string tagName, int value);
+        void addTagValue(string tagName, double value);
     }
 
     [ServiceContract(CallbackContract = typeof(ITrendingCB))]

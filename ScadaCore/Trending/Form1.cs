@@ -15,7 +15,7 @@ namespace Trending
     public partial class Form1 : Form, ServiceReference1.ITrendingCallback
     {
         static ServiceReference1.TrendingClient service;
-        public Dictionary<string, int> tags = new Dictionary<string, int>();
+        public Dictionary<string, double> tags = new Dictionary<string, double>();
         public Form1()
         {
             InitializeComponent();
@@ -30,7 +30,7 @@ namespace Trending
 
         }
 
-        public void addTagValue(string tagName, int value)
+        public void addTagValue(string tagName, double value)
         {
             if (!tags.ContainsKey(tagName))
             {
