@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using System.Threading;
 
 namespace ScadaCore
 {
@@ -16,20 +17,29 @@ namespace ScadaCore
         static SimulationDriver simulationDriver = new SimulationDriver();
         static string currentPath = System.Web.Hosting.HostingEnvironment.ApplicationPhysicalPath;
 
-
+    public class ScadaService : IDbManager, IRTU, IAlarmDisplay, ITrending
+    {
+        static Dictionary<string, Tag> tags = new Dictionary<string, Tag>();
+        static Dictionary<string, Thread> threads = new Dictionary<string, Thread>();
         static Dictionary<int, string> realTimeUnits = new Dictionary<int, string>();
 
         public static AlarmManager alarmManager = new AlarmManager(currentPath);
         public TagManager tagManager = new TagManager(alarmManager, currentPath);
         public UserManager userManager = new UserManager(currentPath);
         //public static SimulationDriver simulationDriver;
+        static RealTimeDriver rtu = new RealTimeDriver();
+        static SimulationDriver simulationDriver = new SimulationDriver();
+
+        static ITrendingCB trending = null;
 
 
+        static IAlarmDisplayCallback alarmProxy = null;
+        
         public bool addAddress(string address)
         {
-            lock (realTimeDriver)
+            lock (rtu)
             {
-                if (realTimeDriver.checkAddressAvailable(address))
+                if (rtu.checkAddressAvailable(address))
                 {
                     realTimeUnits[realTimeUnits.Count + 1] = address;
                     return true;
@@ -41,17 +51,71 @@ namespace ScadaCore
 
         public List<string> getAvailableAddresses()
         {
-            lock (realTimeDriver)
+            lock (rtu)
             {
-                return realTimeDriver.getAvailableAddress();
+                return rtu.getAvailableAddress();
             }
         }
 
         public void sendToService(string address, double value)
         {
-            lock (realTimeDriver)
+            lock (rtu)
             {
-                realTimeDriver.WriteValue(address, value);
+                rtu.WriteValue(address, value);
+            }
+        }
+
+
+
+
+        public void initTrending()
+        {
+            trending = OperationContext.Current.GetCallbackChannel<ITrendingCB>();
+        }
+
+        public void processTag(string tagName)
+        {
+
+            if (threads.ContainsKey(tagName))
+                return;
+
+            if (tags[tagName] is InputTag)
+                threads[tagName] = new Thread(new ParameterizedThreadStart(processInputTag));
+            
+            else if (tags[tagName] is OutputTag)
+                //threads[tagName] = new Thread(new ParameterizedThreadStart(processOutputTag));
+
+            threads[tagName].Start(tagName);
+
+        }
+
+        private void processInputTag(object tag)
+        {
+            string tagName = (string) tag;
+
+            while (true)
+            {
+                double value = 0;
+
+                if (!tags.ContainsKey(tagName))
+                    return;
+                
+
+                if ((tags[tagName] as InputTag).Driver is RealTimeDriver)
+                {
+                    lock (rtu)
+                    {
+                        value = rtu.ReturnValue(tags[tagName].IOAddress);
+                    }
+                }
+                else
+                {
+                   //ako je simulacioni
+
+                }
+
+                trending.addTagValue(tagName, value);
+                Thread.Sleep(1000*(tags[tagName] as InputTag).ScanTime);
             }
         }
 
@@ -84,6 +148,11 @@ namespace ScadaCore
         public List<Tag> GetOutputTags()
         {
             return tagManager.tags.Values.ToList().Where(tag => tag is OutputTag).ToList();
+        }
+
+        public void initializationAlarmDisplay()
+        {
+            alarmProxy = OperationContext.Current.GetCallbackChannel<IAlarmDisplayCallback>();
         }
     }
 }

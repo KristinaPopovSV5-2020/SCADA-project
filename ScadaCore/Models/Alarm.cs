@@ -52,6 +52,11 @@ namespace Models
             this.tagValue = tagValue;
         }
 
+        public override string ToString()
+        {
+            return "Alarm name: " + AlarmId + ",Tag: " + TagId + ",Time: " + Time.ToString() + ",Type: " + Type.ToString() + ",Limit: " + Limit + ",TagValue: " + TagValue;
+        }
+
 
         public string AlarmId
         {
@@ -98,6 +103,8 @@ namespace Models
             get { return tagValue; }
             set { tagValue = value; }
         }
+
+        
 
 
     }
