@@ -1,5 +1,4 @@
-﻿using Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -24,7 +23,7 @@ namespace Trending
             service = new ServiceReference1.TrendingClient(ic);
             service.initTrending();
 
-            tagsGridView.Columns.Add("Name","Name");
+            tagsGridView.Columns.Add("Name", "Name");
             tagsGridView.Columns.Add("Value", "Value");
 
 
