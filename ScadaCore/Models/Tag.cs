@@ -7,6 +7,8 @@ using System.Web;
 namespace Models
 {
     [DataContract]
+    [KnownType(typeof(InputTag))]
+    [KnownType(typeof(OutputTag))]
     [KnownType(typeof(DigitalInput))]
     [KnownType(typeof(DigitalOutput))]
     [KnownType(typeof(AnalogInput))]
@@ -23,18 +25,22 @@ namespace Models
         [DataMember]
         private string ioAddress;
 
+        [DataMember]
+        private double initialValue;
+
         public Tag() { }
 
         public Tag(string id) { tagName = id; }
 
-        public Tag(string id, string desc, string address)
+        public Tag(string id, string desc, string address, double v)
         {
             tagName = id;
             description = desc;
             ioAddress = address;
+            initialValue = v;
         }
 
-       
+
         public string TagName
         {
             get { return tagName; }
@@ -52,6 +58,12 @@ namespace Models
         {
             get { return ioAddress; }
             set { ioAddress = value; }
+        }
+
+        public double InitialValue
+        {
+            get { return initialValue; }
+            set { initialValue = value; }
         }
 
 

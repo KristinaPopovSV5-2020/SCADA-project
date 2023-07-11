@@ -7,30 +7,15 @@ using System.Web;
 namespace Models
 {
     [DataContract]
-    [KnownType(typeof(DigitalOutput))]
-    [KnownType(typeof(AnalogOutput))]
-    public class OutputTag: Tag
+    public class OutputTag : Tag
     {
 
 
-        [DataMember]
-        private double initialValue;
+        public OutputTag() : base() { }
 
-
-        public OutputTag(): base() { }
-
-        public OutputTag(string id, string desc, string ioAddress, double initialValue) : base(id, desc, ioAddress)
+        public OutputTag(string id, string desc, string ioAddress, double initialValue) : base(id, desc, ioAddress, initialValue)
         {
-            this.initialValue = initialValue;
         }
 
-
-
-
-        public double InitialValue
-        {
-            get { return initialValue; }
-            set { initialValue = value; }
-        }
     }
 }

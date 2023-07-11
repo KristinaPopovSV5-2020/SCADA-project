@@ -10,9 +10,10 @@ namespace Models
     public class AlarmManager
     {
         List<Alarm> alarms;
-
-        public AlarmManager()
+        string path;
+        public AlarmManager(string path)
         {
+            this.path = path;
             LoadAlarmsFromFile();
         }
 
@@ -30,7 +31,7 @@ namespace Models
         public void LoadAlarmsFromFile()
         {
             alarms = new List<Alarm>();
-            string[] lines = File.ReadAllLines("../Database/alarms.txt");
+            string[] lines = File.ReadAllLines(this.path + "/Database/alarms.txt");
 
             foreach (string line in lines)
             {
@@ -41,13 +42,13 @@ namespace Models
             }
         }
 
-        public void SaveUsersToFile()
+        public void SaveAlarmsToFile()
         {
-            using (StreamWriter writer = new StreamWriter("..Database/alarms.txt"))
+            using (StreamWriter writer = new StreamWriter(this.path + "/Database/alarms.txt"))
             {
                 foreach (Alarm alarm in alarms)
                 {
-                    writer.WriteLine(alarm.AlarmId + "|" + alarm.TagId+"|"+alarm.Time.ToString()+"|"+alarm.Type + "|" +alarm.Limit + "|" +alarm.Priority + "|" +alarm.TagValue);
+                    writer.WriteLine(alarm.AlarmId + "|" + alarm.TagId + "|" + alarm.Time.ToString() + "|" + alarm.Type + "|" + alarm.Limit + "|" + alarm.Priority + "|" + alarm.TagValue);
                 }
             }
         }

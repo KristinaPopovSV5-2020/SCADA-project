@@ -7,9 +7,7 @@ using System.Web;
 namespace Models
 {
     [DataContract]
-    [KnownType(typeof(DigitalInput))]
-    [KnownType(typeof(AnalogInput))]
-    public class InputTag: Tag
+    public class InputTag : Tag
     {
 
         [DataMember]
@@ -22,11 +20,11 @@ namespace Models
         [DataMember]
         private bool scan;
 
-        public InputTag(): base()
+        public InputTag() : base()
         {
         }
 
-        public InputTag(string id, string desc, string ioAddress, Driver driver, int scanTime, bool scan) : base(id, desc, ioAddress)
+        public InputTag(string id, string desc, string ioAddress, Driver driver, int scanTime, bool scan, double v) : base(id, desc, ioAddress, v)
         {
             this.driver = driver;
             this.scanTime = scanTime;
@@ -39,9 +37,17 @@ namespace Models
             set { driver = value; }
         }
 
-        public int ScanTime { get; set; }
+        public int ScanTime
+        {
+            get { return scanTime; }
+            set { scanTime = value; }
+        }
 
-        public bool Scan { get; set; }
+        public bool Scan
+        {
+            get { return scan; }
+            set { scan = value; }
+        }
 
 
 

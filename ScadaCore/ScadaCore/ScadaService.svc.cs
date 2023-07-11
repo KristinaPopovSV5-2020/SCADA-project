@@ -20,9 +20,14 @@ namespace ScadaCore
         static Dictionary<int, string> realTimeUnits = new Dictionary<int, string>();
 
         static RealTimeDriver rtu = new RealTimeDriver();
+        static string currentPath = System.Web.Hosting.HostingEnvironment.ApplicationPhysicalPath;
+
+        public static AlarmManager alarmManager = new AlarmManager(currentPath);
+        public TagManager tagManager = new TagManager(alarmManager, currentPath);
+        public UserManager userManager = new UserManager(currentPath);
 
         static ITrendingCB trending = null;
-
+        public static SimulationDriver simulationDriver = new SimulationDriver();
 
         static IAlarmDisplayCallback alarmProxy = null;
         
@@ -110,19 +115,41 @@ namespace ScadaCore
             }
         }
 
-        void IDbManager.AddTag(Tag tag)
+        public bool AddTag(Tag tag, bool realTimeOn)
         {
-            throw new NotImplementedException();
+            if (tagManager.tags.ContainsKey(tag.TagName) || simulationDriver.Addresses.Contains(tag.IOAddress)) return false;
+
+            else
+            {
+                tagManager.tags.Add(tag.TagName, tag);
+                if (tag is InputTag)
+                {
+                    InputTag iTag = (InputTag)tag;
+                    if (realTimeOn)
+                        iTag.Driver = simulationDriver;
+                    else
+                        iTag.Driver = simulationDriver;
+                    tagManager.SaveNewTagToFile(iTag);
+                }
+                else
+                {
+                    OutputTag oTag = (OutputTag)tag;
+                    tagManager.SaveNewTagToFile(oTag);
+
+                }
+                return true;
+            }
         }
 
-        void IDbManager.DoWork()
+        public List<Tag> GetOutputTags()
         {
-            throw new NotImplementedException();
+            return tagManager.tags.Values.ToList().Where(tag => tag is OutputTag).ToList();
         }
 
         public void initializationAlarmDisplay()
         {
             alarmProxy = OperationContext.Current.GetCallbackChannel<IAlarmDisplayCallback>();
         }
+
     }
 }

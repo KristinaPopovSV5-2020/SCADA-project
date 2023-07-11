@@ -1,4 +1,5 @@
 ﻿using Models;
+using System.Collections.Generic;
 using System.ServiceModel;
 
 namespace ScadaCore
@@ -8,10 +9,9 @@ namespace ScadaCore
     public interface IDbManager
     {
         [OperationContract]
-        void DoWork();
-
+        bool AddTag(Tag tag, bool realTimeOn);
         [OperationContract]
-        void AddTag(Tag tag);
+        List<Tag> GetOutputTags();
 
 
     }

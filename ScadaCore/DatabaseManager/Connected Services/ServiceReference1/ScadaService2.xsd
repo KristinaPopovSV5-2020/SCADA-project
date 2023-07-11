@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Models" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Models" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:58039/ScadaService.svc?xsd=xsd2" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:complexType name="Tag">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="initialValue" type="xs:double" />
+      <xs:element minOccurs="0" name="ioAddress" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="tagName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Tag" nillable="true" type="tns:Tag" />
+  <xs:complexType name="InputTag">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Tag">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="driver" nillable="true" type="tns:Driver" />
+          <xs:element minOccurs="0" name="scan" type="xs:boolean" />
+          <xs:element minOccurs="0" name="scanTime" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="InputTag" nillable="true" type="tns:InputTag" />
+  <xs:complexType name="Driver">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="Driver" nillable="true" type="tns:Driver" />
+  <xs:complexType name="RealTimeDriver">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Driver">
+        <xs:sequence>
+          <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="addrValues" nillable="true" type="q1:ArrayOfKeyValueOfstringdouble" />
+          <xs:element minOccurs="0" name="numberOfAddresses" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RealTimeDriver" nillable="true" type="tns:RealTimeDriver" />
+  <xs:complexType name="SimulationDriver">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Driver">
+        <xs:sequence>
+          <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="addresses" nillable="true" type="q2:ArrayOfstring" />
+          <xs:element xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="tagValues" nillable="true" type="q3:ArrayOfdouble" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="SimulationDriver" nillable="true" type="tns:SimulationDriver" />
+  <xs:complexType name="OutputTag">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Tag">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="OutputTag" nillable="true" type="tns:OutputTag" />
+  <xs:complexType name="DigitalInput">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:InputTag">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DigitalInput" nillable="true" type="tns:DigitalInput" />
+  <xs:complexType name="DigitalOutput">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:OutputTag">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DigitalOutput" nillable="true" type="tns:DigitalOutput" />
+  <xs:complexType name="AnalogInput">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:InputTag">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="alarms" nillable="true" type="tns:ArrayOfAlarm" />
+          <xs:element minOccurs="0" name="highLimit" type="xs:double" />
+          <xs:element minOccurs="0" name="lowLimit" type="xs:double" />
+          <xs:element minOccurs="0" name="units" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="AnalogInput" nillable="true" type="tns:AnalogInput" />
+  <xs:complexType name="ArrayOfAlarm">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Alarm" nillable="true" type="tns:Alarm" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAlarm" nillable="true" type="tns:ArrayOfAlarm" />
+  <xs:complexType name="Alarm">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="alarmId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="limit" type="xs:double" />
+      <xs:element minOccurs="0" name="priority" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="tagId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="tagValue" type="xs:double" />
+      <xs:element minOccurs="0" name="time" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="type" type="tns:TypeOfAlarm" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Alarm" nillable="true" type="tns:Alarm" />
+  <xs:simpleType name="TypeOfAlarm">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Low" />
+      <xs:enumeration value="Med" />
+      <xs:enumeration value="High" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="TypeOfAlarm" nillable="true" type="tns:TypeOfAlarm" />
+  <xs:complexType name="AnalogOutput">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:OutputTag">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="highLimit" type="xs:double" />
+          <xs:element minOccurs="0" name="lowLimit" type="xs:double" />
+          <xs:element minOccurs="0" name="units" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="AnalogOutput" nillable="true" type="tns:AnalogOutput" />
+  <xs:complexType name="ArrayOfTag">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Tag" nillable="true" type="tns:Tag" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTag" nillable="true" type="tns:ArrayOfTag" />
+</xs:schema>

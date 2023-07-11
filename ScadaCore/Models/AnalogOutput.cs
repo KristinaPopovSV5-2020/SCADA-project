@@ -8,7 +8,7 @@ namespace Models
 {
 
     [DataContract]
-    public class AnalogOutput: OutputTag
+    public class AnalogOutput : OutputTag
     {
 
         [DataMember]
@@ -20,21 +20,33 @@ namespace Models
         [DataMember]
         private string units;
 
-        public AnalogOutput(): base() { }
+        public AnalogOutput() : base() { }
 
 
         public AnalogOutput(string tagName, string desc, string ioAddress, double initialValue, double lowLimit, double highLimit, string units) : base(tagName, desc, ioAddress, initialValue)
         {
-            
+
             this.lowLimit = lowLimit;
             this.highLimit = highLimit;
             this.units = units;
         }
 
-        public double LowLimit { get; set; }
-        public double HighLimit { get; set; }
+        public double LowLimit
+        {
+            get { return lowLimit; }
+            set { lowLimit = value; }
+        }
+        public double HighLimit
+        {
+            get { return highLimit; }
+            set { highLimit = value; }
+        }
 
-        public string Units { get; set; }
+        public string Units
+        {
+            get { return units; }
+            set { units = value; }
+        }
 
 
 

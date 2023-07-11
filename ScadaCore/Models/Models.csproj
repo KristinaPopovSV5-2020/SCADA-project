@@ -65,13 +65,5 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Content Include="Database\alarms.txt" />
-    <Content Include="Database\analogInputTags.txt" />
-    <Content Include="Database\analogOutputTags.txt" />
-    <Content Include="Database\digitalInputTags.txt" />
-    <Content Include="Database\digitalOutputTags.txt" />
-    <Content Include="Database\users.txt" />
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
