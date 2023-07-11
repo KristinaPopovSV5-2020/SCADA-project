@@ -1,2 +1,0 @@
-﻿name1|description|1|1|1|True
-name2|description|1|2|2|False

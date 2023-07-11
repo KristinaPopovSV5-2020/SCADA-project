@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="ScadaService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:58039/ScadaService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:58039/ScadaService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:58039/ScadaService.svc?xsd=xsd2" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import schemaLocation="http://localhost:58039/ScadaService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/Models" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IRTU_getAvailableAddresses_InputMessage">
+    <wsdl:part name="parameters" element="tns:getAvailableAddresses" />
+  </wsdl:message>
+  <wsdl:message name="IRTU_getAvailableAddresses_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getAvailableAddressesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRTU_sendToService_InputMessage">
+    <wsdl:part name="parameters" element="tns:sendToService" />
+  </wsdl:message>
+  <wsdl:message name="IRTU_sendToService_OutputMessage">
+    <wsdl:part name="parameters" element="tns:sendToServiceResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRTU_addAddress_InputMessage">
+    <wsdl:part name="parameters" element="tns:addAddress" />
+  </wsdl:message>
+  <wsdl:message name="IRTU_addAddress_OutputMessage">
+    <wsdl:part name="parameters" element="tns:addAddressResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDbManager_AddTag_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddTag" />
+  </wsdl:message>
+  <wsdl:message name="IDbManager_AddTag_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddTagResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDbManager_GetOutputTags_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetOutputTags" />
+  </wsdl:message>
+  <wsdl:message name="IDbManager_GetOutputTags_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetOutputTagsResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IRTU">
+    <wsdl:operation name="getAvailableAddresses">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRTU/getAvailableAddresses" message="tns:IRTU_getAvailableAddresses_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRTU/getAvailableAddressesResponse" message="tns:IRTU_getAvailableAddresses_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="sendToService">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRTU/sendToService" message="tns:IRTU_sendToService_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRTU/sendToServiceResponse" message="tns:IRTU_sendToService_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="addAddress">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRTU/addAddress" message="tns:IRTU_addAddress_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRTU/addAddressResponse" message="tns:IRTU_addAddress_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="IDbManager">
+    <wsdl:operation name="AddTag">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDbManager/AddTag" message="tns:IDbManager_AddTag_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDbManager/AddTagResponse" message="tns:IDbManager_AddTag_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOutputTags">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDbManager/GetOutputTags" message="tns:IDbManager_GetOutputTags_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDbManager/GetOutputTagsResponse" message="tns:IDbManager_GetOutputTags_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IRTU" type="tns:IRTU">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="getAvailableAddresses">
+      <soap:operation soapAction="http://tempuri.org/IRTU/getAvailableAddresses" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sendToService">
+      <soap:operation soapAction="http://tempuri.org/IRTU/sendToService" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addAddress">
+      <soap:operation soapAction="http://tempuri.org/IRTU/addAddress" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="BasicHttpBinding_IDbManager" type="tns:IDbManager">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AddTag">
+      <soap:operation soapAction="http://tempuri.org/IDbManager/AddTag" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOutputTags">
+      <soap:operation soapAction="http://tempuri.org/IDbManager/GetOutputTags" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ScadaService">
+    <wsdl:port name="BasicHttpBinding_IRTU" binding="tns:BasicHttpBinding_IRTU">
+      <soap:address location="http://localhost:58039/ScadaService.svc/rtu" />
+    </wsdl:port>
+    <wsdl:port name="BasicHttpBinding_IDbManager" binding="tns:BasicHttpBinding_IDbManager">
+      <soap:address location="http://localhost:58039/ScadaService.svc/dbm" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

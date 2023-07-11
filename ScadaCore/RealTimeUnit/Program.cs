@@ -31,6 +31,7 @@ namespace RealTimeUnit
                     address = "address" + Console.ReadLine();
 
                     isConnected = service.addAddress(address);
+                   
 
                     if (!isConnected)
                     {

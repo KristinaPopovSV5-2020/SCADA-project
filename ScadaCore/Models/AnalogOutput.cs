@@ -31,10 +31,22 @@ namespace Models
             this.units = units;
         }
 
-        public double LowLimit { get; set; }
-        public double HighLimit { get; set; }
+        public double LowLimit
+        {
+            get { return lowLimit; }
+            set { lowLimit = value; }
+        }
+        public double HighLimit
+        {
+            get { return highLimit; }
+            set { highLimit = value; }
+        }
 
-        public string Units { get; set; }
+        public string Units
+        {
+            get { return units; }
+            set { units = value; }
+        }
 
 
 
