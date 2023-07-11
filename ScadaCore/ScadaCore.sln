@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RealTimeUnit", "RealTimeUni
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Trending", "Trending\Trending.csproj", "{BD7C5FD7-FF42-43B5-A68C-1F6C8AB8E30C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlarmDisplay", "AlarmDisplay\AlarmDisplay.csproj", "{F75E0720-72CD-4455-9E98-E61A4A66D401}"
+
 	ProjectSection(ProjectDependencies) = postProject
 		{E00724FD-ABAF-4A02-8C41-F64518F9AA36} = {E00724FD-ABAF-4A02-8C41-F64518F9AA36}
 	EndProjectSection
@@ -45,6 +47,10 @@ Global
 		{BD7C5FD7-FF42-43B5-A68C-1F6C8AB8E30C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BD7C5FD7-FF42-43B5-A68C-1F6C8AB8E30C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BD7C5FD7-FF42-43B5-A68C-1F6C8AB8E30C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F75E0720-72CD-4455-9E98-E61A4A66D401}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F75E0720-72CD-4455-9E98-E61A4A66D401}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F75E0720-72CD-4455-9E98-E61A4A66D401}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F75E0720-72CD-4455-9E98-E61A4A66D401}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
