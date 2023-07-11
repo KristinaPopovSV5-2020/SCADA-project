@@ -7,8 +7,9 @@ namespace Models
 {
     public enum TypeOfAlarm
     {
-        LOW,
-        HIGH
+        Low,
+        Med,
+        High
     }
 
     [DataContract]

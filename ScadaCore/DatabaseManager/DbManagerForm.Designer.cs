@@ -29,27 +29,17 @@ namespace DatabaseManager
         /// </summary>
         private void InitializeComponent()
         {
-            this.listBoxTags = new System.Windows.Forms.ListBox();
             this.addTag = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.listViewTags = new System.Windows.Forms.ListView();
             this.SuspendLayout();
-            // 
-            // listBoxTags
-            // 
-            this.listBoxTags.FormattingEnabled = true;
-            this.listBoxTags.ItemHeight = 20;
-            this.listBoxTags.Location = new System.Drawing.Point(20, 50);
-            this.listBoxTags.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.listBoxTags.Name = "listBoxTags";
-            this.listBoxTags.Size = new System.Drawing.Size(254, 244);
-            this.listBoxTags.TabIndex = 0;
             // 
             // addTag
             // 
-            this.addTag.Location = new System.Drawing.Point(20, 311);
-            this.addTag.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.addTag.Location = new System.Drawing.Point(22, 311);
+            this.addTag.Margin = new System.Windows.Forms.Padding(2);
             this.addTag.Name = "addTag";
-            this.addTag.Size = new System.Drawing.Size(90, 27);
+            this.addTag.Size = new System.Drawing.Size(101, 27);
             this.addTag.TabIndex = 1;
             this.addTag.Text = "New Tag";
             this.addTag.UseVisualStyleBackColor = true;
@@ -58,34 +48,42 @@ namespace DatabaseManager
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(20, 15);
+            this.label1.Location = new System.Drawing.Point(22, 15);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(38, 20);
+            this.label1.Size = new System.Drawing.Size(44, 20);
             this.label1.TabIndex = 2;
             this.label1.Text = "Tags";
             // 
+            // listViewTags
+            // 
+            this.listViewTags.HideSelection = false;
+            this.listViewTags.Location = new System.Drawing.Point(22, 37);
+            this.listViewTags.Name = "listViewTags";
+            this.listViewTags.Size = new System.Drawing.Size(308, 269);
+            this.listViewTags.TabIndex = 3;
+            this.listViewTags.UseCompatibleStateImageBehavior = false;
+            // 
             // DbManagerForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(640, 360);
+            this.ClientSize = new System.Drawing.Size(720, 360);
+            this.Controls.Add(this.listViewTags);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.addTag);
-            this.Controls.Add(this.listBoxTags);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "DbManagerForm";
             this.Text = "DbManagerForm";
-            this.Load += new System.EventHandler(this.DbManagerForm_Load);
+            this.Load += new System.EventHandler(this.DbManagerForm_Load_1);
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.ListBox listBoxTags;
         private System.Windows.Forms.Button addTag;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ListView listViewTags;
     }
 }

@@ -14,24 +14,11 @@ namespace Models
     {
 
 
-        [DataMember]
-        private double initialValue;
-
-
         public OutputTag(): base() { }
 
-        public OutputTag(string id, string desc, string ioAddress, double initialValue) : base(id, desc, ioAddress)
+        public OutputTag(string id, string desc, string ioAddress, double initialValue) : base(id, desc, ioAddress, initialValue)
         {
-            this.initialValue = initialValue;
         }
 
-
-
-
-        public double InitialValue
-        {
-            get { return initialValue; }
-            set { initialValue = value; }
-        }
     }
 }

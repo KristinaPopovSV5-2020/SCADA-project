@@ -9,16 +9,18 @@ namespace Models
     public class UserManager
     {
         public List<User> users;
+        string path;
 
-        public UserManager()
+        public UserManager(string path)
         {
+            this.path = path;
             LoadUsersFromFile();
         }
 
         public void LoadUsersFromFile()
         {
             users = new List<User>();
-            string[] lines = File.ReadAllLines("../Database/users.txt");
+            string[] lines = File.ReadAllLines(this.path + "/Database/users.txt");
 
             foreach (string line in lines)
             {
@@ -30,7 +32,7 @@ namespace Models
 
         public void SaveUsersToFile()
         {
-            using (StreamWriter writer = new StreamWriter("..Database/users.txt"))
+            using (StreamWriter writer = new StreamWriter(this.path + "/Database/users.txt"))
             {
                 foreach (User user in users)
                 {

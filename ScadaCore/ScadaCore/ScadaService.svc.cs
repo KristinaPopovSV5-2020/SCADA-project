@@ -11,6 +11,11 @@ namespace ScadaCore
 {
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "Service" in code, svc and config file together.
     // NOTE: In order to launch WCF Test Client for testing this service, please select Service.svc or Service.svc.cs at the Solution Explorer and start debugging.
+    public class ScadaService : IDbManager, IRTU
+    {
+        static RealTimeDriver realTimeDriver = new RealTimeDriver();
+        static SimulationDriver simulationDriver = new SimulationDriver();
+        static string currentPath = System.Web.Hosting.HostingEnvironment.ApplicationPhysicalPath;
 
     public class ScadaService : IDbManager, IRTU, IAlarmDisplay, ITrending
     {
@@ -18,6 +23,10 @@ namespace ScadaCore
         static Dictionary<string, Thread> threads = new Dictionary<string, Thread>();
         static Dictionary<int, string> realTimeUnits = new Dictionary<int, string>();
 
+        public static AlarmManager alarmManager = new AlarmManager(currentPath);
+        public TagManager tagManager = new TagManager(alarmManager, currentPath);
+        public UserManager userManager = new UserManager(currentPath);
+        //public static SimulationDriver simulationDriver;
         static RealTimeDriver rtu = new RealTimeDriver();
         static SimulationDriver simulationDriver = new SimulationDriver();
 
@@ -110,14 +119,35 @@ namespace ScadaCore
             }
         }
 
-        void IDbManager.AddTag(Tag tag)
+        public bool AddTag(Tag tag, bool realTimeOn)
         {
-            throw new NotImplementedException();
+            if (tagManager.tags.ContainsKey(tag.TagName) || simulationDriver.Addresses.Contains(tag.IOAddress)) return false;
+
+            else
+            {
+                tagManager.tags.Add(tag.TagName, tag);
+                if (tag is InputTag)
+                {
+                    InputTag iTag = (InputTag)tag;
+                    if (realTimeOn)
+                        iTag.Driver = simulationDriver;
+                    else
+                        iTag.Driver = simulationDriver;
+                    tagManager.SaveNewTagToFile(iTag);
+                }
+                else
+                {
+                    OutputTag oTag = (OutputTag)tag;
+                    tagManager.SaveNewTagToFile(oTag);
+
+                }
+                return true;
+            }
         }
 
-        void IDbManager.DoWork()
+        public List<Tag> GetOutputTags()
         {
-            throw new NotImplementedException();
+            return tagManager.tags.Values.ToList().Where(tag => tag is OutputTag).ToList();
         }
 
         public void initializationAlarmDisplay()

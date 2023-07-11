@@ -1,12 +1,13 @@
-﻿
-using Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
+using Models;
 
 namespace DatabaseManager
 {
@@ -26,11 +27,12 @@ namespace DatabaseManager
             List<User> users = new List<User>();
             users.Add(zor);
             users.Add(masa);
-            
+
 
             foreach (User u in users)
             {
-                if (u.username == username.Text && u.password == password.Text && username.Text == "pera") { 
+                if (u.username == username.Text && u.password == password.Text && username.Text == "pera")
+                {
                     DbManagerForm newForm = new DbManagerForm();
                     newForm.Show();
                 }
