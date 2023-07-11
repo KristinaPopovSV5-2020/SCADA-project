@@ -7,6 +7,8 @@ using System.Web;
 namespace Models
 {
     [DataContract]
+    [KnownType(typeof(DigitalInput))]
+    [KnownType(typeof(AnalogInput))]
     public class InputTag: Tag
     {
 

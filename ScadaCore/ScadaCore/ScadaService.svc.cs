@@ -17,6 +17,8 @@ namespace ScadaCore
         static Dictionary<string, Tag> tags = new Dictionary<string, Tag>();
         static Dictionary<string, Thread> threads = new Dictionary<string, Thread>();
 
+        static Dictionary<int, string> realTimeUnits = new Dictionary<int, string>();
+
         static RealTimeDriver rtu = new RealTimeDriver();
 
         static ITrendingCB trending = null;
@@ -26,9 +28,9 @@ namespace ScadaCore
         
         public bool addAddress(string address)
         {
-            lock (realTimeDriver)
+            lock (rtu)
             {
-                if (realTimeDriver.checkAddressAvailable(address))
+                if (rtu.checkAddressAvailable(address))
                 {
                     realTimeUnits[realTimeUnits.Count + 1] = address;
                     return true;
@@ -40,17 +42,17 @@ namespace ScadaCore
 
         public List<string> getAvailableAddresses()
         {
-            lock (realTimeDriver)
+            lock (rtu)
             {
-                return realTimeDriver.getAvailableAddress();
+                return rtu.getAvailableAddress();
             }
         }
 
         public void sendToService(string address, double value)
         {
-            lock (realTimeDriver)
+            lock (rtu)
             {
-                realTimeDriver.WriteValue(address, value);
+                rtu.WriteValue(address, value);
             }
         }
 
