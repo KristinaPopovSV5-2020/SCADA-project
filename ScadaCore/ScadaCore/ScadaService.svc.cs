@@ -10,7 +10,7 @@ namespace ScadaCore
 {
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "Service" in code, svc and config file together.
     // NOTE: In order to launch WCF Test Client for testing this service, please select Service.svc or Service.svc.cs at the Solution Explorer and start debugging.
-    public class ScadaService : IDbManager, IRTU
+    public class ScadaService : IDbManager, IRTU, IAlarmDisplay
     {
         static RealTimeDriver realTimeDriver = new RealTimeDriver();
         static SimulationDriver simulationDriver = new SimulationDriver();
@@ -21,6 +21,8 @@ namespace ScadaCore
         public TagManager tagManager = new TagManager(alarmManager);
         public UserManager userManager = new UserManager();
         //public static SimulationDriver simulationDriver;
+
+        static IAlarmDisplayCallback alarmProxy = null;
 
 
         public bool addAddress(string address)
@@ -61,6 +63,11 @@ namespace ScadaCore
         void IDbManager.DoWork()
         {
             throw new NotImplementedException();
+        }
+
+        public void initializationAlarmDisplay()
+        {
+            alarmProxy = OperationContext.Current.GetCallbackChannel<IAlarmDisplayCallback>();
         }
     }
 }
