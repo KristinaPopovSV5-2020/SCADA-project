@@ -42,10 +42,7 @@ namespace Trending
             this.tagsGridView.RowTemplate.Height = 24;
             this.tagsGridView.Size = new System.Drawing.Size(717, 261);
             this.tagsGridView.TabIndex = 0;
-            this.tagsGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tagsGridView_CellContentClick);
-            // 
-            // Form1
-            // 
+           
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
