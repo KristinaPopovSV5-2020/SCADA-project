@@ -28,6 +28,8 @@ namespace Models
             return alarms.Where(alarm => alarm.TagId == tagName).ToList();
         }
 
+
+
         public void LoadAlarmsFromFile()
         {
             alarms = new List<Alarm>();
@@ -51,6 +53,15 @@ namespace Models
                     writer.WriteLine(alarm.AlarmId + "|" + alarm.TagId + "|" + alarm.Time.ToString() + "|" + alarm.Type + "|" + alarm.Limit + "|" + alarm.Priority + "|" + alarm.TagValue);
                 }
             }
+        }
+
+        public void SaveNewAlarmToFile(Alarm alarm)
+        {
+            using (StreamWriter writer = File.AppendText(this.path + "/Database/alarms.txt"))
+            {
+                writer.WriteLine(alarm.AlarmId + "|" + alarm.TagId + "|" + alarm.Time.ToString() + "|" + alarm.Type + "|" + alarm.Limit + "|" + alarm.Priority + "|" + alarm.TagValue);
+            }
+
         }
     }
 }
