@@ -12,6 +12,12 @@ namespace Models
         public AlarmManager alarmManager;
         string path;
 
+
+        public TagManager()
+        {
+
+        }
+
         public TagManager(AlarmManager alarmManager, string path)
         {
             this.path = path;
