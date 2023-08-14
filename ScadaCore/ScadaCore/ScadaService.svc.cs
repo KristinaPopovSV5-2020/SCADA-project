@@ -30,7 +30,8 @@ namespace ScadaCore
         public static SimulationDriver simulationDriver = new SimulationDriver();
 
         static IAlarmDisplayCallback alarmProxy = null;
-        
+
+
         public bool addAddress(string address)
         {
             lock (rtu)
@@ -126,7 +127,34 @@ namespace ScadaCore
 
                 }
 
-       
+                //provera za alarm da li se dogodio
+                foreach (Alarm alarm in ((tags[tagName] as AnalogInput).Alarms))
+                {
+                    if ((alarm.Type == TypeOfAlarm.Low && alarm.Limit > value) || (alarm.Type == TypeOfAlarm.High && alarm.Limit < value))
+                    {
+                        if (alarmProxy != null)
+                        {
+                            DateTime currentTime = DateTime.Now;
+                            alarm.Time = currentTime;
+                            alarm.TagValue = value;
+
+                            //ispisi na konzolu ako je ukljuceno skeniranje
+                            if ((tags[tagName] as InputTag).Scan == true)
+                            {
+                               
+                                alarmProxy.showAlarmDisplay(alarm);
+                            }
+
+                            lock (alarmManager)
+                            {
+                                alarmManager.SaveNewAlarmToFile(alarm);
+                            }
+
+                        }
+                    }
+                }
+
+
 
                 trending.addTagValue(tagName, value);
                 Thread.Sleep(1000*(tags[tagName] as InputTag).ScanTime);

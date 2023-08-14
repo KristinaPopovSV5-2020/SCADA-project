@@ -17,6 +17,8 @@ namespace Models
             LoadAlarmsFromFile();
         }
 
+       
+
         public Alarm findAlarm(string id)
         {
             return alarms.FirstOrDefault(alarm => alarm.AlarmId == id);
