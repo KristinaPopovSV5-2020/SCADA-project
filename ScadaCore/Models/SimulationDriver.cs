@@ -11,6 +11,9 @@ namespace Models
     public class SimulationDriver: Driver
     {
         [DataMember]
+        private int numberOfAddresses = 10;
+
+        [DataMember]
         private List<string> addresses;
 
         [DataMember]
@@ -21,53 +24,55 @@ namespace Models
             this.addresses = new List<string>();
             this.tagValues = new List<double>();
 
+            //inicijalizujemo adrese i vrednosti 
+            for (int i = 1; i <= numberOfAddresses; i++)
+            {
+                addresses.Add("address" + i);
+                tagValues.Add(0);
+            }
+
         }
 
-        public double ReturnValue(string address)
+        public double ReadValue(string address)
         {
             try
             {
                 int i = addresses.IndexOf(address);
+                double randomValue = ReturnRandomValue(i);
+                tagValues[i] = randomValue;
                 return tagValues[i];
             }
             catch (Exception)
             {
-                return -5555;
+                return -3333;
             }
 
 
         }
 
-        public void WriteValue(string address)
+        public double ReturnRandomValue(int i)
         {
             double v = 0;
-            try
+     
+            if (i >= 10)
             {
-                int i = addresses.IndexOf(address);
+                v = Ramp();
 
             }
-            catch (Exception e)
+            else
             {
-                addresses.Add(address);
-                int i = addresses.IndexOf(address);
-                if (i >= 10)
+                if (i % 2 == 0)
                 {
-                    v = Ramp();
-
+                    v = Sine();
                 }
                 else
                 {
-                    if (i % 2 == 0)
-                    {
-                        v = Sine();
-                    }
-                    else
-                    {
-                        v = Cosine();
-                    }
+                    v = Cosine();
                 }
-                tagValues.Add(v);
             }
+            return v;
+            
+            
         }
 
         private static double Sine()
@@ -96,6 +101,36 @@ namespace Models
         {
             get { return addresses; }
             set { addresses = value; }
+        }
+
+
+        public bool WriteDefaultValue(string address, int value)
+        {
+            try
+            {
+                int i = addresses.IndexOf(address);
+                tagValues[i] = value;
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+
+           
+        }
+
+        public double ReadCurrentValue(string address)
+        {
+            try
+            {
+                int i = addresses.IndexOf(address);
+                return tagValues[i];
+            }
+            catch (Exception)
+            {
+                return -3333;
+            }
         }
 
     }

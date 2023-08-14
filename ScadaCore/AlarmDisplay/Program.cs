@@ -15,10 +15,12 @@ namespace AlarmDisplay
        
         public void showAlarmDisplay(ServiceReference1.Alarm alarm)
         {
-            Console.WriteLine(alarm.ToString());
-            using (StreamWriter writer = File.AppendText("../Models/Database/alarms.txt"))
+            for( int i = 0; i < int.Parse(alarm.priority); i++)
             {
-                writer.WriteLine(alarm.ToString());
+                //ispisuje se onoliko puta za redom kog je prioriteta
+                Console.WriteLine(alarm.ToString());
+
+            }
         }
     }
     class Program

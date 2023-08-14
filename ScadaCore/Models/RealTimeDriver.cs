@@ -11,7 +11,7 @@ namespace Models
     public class RealTimeDriver: Driver
     {
         [DataMember]
-        private int numberOfAddresses = 5;
+        private int numberOfAddresses = 10;
 
         [DataMember]
         private Dictionary<string, double> addrValues;
@@ -20,9 +20,13 @@ namespace Models
         public RealTimeDriver()
         {
             addrValues = new Dictionary<string, double>();
+            for (int i = 1; i <= numberOfAddresses; i++)
+            {
+                addrValues["address" + i] = 0;
+            }
         }
 
-        public double ReturnValue(string address)
+        public double ReadValue(string address)
         {
             if (addrValues.ContainsKey(address))
             {

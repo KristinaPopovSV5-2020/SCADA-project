@@ -23,27 +23,21 @@ namespace RealTimeUnit
             try
             {
                 bool isConnected = false;
-                
 
-                while (!isConnected)
+                int randomNumberAdd = random.Next(1, 6);
+                address = "address" + randomNumberAdd;
+                isConnected = service.addAddress(address);
+
+                if (!isConnected)
                 {
-                    Console.WriteLine("Enter the serial number of the address you want to connect to: ");
-                    address = "address" + Console.ReadLine();
-
-                    isConnected = service.addAddress(address);
-
-                    if (!isConnected)
+                    Console.WriteLine("Address not available. Available addresses are: ");
+                    foreach (string a in service.getAvailableAddresses())
                     {
-                        Console.WriteLine("Address not available. Available addresses are: ");
-                        foreach(string a in service.getAvailableAddresses())
-                        {
-                            Console.WriteLine(a + "\n");
-                        }
-
+                        Console.WriteLine(a + "\n");
                     }
+
                 }
 
-                Console.WriteLine("You have successfully connected to the address!");
             }
             catch (FaultException e)
             {

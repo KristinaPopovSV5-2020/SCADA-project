@@ -101,14 +101,32 @@ namespace ScadaCore
                 {
                     lock (rtu)
                     {
-                        value = rtu.ReturnValue(tags[tagName].IOAddress);
+                        value = rtu.ReadValue(tags[tagName].IOAddress);
                     }
                 }
                 else
                 {
-                   //ako je simulacioni
+                    //ako je simulacioni
+                    if ((tags[tagName] as InputTag).Scan == true) //ako je ukljuceno skeniranje
+                    {
+                        lock (simulationDriver)
+                        {
+                            value = simulationDriver.ReadValue(tags[tagName].IOAddress);
+                        }
+                    }
+                    else
+                    {
+                        lock (simulationDriver)
+                        {
+                            value = simulationDriver.ReadCurrentValue(tags[tagName].IOAddress); 
+                            simulationDriver.WriteDefaultValue(tags[tagName].IOAddress, 0);
+
+                        }
+                    }
 
                 }
+
+       
 
                 trending.addTagValue(tagName, value);
                 Thread.Sleep(1000*(tags[tagName] as InputTag).ScanTime);
