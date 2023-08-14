@@ -80,7 +80,7 @@ namespace ScadaCore
                 threads[tagName] = new Thread(new ParameterizedThreadStart(processInputTag));
             
             else if (tags[tagName] is OutputTag)
-                //threads[tagName] = new Thread(new ParameterizedThreadStart(processOutputTag));
+                threads[tagName] = new Thread(new ParameterizedThreadStart(processOutputTag));
 
             threads[tagName].Start(tagName);
 
@@ -156,9 +156,23 @@ namespace ScadaCore
 
 
 
-                trending.addTagValue(tagName, value);
+                if (trending != null)
+                {
+                    trending.addTagValue(tagName, value);
+                }
                 Thread.Sleep(1000*(tags[tagName] as InputTag).ScanTime);
             }
+        }
+
+        public void processOutputTag(object tag)
+        {
+            string tagName = (string)tag;
+
+            if (trending != null)
+            {
+                trending.addTagValue(tagName, tags[tagName].InitialValue);
+            }
+
         }
 
         public bool AddTag(Tag tag, bool realTimeOn)

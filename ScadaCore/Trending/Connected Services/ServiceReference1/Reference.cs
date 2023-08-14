@@ -17,6 +17,12 @@ namespace Trending.ServiceReference1 {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="Tag", Namespace="http://schemas.datacontract.org/2004/07/Models")]
     [System.SerializableAttribute()]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(Trending.ServiceReference1.InputTag))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(Trending.ServiceReference1.DigitalInput))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(Trending.ServiceReference1.AnalogInput))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(Trending.ServiceReference1.OutputTag))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(Trending.ServiceReference1.DigitalOutput))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(Trending.ServiceReference1.AnalogOutput))]
     public partial class Tag : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
@@ -24,6 +30,9 @@ namespace Trending.ServiceReference1 {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string descriptionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private double initialValueField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string ioAddressField;
@@ -50,6 +59,19 @@ namespace Trending.ServiceReference1 {
                 if ((object.ReferenceEquals(this.descriptionField, value) != true)) {
                     this.descriptionField = value;
                     this.RaisePropertyChanged("description");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public double initialValue {
+            get {
+                return this.initialValueField;
+            }
+            set {
+                if ((this.initialValueField.Equals(value) != true)) {
+                    this.initialValueField = value;
+                    this.RaisePropertyChanged("initialValue");
                 }
             }
         }
@@ -86,6 +108,337 @@ namespace Trending.ServiceReference1 {
             System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
             if ((propertyChanged != null)) {
                 propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="InputTag", Namespace="http://schemas.datacontract.org/2004/07/Models")]
+    [System.SerializableAttribute()]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(Trending.ServiceReference1.DigitalInput))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(Trending.ServiceReference1.AnalogInput))]
+    public partial class InputTag : Trending.ServiceReference1.Tag {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Trending.ServiceReference1.Driver driverField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool scanField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int scanTimeField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Trending.ServiceReference1.Driver driver {
+            get {
+                return this.driverField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.driverField, value) != true)) {
+                    this.driverField = value;
+                    this.RaisePropertyChanged("driver");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool scan {
+            get {
+                return this.scanField;
+            }
+            set {
+                if ((this.scanField.Equals(value) != true)) {
+                    this.scanField = value;
+                    this.RaisePropertyChanged("scan");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int scanTime {
+            get {
+                return this.scanTimeField;
+            }
+            set {
+                if ((this.scanTimeField.Equals(value) != true)) {
+                    this.scanTimeField = value;
+                    this.RaisePropertyChanged("scanTime");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DigitalInput", Namespace="http://schemas.datacontract.org/2004/07/Models")]
+    [System.SerializableAttribute()]
+    public partial class DigitalInput : Trending.ServiceReference1.InputTag {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="AnalogInput", Namespace="http://schemas.datacontract.org/2004/07/Models")]
+    [System.SerializableAttribute()]
+    public partial class AnalogInput : Trending.ServiceReference1.InputTag {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Trending.ServiceReference1.Alarm[] alarmsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private double highLimitField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private double lowLimitField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string unitsField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Trending.ServiceReference1.Alarm[] alarms {
+            get {
+                return this.alarmsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.alarmsField, value) != true)) {
+                    this.alarmsField = value;
+                    this.RaisePropertyChanged("alarms");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public double highLimit {
+            get {
+                return this.highLimitField;
+            }
+            set {
+                if ((this.highLimitField.Equals(value) != true)) {
+                    this.highLimitField = value;
+                    this.RaisePropertyChanged("highLimit");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public double lowLimit {
+            get {
+                return this.lowLimitField;
+            }
+            set {
+                if ((this.lowLimitField.Equals(value) != true)) {
+                    this.lowLimitField = value;
+                    this.RaisePropertyChanged("lowLimit");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string units {
+            get {
+                return this.unitsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.unitsField, value) != true)) {
+                    this.unitsField = value;
+                    this.RaisePropertyChanged("units");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="OutputTag", Namespace="http://schemas.datacontract.org/2004/07/Models")]
+    [System.SerializableAttribute()]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(Trending.ServiceReference1.DigitalOutput))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(Trending.ServiceReference1.AnalogOutput))]
+    public partial class OutputTag : Trending.ServiceReference1.Tag {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DigitalOutput", Namespace="http://schemas.datacontract.org/2004/07/Models")]
+    [System.SerializableAttribute()]
+    public partial class DigitalOutput : Trending.ServiceReference1.OutputTag {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="AnalogOutput", Namespace="http://schemas.datacontract.org/2004/07/Models")]
+    [System.SerializableAttribute()]
+    public partial class AnalogOutput : Trending.ServiceReference1.OutputTag {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private double highLimitField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private double lowLimitField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string unitsField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public double highLimit {
+            get {
+                return this.highLimitField;
+            }
+            set {
+                if ((this.highLimitField.Equals(value) != true)) {
+                    this.highLimitField = value;
+                    this.RaisePropertyChanged("highLimit");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public double lowLimit {
+            get {
+                return this.lowLimitField;
+            }
+            set {
+                if ((this.lowLimitField.Equals(value) != true)) {
+                    this.lowLimitField = value;
+                    this.RaisePropertyChanged("lowLimit");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string units {
+            get {
+                return this.unitsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.unitsField, value) != true)) {
+                    this.unitsField = value;
+                    this.RaisePropertyChanged("units");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Driver", Namespace="http://schemas.datacontract.org/2004/07/Models")]
+    [System.SerializableAttribute()]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(Trending.ServiceReference1.RealTimeDriver))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(Trending.ServiceReference1.SimulationDriver))]
+    public partial class Driver : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="RealTimeDriver", Namespace="http://schemas.datacontract.org/2004/07/Models")]
+    [System.SerializableAttribute()]
+    public partial class RealTimeDriver : Trending.ServiceReference1.Driver {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Collections.Generic.Dictionary<string, double> addrValuesField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int numberOfAddressesField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Collections.Generic.Dictionary<string, double> addrValues {
+            get {
+                return this.addrValuesField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.addrValuesField, value) != true)) {
+                    this.addrValuesField = value;
+                    this.RaisePropertyChanged("addrValues");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int numberOfAddresses {
+            get {
+                return this.numberOfAddressesField;
+            }
+            set {
+                if ((this.numberOfAddressesField.Equals(value) != true)) {
+                    this.numberOfAddressesField = value;
+                    this.RaisePropertyChanged("numberOfAddresses");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="SimulationDriver", Namespace="http://schemas.datacontract.org/2004/07/Models")]
+    [System.SerializableAttribute()]
+    public partial class SimulationDriver : Trending.ServiceReference1.Driver {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string[] addressesField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int numberOfAddressesField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private double[] tagValuesField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string[] addresses {
+            get {
+                return this.addressesField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.addressesField, value) != true)) {
+                    this.addressesField = value;
+                    this.RaisePropertyChanged("addresses");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int numberOfAddresses {
+            get {
+                return this.numberOfAddressesField;
+            }
+            set {
+                if ((this.numberOfAddressesField.Equals(value) != true)) {
+                    this.numberOfAddressesField = value;
+                    this.RaisePropertyChanged("numberOfAddresses");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public double[] tagValues {
+            get {
+                return this.tagValuesField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.tagValuesField, value) != true)) {
+                    this.tagValuesField = value;
+                    this.RaisePropertyChanged("tagValues");
+                }
             }
         }
     }
@@ -236,10 +589,13 @@ namespace Trending.ServiceReference1 {
     public enum TypeOfAlarm : int {
         
         [System.Runtime.Serialization.EnumMemberAttribute()]
-        LOW = 0,
+        Low = 0,
         
         [System.Runtime.Serialization.EnumMemberAttribute()]
-        HIGH = 1,
+        Med = 1,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        High = 2,
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -321,17 +677,17 @@ namespace Trending.ServiceReference1 {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference1.IDbManager")]
     public interface IDbManager {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDbManager/DoWork", ReplyAction="http://tempuri.org/IDbManager/DoWorkResponse")]
-        void DoWork();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDbManager/DoWork", ReplyAction="http://tempuri.org/IDbManager/DoWorkResponse")]
-        System.Threading.Tasks.Task DoWorkAsync();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDbManager/AddTag", ReplyAction="http://tempuri.org/IDbManager/AddTagResponse")]
+        bool AddTag(Trending.ServiceReference1.Tag tag, bool realTimeOn);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDbManager/AddTag", ReplyAction="http://tempuri.org/IDbManager/AddTagResponse")]
-        void AddTag(Trending.ServiceReference1.Tag tag);
+        System.Threading.Tasks.Task<bool> AddTagAsync(Trending.ServiceReference1.Tag tag, bool realTimeOn);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDbManager/AddTag", ReplyAction="http://tempuri.org/IDbManager/AddTagResponse")]
-        System.Threading.Tasks.Task AddTagAsync(Trending.ServiceReference1.Tag tag);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDbManager/GetOutputTags", ReplyAction="http://tempuri.org/IDbManager/GetOutputTagsResponse")]
+        Trending.ServiceReference1.Tag[] GetOutputTags();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDbManager/GetOutputTags", ReplyAction="http://tempuri.org/IDbManager/GetOutputTagsResponse")]
+        System.Threading.Tasks.Task<Trending.ServiceReference1.Tag[]> GetOutputTagsAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -361,20 +717,20 @@ namespace Trending.ServiceReference1 {
                 base(binding, remoteAddress) {
         }
         
-        public void DoWork() {
-            base.Channel.DoWork();
+        public bool AddTag(Trending.ServiceReference1.Tag tag, bool realTimeOn) {
+            return base.Channel.AddTag(tag, realTimeOn);
         }
         
-        public System.Threading.Tasks.Task DoWorkAsync() {
-            return base.Channel.DoWorkAsync();
+        public System.Threading.Tasks.Task<bool> AddTagAsync(Trending.ServiceReference1.Tag tag, bool realTimeOn) {
+            return base.Channel.AddTagAsync(tag, realTimeOn);
         }
         
-        public void AddTag(Trending.ServiceReference1.Tag tag) {
-            base.Channel.AddTag(tag);
+        public Trending.ServiceReference1.Tag[] GetOutputTags() {
+            return base.Channel.GetOutputTags();
         }
         
-        public System.Threading.Tasks.Task AddTagAsync(Trending.ServiceReference1.Tag tag) {
-            return base.Channel.AddTagAsync(tag);
+        public System.Threading.Tasks.Task<Trending.ServiceReference1.Tag[]> GetOutputTagsAsync() {
+            return base.Channel.GetOutputTagsAsync();
         }
     }
     
