@@ -68,6 +68,7 @@
     <None Include="Connected Services\ServiceReference1\ScadaService3.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Models.Tag.datasource" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Models\Models.csproj">
