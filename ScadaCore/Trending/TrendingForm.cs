@@ -33,6 +33,8 @@ namespace Trending
 
         public void addTagValue(string tagName, double value)
         {
+            prikazi.Text = tagName + value;
+            prikazi.Text = "bla bla";
             if (!tags.ContainsKey(tagName))
             {
                 dataGridView1.Rows.Add(tagName, value);
@@ -55,6 +57,11 @@ namespace Trending
         }
 
         private void TrendingForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }

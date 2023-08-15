@@ -56,6 +56,7 @@ namespace ScadaCore
 
         public void sendToService(string address, double value)
         {
+            
             lock (rtu)
             {
                 rtu.WriteValue(address, value);
