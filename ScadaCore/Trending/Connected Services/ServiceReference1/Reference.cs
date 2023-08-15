@@ -16,10 +16,10 @@ namespace Trending.ServiceReference1 {
     public interface IRTU {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRTU/getAvailableAddresses", ReplyAction="http://tempuri.org/IRTU/getAvailableAddressesResponse")]
-        string[] getAvailableAddresses();
+        System.Collections.Generic.List<string> getAvailableAddresses();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRTU/getAvailableAddresses", ReplyAction="http://tempuri.org/IRTU/getAvailableAddressesResponse")]
-        System.Threading.Tasks.Task<string[]> getAvailableAddressesAsync();
+        System.Threading.Tasks.Task<System.Collections.Generic.List<string>> getAvailableAddressesAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRTU/sendToService", ReplyAction="http://tempuri.org/IRTU/sendToServiceResponse")]
         void sendToService(string address, double value);
@@ -61,11 +61,11 @@ namespace Trending.ServiceReference1 {
                 base(binding, remoteAddress) {
         }
         
-        public string[] getAvailableAddresses() {
+        public System.Collections.Generic.List<string> getAvailableAddresses() {
             return base.Channel.getAvailableAddresses();
         }
         
-        public System.Threading.Tasks.Task<string[]> getAvailableAddressesAsync() {
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<string>> getAvailableAddressesAsync() {
             return base.Channel.getAvailableAddressesAsync();
         }
         
@@ -103,10 +103,10 @@ namespace Trending.ServiceReference1 {
         System.Threading.Tasks.Task<bool> AddTagAsync(Models.Tag tag, bool realTimeOn);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDbManager/GetOutputTags", ReplyAction="http://tempuri.org/IDbManager/GetOutputTagsResponse")]
-        Models.Tag[] GetOutputTags();
+        System.Collections.Generic.List<Models.Tag> GetOutputTags();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDbManager/GetOutputTags", ReplyAction="http://tempuri.org/IDbManager/GetOutputTagsResponse")]
-        System.Threading.Tasks.Task<Models.Tag[]> GetOutputTagsAsync();
+        System.Threading.Tasks.Task<System.Collections.Generic.List<Models.Tag>> GetOutputTagsAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -144,11 +144,11 @@ namespace Trending.ServiceReference1 {
             return base.Channel.AddTagAsync(tag, realTimeOn);
         }
         
-        public Models.Tag[] GetOutputTags() {
+        public System.Collections.Generic.List<Models.Tag> GetOutputTags() {
             return base.Channel.GetOutputTags();
         }
         
-        public System.Threading.Tasks.Task<Models.Tag[]> GetOutputTagsAsync() {
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<Models.Tag>> GetOutputTagsAsync() {
             return base.Channel.GetOutputTagsAsync();
         }
     }
