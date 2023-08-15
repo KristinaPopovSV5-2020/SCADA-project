@@ -59,6 +59,17 @@ namespace ScadaCore
             lock (rtu)
             {
                 rtu.WriteValue(address, value);
+                Tag ta=new Tag();
+                foreach(Tag t in tags.Values)
+                {
+                    processTag(t.TagName);
+                    if (t.IOAddress==address)
+                    {
+                        ta = t;
+                        break;
+                    }
+                }
+                //processTag(ta.TagName);
             }
         }
 
@@ -72,9 +83,6 @@ namespace ScadaCore
 
         public void processTag(string tagName)
         {
-
-            if (threads.ContainsKey(tagName))
-                return;
 
             if (tags[tagName] is InputTag)
                 threads[tagName] = new Thread(new ParameterizedThreadStart(processInputTag));
@@ -94,16 +102,13 @@ namespace ScadaCore
             {
                 double value = 0;
 
-                if (!tags.ContainsKey(tagName))
-                    return;
-                
-
                 if ((tags[tagName] as InputTag).Driver is RealTimeDriver)
                 {
                     lock (rtu)
                     {
                         value = rtu.ReadValue(tags[tagName].IOAddress);
                     }
+
                 }
                 else
                 {
@@ -156,23 +161,23 @@ namespace ScadaCore
 
 
 
-                if (trending != null)
-                {
+             
                     trending.addTagValue(tagName, value);
-                }
+                
                 Thread.Sleep(1000*(tags[tagName] as InputTag).ScanTime);
             }
         }
-
+ 
         public void processOutputTag(object tag)
         {
             string tagName = (string)tag;
 
-            if (trending != null)
-            {
-                trending.addTagValue(tagName, tags[tagName].InitialValue);
-            }
+            //nesto
 
+        }
+        public List<User> getUsers()
+        {
+            return userManager.users;
         }
 
         public bool AddTag(Tag tag, bool realTimeOn)

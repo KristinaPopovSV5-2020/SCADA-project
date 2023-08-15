@@ -11,6 +11,7 @@ namespace ScadaCore
     {
         [OperationContract(IsOneWay = true)]
         void addTagValue(string tagName, double value);
+
     }
 
     [ServiceContract(CallbackContract = typeof(ITrendingCB))]

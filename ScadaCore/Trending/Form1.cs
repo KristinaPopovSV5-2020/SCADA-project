@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,44 +12,16 @@ using System.Windows.Forms;
 
 namespace Trending
 {
-    public partial class Form1 : Form, ServiceReference1.ITrendingCallback
+    public partial class Form1 : Form
     {
-        static ServiceReference1.TrendingClient service;
-        public Dictionary<string, double> tags = new Dictionary<string, double>();
+        
         public Form1()
         {
             InitializeComponent();
-
-            InstanceContext ic = new InstanceContext(this);
-            service = new ServiceReference1.TrendingClient(ic);
-            service.initTrending();
-
-            tagsGridView.Columns.Add("Name", "Name");
-            tagsGridView.Columns.Add("Value", "Value");
-
-
+            this.error.Text = "Wrong username or password";
+            this.error.Visible = false;
         }
 
-        public void addTagValue(string tagName, double value)
-        {
-            if (!tags.ContainsKey(tagName))
-            {
-                tagsGridView.Rows.Add(tagName, value);
-            }
-
-            tags[tagName] = value;
-
-            foreach (DataGridViewRow row in tagsGridView.Rows)
-            {
-                DataGridViewCell cell = row.Cells["Name"];
-
-                if (cell.Value != null && cell.Value.ToString() == tagName)
-                {
-                    row.Cells["Value"].Value = value;
-                    break;
-                }
-            }
-        }
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -58,6 +31,28 @@ namespace Trending
         private void Form1_Load_1(object sender, EventArgs e)
         {
 
+        }
+
+        private void loginBtn_Click(object sender, EventArgs e)
+        {
+            User zor = new User("zorica", "sifra123");
+            User masa = new User("pera", "sifra123");
+            List<User> users = new List<User>();
+            users.Add(zor);
+            users.Add(masa);
+
+            foreach (User u in users)
+            {
+                if (u.username == username.Text && u.password == password.Text && username.Text != "pera")
+                {
+                    TrendingForm newForm = new TrendingForm();
+                    newForm.Show();
+                }
+                else
+                {
+                    this.error.Visible = true;
+                }
+            }
         }
     }
 }
