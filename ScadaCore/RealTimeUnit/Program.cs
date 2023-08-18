@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.ServiceModel;
 using System.Text;
 using System.Threading;
@@ -15,11 +16,13 @@ namespace RealTimeUnit
         public const int high_limit = 100;
 
         static ServiceReference1.RTUClient service = new ServiceReference1.RTUClient();
+ 
 
         static void Main(string[] args)
         {
             string address = "";
             Random random = new Random();
+
             while (true)
             {
                 int randomNumberAdd = random.Next(1, 6);
@@ -37,5 +40,7 @@ namespace RealTimeUnit
 
 
         }
+
+       
     }
 }
