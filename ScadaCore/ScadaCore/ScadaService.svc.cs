@@ -14,7 +14,6 @@ namespace ScadaCore
 
     public class ScadaService : IDbManager, IRTU, IAlarmDisplay, ITrending
     {
-        static Dictionary<string, Tag> tags = new Dictionary<string, Tag>();
         static Dictionary<string, Thread> threads = new Dictionary<string, Thread>();
 
         static Dictionary<int, string> realTimeUnits = new Dictionary<int, string>();
@@ -23,8 +22,8 @@ namespace ScadaCore
         static string currentPath = System.Web.Hosting.HostingEnvironment.ApplicationPhysicalPath;
 
         public static AlarmManager alarmManager = new AlarmManager(currentPath);
-        public TagManager tagManager = new TagManager(alarmManager, currentPath);
-        public UserManager userManager = new UserManager(currentPath);
+        public static TagManager tagManager = new TagManager(alarmManager, currentPath,rtu,simulationDriver);
+        public static UserManager userManager = new UserManager(currentPath);
 
         static ITrendingCB trending = null;
         public static SimulationDriver simulationDriver = new SimulationDriver();
@@ -59,7 +58,19 @@ namespace ScadaCore
             lock (rtu)
             {
                 rtu.WriteValue(address, value);
+
             }
+            Tag ta = new Tag();
+            foreach (Tag t in tagManager.tags.Values)
+            {
+
+                if (t.IOAddress == address)
+                {
+                    ta = t;
+                    break;
+                }
+            }
+            processTag(ta.TagName);
         }
 
 
@@ -73,14 +84,12 @@ namespace ScadaCore
         public void processTag(string tagName)
         {
 
-            if (threads.ContainsKey(tagName))
-                return;
 
-            if (tags[tagName] is InputTag)
+            if (tagManager.tags[tagName] is InputTag)
                 threads[tagName] = new Thread(new ParameterizedThreadStart(processInputTag));
             
-            else if (tags[tagName] is OutputTag)
-                //threads[tagName] = new Thread(new ParameterizedThreadStart(processOutputTag));
+            else if (tagManager.tags[tagName] is OutputTag)
+                threads[tagName] = new Thread(new ParameterizedThreadStart(processOutputTag));
 
             threads[tagName].Start(tagName);
 
@@ -94,33 +103,32 @@ namespace ScadaCore
             {
                 double value = 0;
 
-                if (!tags.ContainsKey(tagName))
-                    return;
-                
 
-                if ((tags[tagName] as InputTag).Driver is RealTimeDriver)
+                if ((tagManager.tags[tagName] as InputTag).Driver is RealTimeDriver)
                 {
                     lock (rtu)
                     {
-                        value = rtu.ReadValue(tags[tagName].IOAddress);
+                        value = rtu.ReadValue(tagManager.tags[tagName].IOAddress);
                     }
+
                 }
                 else
                 {
+
                     //ako je simulacioni
-                    if ((tags[tagName] as InputTag).Scan == true) //ako je ukljuceno skeniranje
+                    if ((tagManager.tags[tagName] as InputTag).Scan == true) //ako je ukljuceno skeniranje
                     {
                         lock (simulationDriver)
                         {
-                            value = simulationDriver.ReadValue(tags[tagName].IOAddress);
+                            value = simulationDriver.ReadValue(tagManager.tags[tagName].IOAddress);
                         }
                     }
                     else
                     {
                         lock (simulationDriver)
                         {
-                            value = simulationDriver.ReadCurrentValue(tags[tagName].IOAddress); 
-                            simulationDriver.WriteDefaultValue(tags[tagName].IOAddress, 0);
+                            value = simulationDriver.ReadCurrentValue(tagManager.tags[tagName].IOAddress); 
+                            simulationDriver.WriteDefaultValue(tagManager.tags[tagName].IOAddress, 0);
 
                         }
                     }
@@ -128,37 +136,53 @@ namespace ScadaCore
                 }
 
                 //provera za alarm da li se dogodio
-                foreach (Alarm alarm in ((tags[tagName] as AnalogInput).Alarms))
+                if (tagManager.tags[tagName] is AnalogInput)
                 {
-                    if ((alarm.Type == TypeOfAlarm.Low && alarm.Limit > value) || (alarm.Type == TypeOfAlarm.High && alarm.Limit < value))
+                    foreach (Alarm alarm in ((tagManager.tags[tagName] as AnalogInput).Alarms))
                     {
-                        if (alarmProxy != null)
+                        if ((alarm.Type == TypeOfAlarm.Low && alarm.Limit > value) || (alarm.Type == TypeOfAlarm.High && alarm.Limit < value))
                         {
-                            DateTime currentTime = DateTime.Now;
-                            alarm.Time = currentTime;
-                            alarm.TagValue = value;
-
-                            //ispisi na konzolu ako je ukljuceno skeniranje
-                            if ((tags[tagName] as InputTag).Scan == true)
+                            if (alarmProxy != null)
                             {
-                               
-                                alarmProxy.showAlarmDisplay(alarm);
-                            }
+                                DateTime currentTime = DateTime.Now;
+                                alarm.Time = currentTime;
+                                alarm.TagValue = value;
 
-                            lock (alarmManager)
-                            {
-                                alarmManager.SaveNewAlarmToFile(alarm);
-                            }
+                                //ispisi na konzolu ako je ukljuceno skeniranje
+                                if ((tagManager.tags[tagName] as InputTag).Scan == true)
+                                {
 
+                                    alarmProxy.showAlarmDisplay(alarm);
+                                }
+
+                                lock (alarmManager)
+                                {
+                                    alarmManager.SaveNewAlarmToFile(alarm);
+                                }
+
+                            }
                         }
                     }
+
                 }
 
 
-
                 trending.addTagValue(tagName, value);
-                Thread.Sleep(1000*(tags[tagName] as InputTag).ScanTime);
+
+                Thread.Sleep(1000*(tagManager.tags[tagName] as InputTag).ScanTime);
             }
+        }
+ 
+        public void processOutputTag(object tag)
+        {
+            string tagName = (string)tag;
+
+            //nesto
+
+        }
+        public List<User> getUsers()
+        {
+            return userManager.users;
         }
 
         public bool AddTag(Tag tag, bool realTimeOn)

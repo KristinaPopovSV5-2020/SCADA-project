@@ -90,17 +90,23 @@ namespace RealTimeUnit.ServiceReference1 {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference1.IDbManager")]
     public interface IDbManager {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDbManager/DoWork", ReplyAction="http://tempuri.org/IDbManager/DoWorkResponse")]
-        void DoWork();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDbManager/DoWork", ReplyAction="http://tempuri.org/IDbManager/DoWorkResponse")]
-        System.Threading.Tasks.Task DoWorkAsync();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDbManager/AddTag", ReplyAction="http://tempuri.org/IDbManager/AddTagResponse")]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Models.InputTag))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Models.DigitalInput))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Models.AnalogInput))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Models.OutputTag))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Models.DigitalOutput))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Models.AnalogOutput))]
+        bool AddTag(Models.Tag tag, bool realTimeOn);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDbManager/AddTag", ReplyAction="http://tempuri.org/IDbManager/AddTagResponse")]
-        void AddTag(Models.Tag tag);
+        System.Threading.Tasks.Task<bool> AddTagAsync(Models.Tag tag, bool realTimeOn);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDbManager/AddTag", ReplyAction="http://tempuri.org/IDbManager/AddTagResponse")]
-        System.Threading.Tasks.Task AddTagAsync(Models.Tag tag);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDbManager/GetOutputTags", ReplyAction="http://tempuri.org/IDbManager/GetOutputTagsResponse")]
+        Models.Tag[] GetOutputTags();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDbManager/GetOutputTags", ReplyAction="http://tempuri.org/IDbManager/GetOutputTagsResponse")]
+        System.Threading.Tasks.Task<Models.Tag[]> GetOutputTagsAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -130,20 +136,130 @@ namespace RealTimeUnit.ServiceReference1 {
                 base(binding, remoteAddress) {
         }
         
-        public void DoWork() {
-            base.Channel.DoWork();
+        public bool AddTag(Models.Tag tag, bool realTimeOn) {
+            return base.Channel.AddTag(tag, realTimeOn);
         }
         
-        public System.Threading.Tasks.Task DoWorkAsync() {
-            return base.Channel.DoWorkAsync();
+        public System.Threading.Tasks.Task<bool> AddTagAsync(Models.Tag tag, bool realTimeOn) {
+            return base.Channel.AddTagAsync(tag, realTimeOn);
         }
         
-        public void AddTag(Models.Tag tag) {
-            base.Channel.AddTag(tag);
+        public Models.Tag[] GetOutputTags() {
+            return base.Channel.GetOutputTags();
         }
         
-        public System.Threading.Tasks.Task AddTagAsync(Models.Tag tag) {
-            return base.Channel.AddTagAsync(tag);
+        public System.Threading.Tasks.Task<Models.Tag[]> GetOutputTagsAsync() {
+            return base.Channel.GetOutputTagsAsync();
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference1.IAlarmDisplay", CallbackContract=typeof(RealTimeUnit.ServiceReference1.IAlarmDisplayCallback))]
+    public interface IAlarmDisplay {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAlarmDisplay/initializationAlarmDisplay", ReplyAction="http://tempuri.org/IAlarmDisplay/initializationAlarmDisplayResponse")]
+        void initializationAlarmDisplay();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAlarmDisplay/initializationAlarmDisplay", ReplyAction="http://tempuri.org/IAlarmDisplay/initializationAlarmDisplayResponse")]
+        System.Threading.Tasks.Task initializationAlarmDisplayAsync();
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface IAlarmDisplayCallback {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAlarmDisplay/showAlarmDisplay", ReplyAction="http://tempuri.org/IAlarmDisplay/showAlarmDisplayResponse")]
+        void showAlarmDisplay(Models.Alarm alarm);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface IAlarmDisplayChannel : RealTimeUnit.ServiceReference1.IAlarmDisplay, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class AlarmDisplayClient : System.ServiceModel.DuplexClientBase<RealTimeUnit.ServiceReference1.IAlarmDisplay>, RealTimeUnit.ServiceReference1.IAlarmDisplay {
+        
+        public AlarmDisplayClient(System.ServiceModel.InstanceContext callbackInstance) : 
+                base(callbackInstance) {
+        }
+        
+        public AlarmDisplayClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName) : 
+                base(callbackInstance, endpointConfigurationName) {
+        }
+        
+        public AlarmDisplayClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, string remoteAddress) : 
+                base(callbackInstance, endpointConfigurationName, remoteAddress) {
+        }
+        
+        public AlarmDisplayClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(callbackInstance, endpointConfigurationName, remoteAddress) {
+        }
+        
+        public AlarmDisplayClient(System.ServiceModel.InstanceContext callbackInstance, System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(callbackInstance, binding, remoteAddress) {
+        }
+        
+        public void initializationAlarmDisplay() {
+            base.Channel.initializationAlarmDisplay();
+        }
+        
+        public System.Threading.Tasks.Task initializationAlarmDisplayAsync() {
+            return base.Channel.initializationAlarmDisplayAsync();
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference1.ITrending", CallbackContract=typeof(RealTimeUnit.ServiceReference1.ITrendingCallback))]
+    public interface ITrending {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITrending/initTrending", ReplyAction="http://tempuri.org/ITrending/initTrendingResponse")]
+        void initTrending();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITrending/initTrending", ReplyAction="http://tempuri.org/ITrending/initTrendingResponse")]
+        System.Threading.Tasks.Task initTrendingAsync();
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface ITrendingCallback {
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ITrending/addTagValue")]
+        void addTagValue(string tagName, double value);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface ITrendingChannel : RealTimeUnit.ServiceReference1.ITrending, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class TrendingClient : System.ServiceModel.DuplexClientBase<RealTimeUnit.ServiceReference1.ITrending>, RealTimeUnit.ServiceReference1.ITrending {
+        
+        public TrendingClient(System.ServiceModel.InstanceContext callbackInstance) : 
+                base(callbackInstance) {
+        }
+        
+        public TrendingClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName) : 
+                base(callbackInstance, endpointConfigurationName) {
+        }
+        
+        public TrendingClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, string remoteAddress) : 
+                base(callbackInstance, endpointConfigurationName, remoteAddress) {
+        }
+        
+        public TrendingClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(callbackInstance, endpointConfigurationName, remoteAddress) {
+        }
+        
+        public TrendingClient(System.ServiceModel.InstanceContext callbackInstance, System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(callbackInstance, binding, remoteAddress) {
+        }
+        
+        public void initTrending() {
+            base.Channel.initTrending();
+        }
+        
+        public System.Threading.Tasks.Task initTrendingAsync() {
+            return base.Channel.initTrendingAsync();
         }
     }
 }

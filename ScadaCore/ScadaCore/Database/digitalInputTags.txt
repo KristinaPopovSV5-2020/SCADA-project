@@ -1,2 +1,2 @@
-﻿name1|description|1|1|1|True|0
-name2|description|1|2|2|False|0
+﻿name1|description|address1|r|1|True|0
+name2|description|address2|r|2|False|0

@@ -13,9 +13,9 @@ namespace AlarmDisplay
     public class Callback : ServiceReference1.IAlarmDisplayCallback
     {
        
-        public void showAlarmDisplay(ServiceReference1.Alarm alarm)
+        public void showAlarmDisplay(Alarm alarm)
         {
-            for( int i = 0; i < int.Parse(alarm.priority); i++)
+            for( int i = 0; i < int.Parse(alarm.Priority); i++)
             {
                 //ispisuje se onoliko puta za redom kog je prioriteta
                 Console.WriteLine(alarm.ToString());

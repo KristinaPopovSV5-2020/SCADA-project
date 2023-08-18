@@ -11,6 +11,8 @@ namespace Models
         public Dictionary<String, Tag> tags = new Dictionary<string, Tag>();
         public AlarmManager alarmManager;
         string path;
+        RealTimeDriver rtu;
+        SimulationDriver simulationDriver;
 
 
         public TagManager()
@@ -18,10 +20,12 @@ namespace Models
 
         }
 
-        public TagManager(AlarmManager alarmManager, string path)
+        public TagManager(AlarmManager alarmManager, string path, RealTimeDriver rtu, SimulationDriver simulationDriver)
         {
             this.path = path;
             this.alarmManager = alarmManager;
+            this.rtu = rtu;
+            this.simulationDriver = simulationDriver;
             LoadAIFromFile();
             LoadAOFromFile();
             LoadDIFromFile();
@@ -35,7 +39,12 @@ namespace Models
             foreach (string line in lines)
             {
                 string[] parts = line.Split('|');
-                tags.Add(parts[0], new DigitalInput(parts[0], parts[1], parts[2], new Driver(), int.Parse(parts[4]), bool.Parse(parts[5]), double.Parse(parts[6])));
+                Driver driver;
+                if (parts[3] == "r")
+                    driver = rtu;
+                else
+                    driver = simulationDriver;
+                tags.Add(parts[0], new DigitalInput(parts[0], parts[1], parts[2], driver, int.Parse(parts[4]), bool.Parse(parts[5]), double.Parse(parts[6])));
             }
         }
 
@@ -57,7 +66,12 @@ namespace Models
             foreach (string line in lines)
             {
                 string[] parts = line.Split('|');
-                tags.Add(parts[0], new AnalogInput(parts[0], parts[1], parts[2], new Driver(), int.Parse(parts[4]), bool.Parse(parts[5]), alarmManager.findAlarmsForTag(parts[0]), double.Parse(parts[6]), double.Parse(parts[7]), parts[8], double.Parse(parts[9])));
+                Driver driver;
+                if (parts[3] == "r")
+                    driver = rtu;
+                else
+                    driver = simulationDriver;
+                tags.Add(parts[0], new AnalogInput(parts[0], parts[1], parts[2], driver, int.Parse(parts[4]), bool.Parse(parts[5]), alarmManager.findAlarmsForTag(parts[0]), double.Parse(parts[6]), double.Parse(parts[7]), parts[8], double.Parse(parts[9])));
             }
         }
 
