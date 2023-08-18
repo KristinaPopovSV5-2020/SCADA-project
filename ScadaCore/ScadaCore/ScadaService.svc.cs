@@ -22,7 +22,7 @@ namespace ScadaCore
         static string currentPath = System.Web.Hosting.HostingEnvironment.ApplicationPhysicalPath;
 
         public static AlarmManager alarmManager = new AlarmManager(currentPath);
-        public static TagManager tagManager = new TagManager(alarmManager, currentPath);
+        public static TagManager tagManager = new TagManager(alarmManager, currentPath,rtu,simulationDriver);
         public static UserManager userManager = new UserManager(currentPath);
 
         static ITrendingCB trending = null;
