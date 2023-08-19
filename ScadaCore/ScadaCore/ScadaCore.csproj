@@ -73,6 +73,7 @@
   <ItemGroup>
     <Compile Include="IAlarmDisplay.cs" />
     <Compile Include="ILogin.cs" />
+    <Compile Include="IReportManager.cs" />
     <Compile Include="IRTU.cs" />
     <Compile Include="IDbManager.cs" />
     <Compile Include="ITrending.cs" />
