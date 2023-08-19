@@ -58,6 +58,9 @@
     <None Include="Connected Services\ServiceReference1\ReportManager.ServiceReference1.Alarm.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Connected Services\ServiceReference1\ReportManager.ServiceReference1.Log.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\ServiceReference1\ReportManager.ServiceReference1.Tag.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>

@@ -9,6 +9,7 @@ namespace Models
     public class TagManager
     {
         public Dictionary<String, Tag> tags = new Dictionary<string, Tag>();
+        public List<Log> logs = new List<Log>();
         public AlarmManager alarmManager;
         string path;
         RealTimeDriver rtu;
@@ -30,6 +31,7 @@ namespace Models
             LoadAOFromFile();
             LoadDIFromFile();
             LoadDOFromFile();
+            LoadLogsFromFile();
         }
 
         public void LoadDIFromFile()
@@ -159,6 +161,31 @@ namespace Models
                 {
                     writer.WriteLine(aoTag.TagName + "|" + aoTag.Description + "|" + aoTag.IOAddress + "|" + aoTag.InitialValue + "|" + aoTag.LowLimit + "|" + aoTag.HighLimit + "|" + aoTag.Units);
                 }
+            }
+        }
+
+        public void WriteToLog(Tag tag,double value)
+        {
+            using (StreamWriter writer = File.AppendText(this.path + "/Database/logs.txt"))
+            {
+                string type = "";
+                if (tag is AnalogInput)
+                    type = "ai";
+                else
+                    type = "di";
+                writer.WriteLine(tag.TagName+"|"+value+"|"+DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")+"|"+type);
+            }
+        }
+
+        public void LoadLogsFromFile()
+        {
+            string[] lines = File.ReadAllLines(this.path + "/Database/logs.txt");
+
+            foreach (string line in lines)
+            {
+                string[] parts = line.Split('|');
+                DateTime time = DateTime.ParseExact(parts[2], "yyyy-MM-dd HH:mm:ss", null);
+                logs.Add(new Log(parts[0],double.Parse(parts[1]),time,parts[3]));
             }
         }
     }

@@ -19,14 +19,15 @@ namespace ScadaCore
         [OperationContract]
         List<Alarm> alarmsSpecifiedPrioritySortByTime(string priority);
         [OperationContract]
-        List<Tag> tagsSpecifiedTimePeriodSortByTime(DateTime start, DateTime end);
+        List<Log> tagsSpecifiedTimePeriodSortByTime(DateTime start, DateTime end);
         [OperationContract]
-        List<Tag> lastValueOfAITagsSortByTime();
+        List<Log> lastValueOfAITagsSortByTime();
         [OperationContract]
-        List<Tag> lastValueOfDITagsSortByTime();
+        List<Log> lastValueOfDITagsSortByTime();
 
         [OperationContract]
-        List<Tag>  tagValuesSpecificIdSortByValue(string tagId);
+        List<Log>  tagValuesSpecificIdSortByValue(string tagId);
+
 
 
 

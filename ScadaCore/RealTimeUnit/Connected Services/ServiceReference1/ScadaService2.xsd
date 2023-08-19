@@ -130,4 +130,31 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfTag" nillable="true" type="tns:ArrayOfTag" />
+  <xs:complexType name="ArrayOfUser">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="User" nillable="true" type="tns:User" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfUser" nillable="true" type="tns:ArrayOfUser" />
+  <xs:complexType name="User">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="username" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="User" nillable="true" type="tns:User" />
+  <xs:complexType name="ArrayOfLog">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Log" nillable="true" type="tns:Log" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfLog" nillable="true" type="tns:ArrayOfLog" />
+  <xs:complexType name="Log">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="dateTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="tagName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="value" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Log" nillable="true" type="tns:Log" />
 </xs:schema>

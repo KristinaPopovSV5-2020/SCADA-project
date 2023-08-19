@@ -659,6 +659,99 @@ namespace ReportManager.ServiceReference1 {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Log", Namespace="http://schemas.datacontract.org/2004/07/Models")]
+    [System.SerializableAttribute()]
+    public partial class Log : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime dateTimeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string tagNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string typeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private double valueField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime dateTime {
+            get {
+                return this.dateTimeField;
+            }
+            set {
+                if ((this.dateTimeField.Equals(value) != true)) {
+                    this.dateTimeField = value;
+                    this.RaisePropertyChanged("dateTime");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string tagName {
+            get {
+                return this.tagNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.tagNameField, value) != true)) {
+                    this.tagNameField = value;
+                    this.RaisePropertyChanged("tagName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string type {
+            get {
+                return this.typeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.typeField, value) != true)) {
+                    this.typeField = value;
+                    this.RaisePropertyChanged("type");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public double value {
+            get {
+                return this.valueField;
+            }
+            set {
+                if ((this.valueField.Equals(value) != true)) {
+                    this.valueField = value;
+                    this.RaisePropertyChanged("value");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference1.IRTU")]
     public interface IRTU {
@@ -944,28 +1037,28 @@ namespace ReportManager.ServiceReference1 {
         System.Threading.Tasks.Task<System.Collections.Generic.List<ReportManager.ServiceReference1.Alarm>> alarmsSpecifiedPrioritySortByTimeAsync(string priority);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReportManager/tagsSpecifiedTimePeriodSortByTime", ReplyAction="http://tempuri.org/IReportManager/tagsSpecifiedTimePeriodSortByTimeResponse")]
-        System.Collections.Generic.List<ReportManager.ServiceReference1.Tag> tagsSpecifiedTimePeriodSortByTime(System.DateTime start, System.DateTime end);
+        System.Collections.Generic.List<ReportManager.ServiceReference1.Log> tagsSpecifiedTimePeriodSortByTime(System.DateTime start, System.DateTime end);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReportManager/tagsSpecifiedTimePeriodSortByTime", ReplyAction="http://tempuri.org/IReportManager/tagsSpecifiedTimePeriodSortByTimeResponse")]
-        System.Threading.Tasks.Task<System.Collections.Generic.List<ReportManager.ServiceReference1.Tag>> tagsSpecifiedTimePeriodSortByTimeAsync(System.DateTime start, System.DateTime end);
+        System.Threading.Tasks.Task<System.Collections.Generic.List<ReportManager.ServiceReference1.Log>> tagsSpecifiedTimePeriodSortByTimeAsync(System.DateTime start, System.DateTime end);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReportManager/lastValueOfAITagsSortByTime", ReplyAction="http://tempuri.org/IReportManager/lastValueOfAITagsSortByTimeResponse")]
-        System.Collections.Generic.List<ReportManager.ServiceReference1.Tag> lastValueOfAITagsSortByTime();
+        System.Collections.Generic.List<ReportManager.ServiceReference1.Log> lastValueOfAITagsSortByTime();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReportManager/lastValueOfAITagsSortByTime", ReplyAction="http://tempuri.org/IReportManager/lastValueOfAITagsSortByTimeResponse")]
-        System.Threading.Tasks.Task<System.Collections.Generic.List<ReportManager.ServiceReference1.Tag>> lastValueOfAITagsSortByTimeAsync();
+        System.Threading.Tasks.Task<System.Collections.Generic.List<ReportManager.ServiceReference1.Log>> lastValueOfAITagsSortByTimeAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReportManager/lastValueOfDITagsSortByTime", ReplyAction="http://tempuri.org/IReportManager/lastValueOfDITagsSortByTimeResponse")]
-        System.Collections.Generic.List<ReportManager.ServiceReference1.Tag> lastValueOfDITagsSortByTime();
+        System.Collections.Generic.List<ReportManager.ServiceReference1.Log> lastValueOfDITagsSortByTime();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReportManager/lastValueOfDITagsSortByTime", ReplyAction="http://tempuri.org/IReportManager/lastValueOfDITagsSortByTimeResponse")]
-        System.Threading.Tasks.Task<System.Collections.Generic.List<ReportManager.ServiceReference1.Tag>> lastValueOfDITagsSortByTimeAsync();
+        System.Threading.Tasks.Task<System.Collections.Generic.List<ReportManager.ServiceReference1.Log>> lastValueOfDITagsSortByTimeAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReportManager/tagValuesSpecificIdSortByValue", ReplyAction="http://tempuri.org/IReportManager/tagValuesSpecificIdSortByValueResponse")]
-        System.Collections.Generic.List<ReportManager.ServiceReference1.Tag> tagValuesSpecificIdSortByValue(string tagId);
+        System.Collections.Generic.List<ReportManager.ServiceReference1.Log> tagValuesSpecificIdSortByValue(string tagId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReportManager/tagValuesSpecificIdSortByValue", ReplyAction="http://tempuri.org/IReportManager/tagValuesSpecificIdSortByValueResponse")]
-        System.Threading.Tasks.Task<System.Collections.Generic.List<ReportManager.ServiceReference1.Tag>> tagValuesSpecificIdSortByValueAsync(string tagId);
+        System.Threading.Tasks.Task<System.Collections.Generic.List<ReportManager.ServiceReference1.Log>> tagValuesSpecificIdSortByValueAsync(string tagId);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1019,35 +1112,35 @@ namespace ReportManager.ServiceReference1 {
             return base.Channel.alarmsSpecifiedPrioritySortByTimeAsync(priority);
         }
         
-        public System.Collections.Generic.List<ReportManager.ServiceReference1.Tag> tagsSpecifiedTimePeriodSortByTime(System.DateTime start, System.DateTime end) {
+        public System.Collections.Generic.List<ReportManager.ServiceReference1.Log> tagsSpecifiedTimePeriodSortByTime(System.DateTime start, System.DateTime end) {
             return base.Channel.tagsSpecifiedTimePeriodSortByTime(start, end);
         }
         
-        public System.Threading.Tasks.Task<System.Collections.Generic.List<ReportManager.ServiceReference1.Tag>> tagsSpecifiedTimePeriodSortByTimeAsync(System.DateTime start, System.DateTime end) {
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<ReportManager.ServiceReference1.Log>> tagsSpecifiedTimePeriodSortByTimeAsync(System.DateTime start, System.DateTime end) {
             return base.Channel.tagsSpecifiedTimePeriodSortByTimeAsync(start, end);
         }
         
-        public System.Collections.Generic.List<ReportManager.ServiceReference1.Tag> lastValueOfAITagsSortByTime() {
+        public System.Collections.Generic.List<ReportManager.ServiceReference1.Log> lastValueOfAITagsSortByTime() {
             return base.Channel.lastValueOfAITagsSortByTime();
         }
         
-        public System.Threading.Tasks.Task<System.Collections.Generic.List<ReportManager.ServiceReference1.Tag>> lastValueOfAITagsSortByTimeAsync() {
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<ReportManager.ServiceReference1.Log>> lastValueOfAITagsSortByTimeAsync() {
             return base.Channel.lastValueOfAITagsSortByTimeAsync();
         }
         
-        public System.Collections.Generic.List<ReportManager.ServiceReference1.Tag> lastValueOfDITagsSortByTime() {
+        public System.Collections.Generic.List<ReportManager.ServiceReference1.Log> lastValueOfDITagsSortByTime() {
             return base.Channel.lastValueOfDITagsSortByTime();
         }
         
-        public System.Threading.Tasks.Task<System.Collections.Generic.List<ReportManager.ServiceReference1.Tag>> lastValueOfDITagsSortByTimeAsync() {
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<ReportManager.ServiceReference1.Log>> lastValueOfDITagsSortByTimeAsync() {
             return base.Channel.lastValueOfDITagsSortByTimeAsync();
         }
         
-        public System.Collections.Generic.List<ReportManager.ServiceReference1.Tag> tagValuesSpecificIdSortByValue(string tagId) {
+        public System.Collections.Generic.List<ReportManager.ServiceReference1.Log> tagValuesSpecificIdSortByValue(string tagId) {
             return base.Channel.tagValuesSpecificIdSortByValue(tagId);
         }
         
-        public System.Threading.Tasks.Task<System.Collections.Generic.List<ReportManager.ServiceReference1.Tag>> tagValuesSpecificIdSortByValueAsync(string tagId) {
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<ReportManager.ServiceReference1.Log>> tagValuesSpecificIdSortByValueAsync(string tagId) {
             return base.Channel.tagValuesSpecificIdSortByValueAsync(tagId);
         }
     }

@@ -166,7 +166,7 @@ namespace ScadaCore
 
                 }
 
-
+                tagManager.WriteToLog(tagManager.tags[tagName], value);
                 trending.addTagValue(tagName, value);
 
                 Thread.Sleep(1000*(tagManager.tags[tagName] as InputTag).ScanTime);
@@ -180,6 +180,7 @@ namespace ScadaCore
             //nesto
 
         }
+
         public List<User> GetAllUsers()
         {
             return userManager.users;
@@ -237,27 +238,45 @@ namespace ScadaCore
 
         public List<Alarm> alarmsSpecifiedPrioritySortByTime(string priority)
         {
-            throw new NotImplementedException();
+            return alarmManager.alarms
+           .Where(alarm => alarm.Priority == priority)
+           .OrderBy(alarm => alarm.Time).ToList();
         }
 
-        public List<Tag> tagsSpecifiedTimePeriodSortByTime(DateTime start, DateTime end)
+        public List<Log> tagsSpecifiedTimePeriodSortByTime(DateTime start, DateTime end)
         {
-            throw new NotImplementedException();
+            return tagManager.logs
+            .Where(log => log.dateTime >= start && log.dateTime <= end)
+            .OrderBy(log=>log.dateTime)
+            .ToList();
         }
 
-        public List<Tag> lastValueOfAITagsSortByTime()
+        public List<Log> lastValueOfAITagsSortByTime()
         {
-            throw new NotImplementedException();
+            return tagManager.logs
+            .Where(log => log.type == "ai")
+            .GroupBy(log => log.tagName)
+            .Select(group => group.OrderByDescending(log => log.dateTime).First())
+            .OrderBy(log=>log.dateTime)
+            .ToList();
         }
 
-        public List<Tag> lastValueOfDITagsSortByTime()
+        public List<Log> lastValueOfDITagsSortByTime()
         {
-            throw new NotImplementedException();
+            return tagManager.logs
+            .Where(log => log.type == "di")
+            .GroupBy(log => log.tagName)
+            .Select(group => group.OrderByDescending(log => log.dateTime).First())
+            .OrderBy(log => log.dateTime)
+            .ToList();
         }
 
-        public List<Tag> tagValuesSpecificIdSortByValue(string tagId)
+        public List<Log> tagValuesSpecificIdSortByValue(string tagId)
         {
-            throw new NotImplementedException();
+            return tagManager.logs
+                .Where(log => log.tagName == tagId)
+                .OrderBy(log => log.value)
+                .ToList();
         }
     }
 }

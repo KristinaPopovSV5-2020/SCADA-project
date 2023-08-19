@@ -112,21 +112,99 @@ namespace ReportManager
                         break;
                     case "2":
                         Console.WriteLine("All alarms of a certain priority");
-                        // Dodajte funkcionalnost za opciju 2
+                        while (true)
+                        {
+                            Console.WriteLine("Choose priority (Low, Med, High)");
+                            string cho = Console.ReadLine();
+                            if (cho == "Low" || cho == "Med" || cho == "High")
+                            {
+                                alarms=service.alarmsSpecifiedPrioritySortByTime(cho);
+                                foreach (var a in alarms)
+                                {
+                                    Console.WriteLine($"│{a.alarmId.PadRight(11)}│{a.tagId.PadRight(11)}│{a.time.ToString().PadRight(6)}│{a.type.ToString().PadRight(6)}|{a.limit.ToString().PadRight(6)}|{a.priority.ToString().PadRight(6)}|{a.tagValue.ToString().PadRight(6)}");
+                                }
+
+                                break;
+                            }
+                        
+                        }
                         break;
                     case "3":
                         Console.WriteLine("All tag values ​​that have reached the service in a certain time period");
-                        // Dodajte funkcionalnost za opciju 3
+                        while (true)
+                        {
+                            Console.Write("Enter start time (YYYY-MM-DD): ");
+
+                            string startTime = Console.ReadLine();
+                            startTime += " 00:00:00";
+
+                            if (DateTime.TryParseExact(startTime, "yyyy-MM-dd HH:mm:ss", null, System.Globalization.DateTimeStyles.None, out startDate))
+                            {
+                                break; 
+                            }
+                            else
+                            {
+                                Console.WriteLine("Invalid format.");
+                            }
+                        }
+
+                        while (true)
+                        {
+                            Console.Write("Enter end time (YYYY-MM-DD): ");
+
+                            string endTime = Console.ReadLine();
+                            endTime += " 00:00:00";
+
+                            if (DateTime.TryParseExact(endTime, "yyyy-MM-dd HH:mm:ss", null, System.Globalization.DateTimeStyles.None, out endDate))
+                            {
+                                break;
+                            }
+                            else
+                            {
+                                Console.WriteLine("Invalid format.");
+                            }
+                        }
+                        List<ServiceReference1.Log> logs = service.tagsSpecifiedTimePeriodSortByTime(startDate, endDate);
+                        foreach (var l in logs)
+                        {
+                            Console.WriteLine($"│{l.tagName.PadRight(11)}│{l.value.ToString().PadRight(11)}│{l.dateTime.ToString().PadRight(6)}");
+                        }
+
                         break;
                     case "4":
                         Console.WriteLine("4.The last value of all AI tags");
-                        return;
+                        logs = service.lastValueOfAITagsSortByTime();
+
+                        foreach (var l in logs)
+                        {
+                            Console.WriteLine($"│{l.tagName.PadRight(11)}│{l.value.ToString().PadRight(11)}│{l.dateTime.ToString().PadRight(6)}");
+                        }
+                        break;
+
                     case "5":
                         Console.WriteLine("5. The last value of all DI tags");
-                        return;
+                        logs = service.lastValueOfDITagsSortByTime();
+
+                        foreach (var l in logs)
+                        {
+                            Console.WriteLine($"│{l.tagName.PadRight(11)}│{l.value.ToString().PadRight(11)}│{l.dateTime.ToString().PadRight(6)}");
+                        }
+                        break;
                     case "6":
                         Console.WriteLine("6. All tag values ​​with a specific identifier");
-                        return;
+                        
+                        Console.WriteLine("Enter tag name: ");
+                        string c = Console.ReadLine();
+
+                        logs = service.tagValuesSpecificIdSortByValue(c);
+                        if (logs.Count == 0)
+                            Console.WriteLine("There are no logs for this tag");
+
+                        foreach (var l in logs)
+                        {
+                            Console.WriteLine($"│{l.tagName.PadRight(11)}│{l.value.ToString().PadRight(11)}│{l.dateTime.ToString().PadRight(6)}");
+                        }
+                        break;
                     default:
                         Console.WriteLine("Nevažeći unos. Molimo izaberite ponovo.");
                         break;
