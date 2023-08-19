@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{2761C8D3-DD5A-4149-9169-71CABF6490E2}</ProjectGuid>
+    <ProjectGuid>{49041A1F-0AE5-4681-B514-AA2F6A67BAAA}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>RealTimeUnit</RootNamespace>
-    <AssemblyName>RealTimeUnit</AssemblyName>
+    <RootNamespace>ReportManager</RootNamespace>
+    <AssemblyName>ReportManager</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -55,6 +55,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Connected Services\ServiceReference1\ReportManager.ServiceReference1.Alarm.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference1\ReportManager.ServiceReference1.Log.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference1\ReportManager.ServiceReference1.Tag.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference1\ReportManager.ServiceReference1.User.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\ServiceReference1\ScadaService.wsdl" />
     <None Include="Connected Services\ServiceReference1\ScadaService.xsd">
       <SubType>Designer</SubType>
@@ -68,20 +80,6 @@
     <None Include="Connected Services\ServiceReference1\ScadaService3.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Properties\DataSources\Models.Alarm.datasource" />
-    <None Include="Properties\DataSources\Models.Log.datasource" />
-    <None Include="Properties\DataSources\Models.Tag.datasource" />
-    <None Include="Properties\DataSources\Models.User.datasource" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Models\Models.csproj">
-      <Project>{aadd525a-9da1-43d1-a6db-3a8383a37f61}</Project>
-      <Name>Models</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ScadaCore\ScadaCore.csproj">
-      <Project>{e00724fd-abaf-4a02-8c41-f64518f9aa36}</Project>
-      <Name>ScadaCore</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />

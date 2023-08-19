@@ -12,7 +12,7 @@ namespace ScadaCore
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "Service" in code, svc and config file together.
     // NOTE: In order to launch WCF Test Client for testing this service, please select Service.svc or Service.svc.cs at the Solution Explorer and start debugging.
 
-    public class ScadaService : IDbManager, IRTU, IAlarmDisplay, ITrending
+    public class ScadaService : IDbManager, IRTU, IAlarmDisplay, ITrending, IReportManager
     {
         static Dictionary<string, Thread> threads = new Dictionary<string, Thread>();
 
@@ -166,7 +166,7 @@ namespace ScadaCore
 
                 }
 
-
+                tagManager.WriteToLog(tagManager.tags[tagName], value);
                 trending.addTagValue(tagName, value);
 
                 Thread.Sleep(1000*(tagManager.tags[tagName] as InputTag).ScanTime);
@@ -180,6 +180,7 @@ namespace ScadaCore
             //nesto
 
         }
+
         public List<User> GetAllUsers()
         {
             return userManager.users;
@@ -221,5 +222,61 @@ namespace ScadaCore
             alarmProxy = OperationContext.Current.GetCallbackChannel<IAlarmDisplayCallback>();
         }
 
+        public List<Alarm> alarmsSpecifiedTimePeriodSortByPriority(DateTime start, DateTime end)
+        {
+            var sortedAlarms = alarmManager.alarms
+            .Where(alarm => alarm.Time >= start && alarm.Time <= end)
+            .OrderBy(alarm => alarm.Priority).ToList<Alarm>();
+
+            return sortedAlarms;
+        }
+
+        public List<Alarm> alarmsSpecifiedTimePeriodSortByTime(DateTime start, DateTime end)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Alarm> alarmsSpecifiedPrioritySortByTime(string priority)
+        {
+            return alarmManager.alarms
+           .Where(alarm => alarm.Priority == priority)
+           .OrderBy(alarm => alarm.Time).ToList();
+        }
+
+        public List<Log> tagsSpecifiedTimePeriodSortByTime(DateTime start, DateTime end)
+        {
+            return tagManager.logs
+            .Where(log => log.dateTime >= start && log.dateTime <= end)
+            .OrderBy(log=>log.dateTime)
+            .ToList();
+        }
+
+        public List<Log> lastValueOfAITagsSortByTime()
+        {
+            return tagManager.logs
+            .Where(log => log.type == "ai")
+            .GroupBy(log => log.tagName)
+            .Select(group => group.OrderByDescending(log => log.dateTime).First())
+            .OrderBy(log=>log.dateTime)
+            .ToList();
+        }
+
+        public List<Log> lastValueOfDITagsSortByTime()
+        {
+            return tagManager.logs
+            .Where(log => log.type == "di")
+            .GroupBy(log => log.tagName)
+            .Select(group => group.OrderByDescending(log => log.dateTime).First())
+            .OrderBy(log => log.dateTime)
+            .ToList();
+        }
+
+        public List<Log> tagValuesSpecificIdSortByValue(string tagId)
+        {
+            return tagManager.logs
+                .Where(log => log.tagName == tagId)
+                .OrderBy(log => log.value)
+                .ToList();
+        }
     }
 }

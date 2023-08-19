@@ -187,7 +187,7 @@
   <xs:element name="lastValueOfAITagsSortByTimeResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/Models" minOccurs="0" name="lastValueOfAITagsSortByTimeResult" nillable="true" type="q10:ArrayOfTag" />
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/Models" minOccurs="0" name="lastValueOfAITagsSortByTimeResult" nillable="true" type="q10:ArrayOfLog" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -199,7 +199,7 @@
   <xs:element name="lastValueOfDITagsSortByTimeResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/Models" minOccurs="0" name="lastValueOfDITagsSortByTimeResult" nillable="true" type="q11:ArrayOfTag" />
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/Models" minOccurs="0" name="lastValueOfDITagsSortByTimeResult" nillable="true" type="q11:ArrayOfLog" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -213,7 +213,7 @@
   <xs:element name="tagValuesSpecificIdSortByValueResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/Models" minOccurs="0" name="tagValuesSpecificIdSortByValueResult" nillable="true" type="q12:ArrayOfTag" />
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/Models" minOccurs="0" name="tagValuesSpecificIdSortByValueResult" nillable="true" type="q12:ArrayOfLog" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

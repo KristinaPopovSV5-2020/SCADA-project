@@ -153,6 +153,7 @@
     <xs:sequence>
       <xs:element minOccurs="0" name="dateTime" type="xs:dateTime" />
       <xs:element minOccurs="0" name="tagName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="type" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="value" type="xs:double" />
     </xs:sequence>
   </xs:complexType>

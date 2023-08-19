@@ -27,7 +27,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabaseManager", "Database
 		{E00724FD-ABAF-4A02-8C41-F64518F9AA36} = {E00724FD-ABAF-4A02-8C41-F64518F9AA36}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReportManager", "ReportManager\ReportManager.csproj", "{FA75070B-D9DB-4162-8E32-843E3F095216}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReportManager", "ReportManager\ReportManager.csproj", "{49041A1F-0AE5-4681-B514-AA2F6A67BAAA}"
+	ProjectSection(ProjectDependencies) = postProject
+		{E00724FD-ABAF-4A02-8C41-F64518F9AA36} = {E00724FD-ABAF-4A02-8C41-F64518F9AA36}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -59,10 +62,10 @@ Global
 		{3F5C5A46-1ABB-424C-8791-12BD335B5455}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3F5C5A46-1ABB-424C-8791-12BD335B5455}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3F5C5A46-1ABB-424C-8791-12BD335B5455}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FA75070B-D9DB-4162-8E32-843E3F095216}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FA75070B-D9DB-4162-8E32-843E3F095216}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FA75070B-D9DB-4162-8E32-843E3F095216}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FA75070B-D9DB-4162-8E32-843E3F095216}.Release|Any CPU.Build.0 = Release|Any CPU
+		{49041A1F-0AE5-4681-B514-AA2F6A67BAAA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{49041A1F-0AE5-4681-B514-AA2F6A67BAAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{49041A1F-0AE5-4681-B514-AA2F6A67BAAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{49041A1F-0AE5-4681-B514-AA2F6A67BAAA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
