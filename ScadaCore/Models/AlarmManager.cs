@@ -9,13 +9,15 @@ namespace Models
 {
     public class AlarmManager
     {
-        List<Alarm> alarms;
+        public List<Alarm> alarms;
         string path;
         public AlarmManager(string path)
         {
             this.path = path;
             LoadAlarmsFromFile();
         }
+
+
 
        
 

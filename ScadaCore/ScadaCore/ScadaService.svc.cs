@@ -223,7 +223,11 @@ namespace ScadaCore
 
         public List<Alarm> alarmsSpecifiedTimePeriodSortByPriority(DateTime start, DateTime end)
         {
-            throw new NotImplementedException();
+            var sortedAlarms = alarmManager.alarms
+            .Where(alarm => alarm.Time >= start && alarm.Time <= end)
+            .OrderBy(alarm => alarm.Priority).ToList<Alarm>();
+
+            return sortedAlarms;
         }
 
         public List<Alarm> alarmsSpecifiedTimePeriodSortByTime(DateTime start, DateTime end)
