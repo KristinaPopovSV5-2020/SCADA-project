@@ -105,6 +105,7 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Properties\DataSources\Models.Tag.datasource" />
+    <None Include="Properties\DataSources\Models.User.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

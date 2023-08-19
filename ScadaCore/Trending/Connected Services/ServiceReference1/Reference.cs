@@ -107,6 +107,12 @@ namespace Trending.ServiceReference1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDbManager/GetOutputTags", ReplyAction="http://tempuri.org/IDbManager/GetOutputTagsResponse")]
         System.Threading.Tasks.Task<System.Collections.Generic.List<Models.Tag>> GetOutputTagsAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDbManager/GetAllUsers", ReplyAction="http://tempuri.org/IDbManager/GetAllUsersResponse")]
+        System.Collections.Generic.List<Models.User> GetAllUsers();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDbManager/GetAllUsers", ReplyAction="http://tempuri.org/IDbManager/GetAllUsersResponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.List<Models.User>> GetAllUsersAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -150,6 +156,14 @@ namespace Trending.ServiceReference1 {
         
         public System.Threading.Tasks.Task<System.Collections.Generic.List<Models.Tag>> GetOutputTagsAsync() {
             return base.Channel.GetOutputTagsAsync();
+        }
+        
+        public System.Collections.Generic.List<Models.User> GetAllUsers() {
+            return base.Channel.GetAllUsers();
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<Models.User>> GetAllUsersAsync() {
+            return base.Channel.GetAllUsersAsync();
         }
     }
     

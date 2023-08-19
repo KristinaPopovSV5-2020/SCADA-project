@@ -14,7 +14,7 @@ namespace Trending
 {
     public partial class Form1 : Form
     {
-        
+        static ServiceReference1.DbManagerClient service = new ServiceReference1.DbManagerClient();
         public Form1()
         {
             InitializeComponent();
@@ -35,23 +35,22 @@ namespace Trending
 
         private void loginBtn_Click(object sender, EventArgs e)
         {
-            User zor = new User("zorica", "sifra123");
-            User masa = new User("pera", "sifra123");
-            List<User> users = new List<User>();
-            users.Add(zor);
-            users.Add(masa);
+            List<User> users = service.GetAllUsers();
+            bool userFound = false;
 
             foreach (User u in users)
             {
                 if (u.username == username.Text && u.password == password.Text && username.Text != "pera")
                 {
                     TrendingForm newForm = new TrendingForm();
+                    userFound = true;
                     newForm.Show();
                 }
-                else
-                {
-                    this.error.Visible = true;
-                }
+                
+            }
+            if(!userFound)
+            {
+                this.error.Visible = true;
             }
         }
     }

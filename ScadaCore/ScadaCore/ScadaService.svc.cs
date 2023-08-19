@@ -180,11 +180,11 @@ namespace ScadaCore
             //nesto
 
         }
-        public List<User> getUsers()
+        public List<User> GetAllUsers()
         {
             return userManager.users;
         }
-
+        
         public bool AddTag(Tag tag, bool realTimeOn)
         {
             if (tagManager.tags.ContainsKey(tag.TagName) || simulationDriver.Addresses.Contains(tag.IOAddress)) return false;

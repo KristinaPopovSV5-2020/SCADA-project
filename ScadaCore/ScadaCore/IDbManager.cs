@@ -13,6 +13,9 @@ namespace ScadaCore
         [OperationContract]
         List<Tag> GetOutputTags();
 
+        [OperationContract]
+        List<User> GetAllUsers();
+
 
     }
 }

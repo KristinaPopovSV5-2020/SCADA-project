@@ -405,6 +405,12 @@
   <wsdl:message name="IDbManager_GetOutputTags_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetOutputTagsResponse" />
   </wsdl:message>
+  <wsdl:message name="IDbManager_GetAllUsers_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllUsers" />
+  </wsdl:message>
+  <wsdl:message name="IDbManager_GetAllUsers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllUsersResponse" />
+  </wsdl:message>
   <wsdl:message name="IAlarmDisplay_initializationAlarmDisplay_InputMessage">
     <wsdl:part name="parameters" element="tns:initializationAlarmDisplay" />
   </wsdl:message>
@@ -448,6 +454,10 @@
     <wsdl:operation name="GetOutputTags">
       <wsdl:input wsaw:Action="http://tempuri.org/IDbManager/GetOutputTags" message="tns:IDbManager_GetOutputTags_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IDbManager/GetOutputTagsResponse" message="tns:IDbManager_GetOutputTags_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllUsers">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDbManager/GetAllUsers" message="tns:IDbManager_GetAllUsers_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDbManager/GetAllUsersResponse" message="tns:IDbManager_GetAllUsers_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IAlarmDisplay">
@@ -512,6 +522,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetOutputTags">
       <soap:operation soapAction="http://tempuri.org/IDbManager/GetOutputTags" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllUsers">
+      <soap:operation soapAction="http://tempuri.org/IDbManager/GetAllUsers" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

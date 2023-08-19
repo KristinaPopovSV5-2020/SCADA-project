@@ -405,6 +405,12 @@
   <wsdl:message name="IDbManager_GetOutputTags_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetOutputTagsResponse" />
   </wsdl:message>
+  <wsdl:message name="IDbManager_GetAllUsers_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllUsers" />
+  </wsdl:message>
+  <wsdl:message name="IDbManager_GetAllUsers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllUsersResponse" />
+  </wsdl:message>
   <wsdl:message name="IAlarmDisplay_initializationAlarmDisplay_InputMessage">
     <wsdl:part name="parameters" element="tns:initializationAlarmDisplay" />
   </wsdl:message>
@@ -448,6 +454,10 @@
     <wsdl:operation name="GetOutputTags">
       <wsdl:input wsaw:Action="http://tempuri.org/IDbManager/GetOutputTags" message="tns:IDbManager_GetOutputTags_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IDbManager/GetOutputTagsResponse" message="tns:IDbManager_GetOutputTags_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllUsers">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDbManager/GetAllUsers" message="tns:IDbManager_GetAllUsers_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDbManager/GetAllUsersResponse" message="tns:IDbManager_GetAllUsers_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IAlarmDisplay">
@@ -519,6 +529,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetAllUsers">
+      <soap:operation soapAction="http://tempuri.org/IDbManager/GetAllUsers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="WSDualHttpBinding_IAlarmDisplay" type="tns:IAlarmDisplay">
     <wsp:PolicyReference URI="#WSDualHttpBinding_IAlarmDisplay_policy" />
@@ -580,7 +599,7 @@
       <wsa10:EndpointReference>
         <wsa10:Address>http://localhost:58039/ScadaService.svc/alarmDisplay</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>MASHA-PC\suput</Upn>
+          <Upn>DESKTOP-46SMTTS\zoric</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>
@@ -589,7 +608,7 @@
       <wsa10:EndpointReference>
         <wsa10:Address>http://localhost:58039/ScadaService.svc/trending</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>MASHA-PC\suput</Upn>
+          <Upn>DESKTOP-46SMTTS\zoric</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>
