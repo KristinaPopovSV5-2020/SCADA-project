@@ -24,11 +24,11 @@ namespace DatabaseManager
             listViewInputTags.View = View.Details;
             listViewAlarms.View = View.Details;
 
-            listViewTags.Columns.Add("Tag ID", listViewTags.Size.Width, HorizontalAlignment.Left);
-            listViewTags.Columns.Add("Value", listViewTags.Size.Width, HorizontalAlignment.Left);
+            listViewTags.Columns.Add("Tag ID");
+            listViewTags.Columns.Add("Value");
 
-            listViewInputTags.Columns.Add("Tag ID", listViewInputTags.Size.Width, HorizontalAlignment.Left);
-            listViewInputTags.Columns.Add("Scan", listViewInputTags.Size.Width, HorizontalAlignment.Left);
+            listViewInputTags.Columns.Add("Tag ID");
+            listViewInputTags.Columns.Add("Scan");
 
             listViewAlarms.View = View.Details;
 
@@ -63,14 +63,8 @@ namespace DatabaseManager
                 service.DeleteTag(tagId);
                 listViewTags.Items.Remove(selectedItem);
 
-            } else if (listViewInputTags.SelectedItems.Count > 0)
-            {
-                ListViewItem selectedItem = listViewInputTags.SelectedItems[0];
-
-                string tagId = selectedItem.SubItems[0].Text;
-                service.DeleteTag(tagId);
-                listViewInputTags.Items.Remove(selectedItem);
             }
+            listViewTags.Items.Clear();
             loadOutputTags();
         }
 
@@ -276,6 +270,20 @@ namespace DatabaseManager
                 buttonNewAlarm.Enabled = false;
 
             }
+        }
+
+        private void deleteInputTag_Click(object sender, EventArgs e)
+        {
+            if (listViewInputTags.SelectedItems.Count > 0)
+            {
+                ListViewItem selectedItem = listViewInputTags.SelectedItems[0];
+
+                string tagId = selectedItem.SubItems[0].Text;
+                service.DeleteTag(tagId);
+                listViewInputTags.Items.Remove(selectedItem);
+            }
+            listViewInputTags.Items.Clear();
+            loadInputTags();
         }
     }
 }

@@ -1,11 +1,13 @@
 ﻿using Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
 using System.Threading;
+using System.Xml.Serialization;
 
 namespace ScadaCore
 {
@@ -23,7 +25,7 @@ namespace ScadaCore
         static string currentPath = System.Web.Hosting.HostingEnvironment.ApplicationPhysicalPath;
 
         public static AlarmManager alarmManager = new AlarmManager(currentPath);
-        public TagManager tagManager = new TagManager(alarmManager, currentPath);
+        public static TagManager tagManager = new TagManager(alarmManager, currentPath);
         public UserManager userManager = new UserManager(currentPath);
 
         static ITrendingCB trending = null;
@@ -278,6 +280,17 @@ namespace ScadaCore
             }
 
             return foundAlarms;
+        }
+
+        public static void XmlSerialisation()
+        {
+            using (var writer = new StreamWriter("/Database/scadaConfig.xml"))
+            {
+                var serializer = new XmlSerializer(typeof(List<Tag>));
+                serializer.Serialize(writer, tags.Values.ToList());
+                Console.WriteLine("Serialization finished");
+            }
+
         }
 
     }

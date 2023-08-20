@@ -205,6 +205,7 @@ namespace DatabaseManager
             this.deleteInputTag.TabIndex = 11;
             this.deleteInputTag.Text = "x Delete Tag";
             this.deleteInputTag.UseVisualStyleBackColor = true;
+            this.deleteInputTag.Click += new System.EventHandler(this.deleteInputTag_Click);
             // 
             // buttonAlarms
             // 

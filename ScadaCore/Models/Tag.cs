@@ -70,7 +70,7 @@ namespace Models
 
         public override string ToString()
         {
-            return string.Format("Tag name: " + tagName + " Description: " + description + " IOAddress: " + ioAddress);
+            return string.Format("Tag name: " + tagName + " Description: " + description + " IOAddress: " + ioAddress + "Initial value: " + initialValue);
         }
 
 

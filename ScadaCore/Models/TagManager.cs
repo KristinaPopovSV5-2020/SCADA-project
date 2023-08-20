@@ -8,7 +8,7 @@ namespace Models
 {
     public class TagManager
     {
-        public Dictionary<String, Tag> tags = new Dictionary<string, Tag>();
+        public Dictionary<string, Tag> tags = new Dictionary<string, Tag>();
         public AlarmManager alarmManager;
         string path;
 
