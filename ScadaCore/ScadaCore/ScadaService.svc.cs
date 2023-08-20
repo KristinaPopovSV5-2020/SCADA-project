@@ -312,7 +312,7 @@ namespace ScadaCore
             using (var writer = new StreamWriter("/Database/scadaConfig.xml"))
             {
                 var serializer = new XmlSerializer(typeof(List<Tag>));
-                serializer.Serialize(writer, tags.Values.ToList());
+                serializer.Serialize(writer, tagManager.tags.Values.ToList());
                 Console.WriteLine("Serialization finished");
             }
 
