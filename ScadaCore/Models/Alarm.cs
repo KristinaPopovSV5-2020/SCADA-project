@@ -52,6 +52,15 @@ namespace Models
             this.tagValue = tagValue;
         }
 
+        public Alarm(string alarmId, string tagId, TypeOfAlarm type, double limit, string priority)
+        {
+            this.alarmId = alarmId;
+            this.tagId = tagId;
+            this.type = type;
+            this.limit = limit;
+            this.priority = priority;
+        }
+
         public override string ToString()
         {
             return "Alarm name: " + AlarmId + ",Tag: " + TagId + ",Time: " + Time.ToString() + ",Type: " + Type.ToString() + ",Limit: " + Limit + ",TagValue: " + TagValue;

@@ -31,6 +31,9 @@ namespace ScadaCore
 
         static IAlarmDisplayCallback alarmProxy = null;
 
+        static Dictionary<string, Alarm> alarmConfig = new Dictionary<string, Alarm>();
+
+
 
         public bool addAddress(string address)
         {
@@ -187,14 +190,94 @@ namespace ScadaCore
             }
         }
 
-        public List<Tag> GetOutputTags()
-        {
-            return tagManager.tags.Values.ToList().Where(tag => tag is OutputTag).ToList();
-        }
 
         public void initializationAlarmDisplay()
         {
             alarmProxy = OperationContext.Current.GetCallbackChannel<IAlarmDisplayCallback>();
+        }
+
+        public void DeleteTag(string tagId)
+        {
+            Tag selectedTag = tagManager.tags[tagId];
+            tagManager.tags.Remove(tagId);
+        }
+
+        public List<AnalogOutput> GetAnalogOutputTags()
+        {
+            return tagManager.tags.Values
+           .Where(tag => tag is AnalogOutput) 
+           .Cast<AnalogOutput>()               
+           .ToList();
+        }
+
+        public List<AnalogInput> GetAnalogInputTags()
+        {
+            return tagManager.tags.Values
+           .Where(tag => tag is AnalogInput)
+           .Cast<AnalogInput>()
+           .ToList();
+        }
+
+        public List<DigitalInput> GetDigitalInputTags()
+        {
+            return tagManager.tags.Values
+           .Where(tag => tag is DigitalInput)
+           .Cast<DigitalInput>()
+           .ToList();
+        }
+
+        public List<DigitalOutput> GetDigitalOutputTags()
+        {
+            return tagManager.tags.Values
+           .Where(tag => tag is DigitalOutput)
+           .Cast<DigitalOutput>()
+           .ToList();
+        }
+
+        public void OnOffScan(string tagId)
+        {
+            Tag tag = tagManager.tags[tagId];
+
+            if (tag is AnalogInput analogInput)
+            {
+                analogInput.Scan = !analogInput.Scan;
+                tagManager.tags[tagId] = analogInput;
+            }
+            else if (tag is DigitalInput digitalInput)
+            {
+                digitalInput.Scan = !digitalInput.Scan;
+                tagManager.tags[tagId] = digitalInput;
+            }
+        }
+
+        public void UpdateValue(string tagId, double value)
+        {
+            tagManager.tags[tagId].InitialValue = value;
+        }
+
+        public void newAlarm(Alarm alarm)
+        {
+            alarmConfig.Add(alarm.AlarmId, alarm);
+        }
+
+        public void deleteAlarm(string alarmId)
+        {
+            alarmConfig.Remove(alarmId);
+        }
+
+        public List<Alarm> findAlarm(string tagId)
+        {
+            List<Alarm> foundAlarms = new List<Alarm>();
+
+            foreach (Alarm alarm in alarmConfig.Values)
+            {
+                if (alarm.TagId == tagId)
+                {
+                    foundAlarms.Add(alarm);
+                }
+            }
+
+            return foundAlarms;
         }
 
     }

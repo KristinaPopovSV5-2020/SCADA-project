@@ -102,11 +102,65 @@ namespace DatabaseManager.ServiceReference1 {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDbManager/AddTag", ReplyAction="http://tempuri.org/IDbManager/AddTagResponse")]
         System.Threading.Tasks.Task<bool> AddTagAsync(Models.Tag tag, bool realTimeOn);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDbManager/GetOutputTags", ReplyAction="http://tempuri.org/IDbManager/GetOutputTagsResponse")]
-        System.Collections.Generic.List<Models.Tag> GetOutputTags();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDbManager/GetAnalogOutputTags", ReplyAction="http://tempuri.org/IDbManager/GetAnalogOutputTagsResponse")]
+        System.Collections.Generic.List<Models.AnalogOutput> GetAnalogOutputTags();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDbManager/GetOutputTags", ReplyAction="http://tempuri.org/IDbManager/GetOutputTagsResponse")]
-        System.Threading.Tasks.Task<System.Collections.Generic.List<Models.Tag>> GetOutputTagsAsync();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDbManager/GetAnalogOutputTags", ReplyAction="http://tempuri.org/IDbManager/GetAnalogOutputTagsResponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.List<Models.AnalogOutput>> GetAnalogOutputTagsAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDbManager/GetAnalogInputTags", ReplyAction="http://tempuri.org/IDbManager/GetAnalogInputTagsResponse")]
+        System.Collections.Generic.List<Models.AnalogInput> GetAnalogInputTags();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDbManager/GetAnalogInputTags", ReplyAction="http://tempuri.org/IDbManager/GetAnalogInputTagsResponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.List<Models.AnalogInput>> GetAnalogInputTagsAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDbManager/GetDigitalInputTags", ReplyAction="http://tempuri.org/IDbManager/GetDigitalInputTagsResponse")]
+        System.Collections.Generic.List<Models.DigitalInput> GetDigitalInputTags();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDbManager/GetDigitalInputTags", ReplyAction="http://tempuri.org/IDbManager/GetDigitalInputTagsResponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.List<Models.DigitalInput>> GetDigitalInputTagsAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDbManager/GetDigitalOutputTags", ReplyAction="http://tempuri.org/IDbManager/GetDigitalOutputTagsResponse")]
+        System.Collections.Generic.List<Models.DigitalOutput> GetDigitalOutputTags();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDbManager/GetDigitalOutputTags", ReplyAction="http://tempuri.org/IDbManager/GetDigitalOutputTagsResponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.List<Models.DigitalOutput>> GetDigitalOutputTagsAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDbManager/DeleteTag", ReplyAction="http://tempuri.org/IDbManager/DeleteTagResponse")]
+        void DeleteTag(string tagId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDbManager/DeleteTag", ReplyAction="http://tempuri.org/IDbManager/DeleteTagResponse")]
+        System.Threading.Tasks.Task DeleteTagAsync(string tagId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDbManager/OnOffScan", ReplyAction="http://tempuri.org/IDbManager/OnOffScanResponse")]
+        void OnOffScan(string tagId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDbManager/OnOffScan", ReplyAction="http://tempuri.org/IDbManager/OnOffScanResponse")]
+        System.Threading.Tasks.Task OnOffScanAsync(string tagId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDbManager/UpdateValue", ReplyAction="http://tempuri.org/IDbManager/UpdateValueResponse")]
+        void UpdateValue(string tagId, double value);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDbManager/UpdateValue", ReplyAction="http://tempuri.org/IDbManager/UpdateValueResponse")]
+        System.Threading.Tasks.Task UpdateValueAsync(string tagId, double value);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDbManager/newAlarm", ReplyAction="http://tempuri.org/IDbManager/newAlarmResponse")]
+        void newAlarm(Models.Alarm alarm);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDbManager/newAlarm", ReplyAction="http://tempuri.org/IDbManager/newAlarmResponse")]
+        System.Threading.Tasks.Task newAlarmAsync(Models.Alarm alarm);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDbManager/deleteAlarm", ReplyAction="http://tempuri.org/IDbManager/deleteAlarmResponse")]
+        void deleteAlarm(string alarmId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDbManager/deleteAlarm", ReplyAction="http://tempuri.org/IDbManager/deleteAlarmResponse")]
+        System.Threading.Tasks.Task deleteAlarmAsync(string alarmId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDbManager/findAlarm", ReplyAction="http://tempuri.org/IDbManager/findAlarmResponse")]
+        System.Collections.Generic.List<Models.Alarm> findAlarm(string tagId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDbManager/findAlarm", ReplyAction="http://tempuri.org/IDbManager/findAlarmResponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.List<Models.Alarm>> findAlarmAsync(string tagId);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -144,12 +198,84 @@ namespace DatabaseManager.ServiceReference1 {
             return base.Channel.AddTagAsync(tag, realTimeOn);
         }
         
-        public System.Collections.Generic.List<Models.Tag> GetOutputTags() {
-            return base.Channel.GetOutputTags();
+        public System.Collections.Generic.List<Models.AnalogOutput> GetAnalogOutputTags() {
+            return base.Channel.GetAnalogOutputTags();
         }
         
-        public System.Threading.Tasks.Task<System.Collections.Generic.List<Models.Tag>> GetOutputTagsAsync() {
-            return base.Channel.GetOutputTagsAsync();
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<Models.AnalogOutput>> GetAnalogOutputTagsAsync() {
+            return base.Channel.GetAnalogOutputTagsAsync();
+        }
+        
+        public System.Collections.Generic.List<Models.AnalogInput> GetAnalogInputTags() {
+            return base.Channel.GetAnalogInputTags();
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<Models.AnalogInput>> GetAnalogInputTagsAsync() {
+            return base.Channel.GetAnalogInputTagsAsync();
+        }
+        
+        public System.Collections.Generic.List<Models.DigitalInput> GetDigitalInputTags() {
+            return base.Channel.GetDigitalInputTags();
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<Models.DigitalInput>> GetDigitalInputTagsAsync() {
+            return base.Channel.GetDigitalInputTagsAsync();
+        }
+        
+        public System.Collections.Generic.List<Models.DigitalOutput> GetDigitalOutputTags() {
+            return base.Channel.GetDigitalOutputTags();
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<Models.DigitalOutput>> GetDigitalOutputTagsAsync() {
+            return base.Channel.GetDigitalOutputTagsAsync();
+        }
+        
+        public void DeleteTag(string tagId) {
+            base.Channel.DeleteTag(tagId);
+        }
+        
+        public System.Threading.Tasks.Task DeleteTagAsync(string tagId) {
+            return base.Channel.DeleteTagAsync(tagId);
+        }
+        
+        public void OnOffScan(string tagId) {
+            base.Channel.OnOffScan(tagId);
+        }
+        
+        public System.Threading.Tasks.Task OnOffScanAsync(string tagId) {
+            return base.Channel.OnOffScanAsync(tagId);
+        }
+        
+        public void UpdateValue(string tagId, double value) {
+            base.Channel.UpdateValue(tagId, value);
+        }
+        
+        public System.Threading.Tasks.Task UpdateValueAsync(string tagId, double value) {
+            return base.Channel.UpdateValueAsync(tagId, value);
+        }
+        
+        public void newAlarm(Models.Alarm alarm) {
+            base.Channel.newAlarm(alarm);
+        }
+        
+        public System.Threading.Tasks.Task newAlarmAsync(Models.Alarm alarm) {
+            return base.Channel.newAlarmAsync(alarm);
+        }
+        
+        public void deleteAlarm(string alarmId) {
+            base.Channel.deleteAlarm(alarmId);
+        }
+        
+        public System.Threading.Tasks.Task deleteAlarmAsync(string alarmId) {
+            return base.Channel.deleteAlarmAsync(alarmId);
+        }
+        
+        public System.Collections.Generic.List<Models.Alarm> findAlarm(string tagId) {
+            return base.Channel.findAlarm(tagId);
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<Models.Alarm>> findAlarmAsync(string tagId) {
+            return base.Channel.findAlarmAsync(tagId);
         }
     }
     
