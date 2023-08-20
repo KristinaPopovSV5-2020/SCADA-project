@@ -161,8 +161,6 @@ namespace DatabaseManager.ServiceReference1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDbManager/findAlarm", ReplyAction="http://tempuri.org/IDbManager/findAlarmResponse")]
         System.Threading.Tasks.Task<System.Collections.Generic.List<Models.Alarm>> findAlarmAsync(string tagId);
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDbManager/GetOutputTags", ReplyAction="http://tempuri.org/IDbManager/GetOutputTagsResponse")]
-        System.Threading.Tasks.Task<System.Collections.Generic.List<Models.Tag>> GetOutputTagsAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDbManager/GetAllUsers", ReplyAction="http://tempuri.org/IDbManager/GetAllUsersResponse")]
         System.Collections.Generic.List<Models.User> GetAllUsers();
