@@ -1,2 +1,2 @@
-﻿name3|description|address8|100
+name3|description|address8|100
 name6|description|address6|100

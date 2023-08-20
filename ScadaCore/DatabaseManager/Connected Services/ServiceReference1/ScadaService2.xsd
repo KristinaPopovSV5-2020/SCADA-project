@@ -124,11 +124,30 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="AnalogOutput" nillable="true" type="tns:AnalogOutput" />
-  <xs:complexType name="ArrayOfTag">
+  <xs:complexType name="ArrayOfAnalogOutput">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="Tag" nillable="true" type="tns:Tag" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="AnalogOutput" nillable="true" type="tns:AnalogOutput" />
     </xs:sequence>
   </xs:complexType>
+  <xs:element name="ArrayOfAnalogOutput" nillable="true" type="tns:ArrayOfAnalogOutput" />
+  <xs:complexType name="ArrayOfAnalogInput">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="AnalogInput" nillable="true" type="tns:AnalogInput" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAnalogInput" nillable="true" type="tns:ArrayOfAnalogInput" />
+  <xs:complexType name="ArrayOfDigitalInput">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DigitalInput" nillable="true" type="tns:DigitalInput" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDigitalInput" nillable="true" type="tns:ArrayOfDigitalInput" />
+  <xs:complexType name="ArrayOfDigitalOutput">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DigitalOutput" nillable="true" type="tns:DigitalOutput" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDigitalOutput" nillable="true" type="tns:ArrayOfDigitalOutput" />
   <xs:element name="ArrayOfTag" nillable="true" type="tns:ArrayOfTag" />
   <xs:complexType name="ArrayOfUser">
     <xs:sequence>

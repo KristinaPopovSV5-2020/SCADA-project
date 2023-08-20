@@ -399,11 +399,65 @@
   <wsdl:message name="IDbManager_AddTag_OutputMessage">
     <wsdl:part name="parameters" element="tns:AddTagResponse" />
   </wsdl:message>
-  <wsdl:message name="IDbManager_GetOutputTags_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetOutputTags" />
+  <wsdl:message name="IDbManager_GetAnalogOutputTags_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAnalogOutputTags" />
   </wsdl:message>
-  <wsdl:message name="IDbManager_GetOutputTags_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetOutputTagsResponse" />
+  <wsdl:message name="IDbManager_GetAnalogOutputTags_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAnalogOutputTagsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDbManager_GetAnalogInputTags_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAnalogInputTags" />
+  </wsdl:message>
+  <wsdl:message name="IDbManager_GetAnalogInputTags_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAnalogInputTagsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDbManager_GetDigitalInputTags_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDigitalInputTags" />
+  </wsdl:message>
+  <wsdl:message name="IDbManager_GetDigitalInputTags_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDigitalInputTagsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDbManager_GetDigitalOutputTags_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDigitalOutputTags" />
+  </wsdl:message>
+  <wsdl:message name="IDbManager_GetDigitalOutputTags_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDigitalOutputTagsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDbManager_DeleteTag_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteTag" />
+  </wsdl:message>
+  <wsdl:message name="IDbManager_DeleteTag_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteTagResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDbManager_OnOffScan_InputMessage">
+    <wsdl:part name="parameters" element="tns:OnOffScan" />
+  </wsdl:message>
+  <wsdl:message name="IDbManager_OnOffScan_OutputMessage">
+    <wsdl:part name="parameters" element="tns:OnOffScanResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDbManager_UpdateValue_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateValue" />
+  </wsdl:message>
+  <wsdl:message name="IDbManager_UpdateValue_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateValueResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDbManager_newAlarm_InputMessage">
+    <wsdl:part name="parameters" element="tns:newAlarm" />
+  </wsdl:message>
+  <wsdl:message name="IDbManager_newAlarm_OutputMessage">
+    <wsdl:part name="parameters" element="tns:newAlarmResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDbManager_deleteAlarm_InputMessage">
+    <wsdl:part name="parameters" element="tns:deleteAlarm" />
+  </wsdl:message>
+  <wsdl:message name="IDbManager_deleteAlarm_OutputMessage">
+    <wsdl:part name="parameters" element="tns:deleteAlarmResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDbManager_findAlarm_InputMessage">
+    <wsdl:part name="parameters" element="tns:findAlarm" />
+  </wsdl:message>
+  <wsdl:message name="IDbManager_findAlarm_OutputMessage">
+    <wsdl:part name="parameters" element="tns:findAlarmResponse" />
   </wsdl:message>
   <wsdl:message name="IDbManager_GetAllUsers_InputMessage">
     <wsdl:part name="parameters" element="tns:GetAllUsers" />
@@ -451,9 +505,45 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IDbManager/AddTag" message="tns:IDbManager_AddTag_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IDbManager/AddTagResponse" message="tns:IDbManager_AddTag_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="GetOutputTags">
-      <wsdl:input wsaw:Action="http://tempuri.org/IDbManager/GetOutputTags" message="tns:IDbManager_GetOutputTags_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IDbManager/GetOutputTagsResponse" message="tns:IDbManager_GetOutputTags_OutputMessage" />
+    <wsdl:operation name="GetAnalogOutputTags">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDbManager/GetAnalogOutputTags" message="tns:IDbManager_GetAnalogOutputTags_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDbManager/GetAnalogOutputTagsResponse" message="tns:IDbManager_GetAnalogOutputTags_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAnalogInputTags">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDbManager/GetAnalogInputTags" message="tns:IDbManager_GetAnalogInputTags_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDbManager/GetAnalogInputTagsResponse" message="tns:IDbManager_GetAnalogInputTags_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDigitalInputTags">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDbManager/GetDigitalInputTags" message="tns:IDbManager_GetDigitalInputTags_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDbManager/GetDigitalInputTagsResponse" message="tns:IDbManager_GetDigitalInputTags_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDigitalOutputTags">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDbManager/GetDigitalOutputTags" message="tns:IDbManager_GetDigitalOutputTags_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDbManager/GetDigitalOutputTagsResponse" message="tns:IDbManager_GetDigitalOutputTags_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteTag">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDbManager/DeleteTag" message="tns:IDbManager_DeleteTag_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDbManager/DeleteTagResponse" message="tns:IDbManager_DeleteTag_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="OnOffScan">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDbManager/OnOffScan" message="tns:IDbManager_OnOffScan_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDbManager/OnOffScanResponse" message="tns:IDbManager_OnOffScan_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateValue">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDbManager/UpdateValue" message="tns:IDbManager_UpdateValue_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDbManager/UpdateValueResponse" message="tns:IDbManager_UpdateValue_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="newAlarm">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDbManager/newAlarm" message="tns:IDbManager_newAlarm_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDbManager/newAlarmResponse" message="tns:IDbManager_newAlarm_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteAlarm">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDbManager/deleteAlarm" message="tns:IDbManager_deleteAlarm_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDbManager/deleteAlarmResponse" message="tns:IDbManager_deleteAlarm_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="findAlarm">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDbManager/findAlarm" message="tns:IDbManager_findAlarm_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDbManager/findAlarmResponse" message="tns:IDbManager_findAlarm_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetAllUsers">
       <wsdl:input wsaw:Action="http://tempuri.org/IDbManager/GetAllUsers" message="tns:IDbManager_GetAllUsers_InputMessage" />
@@ -520,8 +610,89 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetOutputTags">
-      <soap:operation soapAction="http://tempuri.org/IDbManager/GetOutputTags" style="document" />
+    <wsdl:operation name="GetAnalogOutputTags">
+      <soap:operation soapAction="http://tempuri.org/IDbManager/GetAnalogOutputTags" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAnalogInputTags">
+      <soap:operation soapAction="http://tempuri.org/IDbManager/GetAnalogInputTags" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDigitalInputTags">
+      <soap:operation soapAction="http://tempuri.org/IDbManager/GetDigitalInputTags" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDigitalOutputTags">
+      <soap:operation soapAction="http://tempuri.org/IDbManager/GetDigitalOutputTags" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteTag">
+      <soap:operation soapAction="http://tempuri.org/IDbManager/DeleteTag" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OnOffScan">
+      <soap:operation soapAction="http://tempuri.org/IDbManager/OnOffScan" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateValue">
+      <soap:operation soapAction="http://tempuri.org/IDbManager/UpdateValue" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="newAlarm">
+      <soap:operation soapAction="http://tempuri.org/IDbManager/newAlarm" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteAlarm">
+      <soap:operation soapAction="http://tempuri.org/IDbManager/deleteAlarm" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findAlarm">
+      <soap:operation soapAction="http://tempuri.org/IDbManager/findAlarm" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

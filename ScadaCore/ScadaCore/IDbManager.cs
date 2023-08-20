@@ -11,7 +11,27 @@ namespace ScadaCore
         [OperationContract]
         bool AddTag(Tag tag, bool realTimeOn);
         [OperationContract]
-        List<Tag> GetOutputTags();
+        List<AnalogOutput> GetAnalogOutputTags();
+        [OperationContract]
+        List<AnalogInput> GetAnalogInputTags();
+        [OperationContract]
+        List<DigitalInput> GetDigitalInputTags();
+        [OperationContract]
+        List<DigitalOutput> GetDigitalOutputTags();
+
+        [OperationContract]
+        void DeleteTag(string tagId);
+        [OperationContract]
+        void OnOffScan(string tagId);
+
+        [OperationContract]
+        void UpdateValue(string tagId, double value);
+        [OperationContract]
+        void newAlarm(Alarm alarm);
+        [OperationContract]
+        void deleteAlarm(string alarmId);
+        [OperationContract]
+        List<Alarm> findAlarm(string tagId);
 
         [OperationContract]
         List<User> GetAllUsers();
