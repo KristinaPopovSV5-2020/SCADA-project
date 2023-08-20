@@ -33,6 +33,9 @@ namespace ScadaCore
         [OperationContract]
         List<Alarm> findAlarm(string tagId);
 
+        [OperationContract]
+        List<User> GetAllUsers();
+
 
     }
 }

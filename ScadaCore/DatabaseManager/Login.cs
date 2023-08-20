@@ -13,6 +13,7 @@ namespace DatabaseManager
 {
     public partial class Login : Form
     {
+        static ServiceReference1.DbManagerClient service = new ServiceReference1.DbManagerClient();
         public Login()
         {
             InitializeComponent();
@@ -22,11 +23,8 @@ namespace DatabaseManager
 
         private void loginBtn_Click(object sender, EventArgs e)
         {
-            User zor = new User("zorica", "sifra123");
-            User masa = new User("pera", "sifra123");
-            List<User> users = new List<User>();
-            users.Add(zor);
-            users.Add(masa);
+            List<User> users = service.GetAllUsers();
+            bool userFound = false;
 
 
             foreach (User u in users)
@@ -34,14 +32,15 @@ namespace DatabaseManager
                 if (u.username == username.Text && u.password == password.Text && username.Text == "pera")
                 {
                     DbManagerForm newForm = new DbManagerForm();
+                    userFound = true;
                     newForm.Show();
                 }
-                else
-                {
-                    this.error.Visible = true;
-                }
+                
             }
-
+            if(!userFound)
+            {
+                this.error.Visible = true;
+            }
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -64,6 +63,16 @@ namespace DatabaseManager
         }
 
         private void Login_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void username_TextChanged(object sender, EventArgs e)
         {
 
         }

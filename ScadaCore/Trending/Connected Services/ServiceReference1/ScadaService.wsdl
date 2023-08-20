@@ -393,17 +393,23 @@
   <wsdl:message name="IRTU_addAddress_OutputMessage">
     <wsdl:part name="parameters" element="tns:addAddressResponse" />
   </wsdl:message>
-  <wsdl:message name="IDbManager_DoWork_InputMessage">
-    <wsdl:part name="parameters" element="tns:DoWork" />
-  </wsdl:message>
-  <wsdl:message name="IDbManager_DoWork_OutputMessage">
-    <wsdl:part name="parameters" element="tns:DoWorkResponse" />
-  </wsdl:message>
   <wsdl:message name="IDbManager_AddTag_InputMessage">
     <wsdl:part name="parameters" element="tns:AddTag" />
   </wsdl:message>
   <wsdl:message name="IDbManager_AddTag_OutputMessage">
     <wsdl:part name="parameters" element="tns:AddTagResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDbManager_GetOutputTags_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetOutputTags" />
+  </wsdl:message>
+  <wsdl:message name="IDbManager_GetOutputTags_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetOutputTagsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDbManager_GetAllUsers_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllUsers" />
+  </wsdl:message>
+  <wsdl:message name="IDbManager_GetAllUsers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllUsersResponse" />
   </wsdl:message>
   <wsdl:message name="IAlarmDisplay_initializationAlarmDisplay_InputMessage">
     <wsdl:part name="parameters" element="tns:initializationAlarmDisplay" />
@@ -441,13 +447,17 @@
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IDbManager">
-    <wsdl:operation name="DoWork">
-      <wsdl:input wsaw:Action="http://tempuri.org/IDbManager/DoWork" message="tns:IDbManager_DoWork_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IDbManager/DoWorkResponse" message="tns:IDbManager_DoWork_OutputMessage" />
-    </wsdl:operation>
     <wsdl:operation name="AddTag">
       <wsdl:input wsaw:Action="http://tempuri.org/IDbManager/AddTag" message="tns:IDbManager_AddTag_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IDbManager/AddTagResponse" message="tns:IDbManager_AddTag_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOutputTags">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDbManager/GetOutputTags" message="tns:IDbManager_GetOutputTags_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDbManager/GetOutputTagsResponse" message="tns:IDbManager_GetOutputTags_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllUsers">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDbManager/GetAllUsers" message="tns:IDbManager_GetAllUsers_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDbManager/GetAllUsersResponse" message="tns:IDbManager_GetAllUsers_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IAlarmDisplay">
@@ -501,8 +511,8 @@
   </wsdl:binding>
   <wsdl:binding name="BasicHttpBinding_IDbManager" type="tns:IDbManager">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="DoWork">
-      <soap:operation soapAction="http://tempuri.org/IDbManager/DoWork" style="document" />
+    <wsdl:operation name="AddTag">
+      <soap:operation soapAction="http://tempuri.org/IDbManager/AddTag" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -510,8 +520,17 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="AddTag">
-      <soap:operation soapAction="http://tempuri.org/IDbManager/AddTag" style="document" />
+    <wsdl:operation name="GetOutputTags">
+      <soap:operation soapAction="http://tempuri.org/IDbManager/GetOutputTags" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllUsers">
+      <soap:operation soapAction="http://tempuri.org/IDbManager/GetAllUsers" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -580,7 +599,7 @@
       <wsa10:EndpointReference>
         <wsa10:Address>http://localhost:58039/ScadaService.svc/alarmDisplay</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>DESKTOP-3V82Q53\User</Upn>
+          <Upn>DESKTOP-46SMTTS\zoric</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>
@@ -589,7 +608,7 @@
       <wsa10:EndpointReference>
         <wsa10:Address>http://localhost:58039/ScadaService.svc/trending</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>DESKTOP-3V82Q53\User</Upn>
+          <Upn>DESKTOP-46SMTTS\zoric</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>

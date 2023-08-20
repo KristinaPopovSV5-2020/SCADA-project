@@ -39,27 +39,28 @@ namespace DatabaseManager
             // 
             // username
             // 
-            this.username.Location = new System.Drawing.Point(186, 104);
+            this.username.Location = new System.Drawing.Point(209, 104);
             this.username.Margin = new System.Windows.Forms.Padding(2);
             this.username.Name = "username";
-            this.username.Size = new System.Drawing.Size(240, 27);
+            this.username.Size = new System.Drawing.Size(270, 26);
             this.username.TabIndex = 0;
+            this.username.TextChanged += new System.EventHandler(this.username_TextChanged);
             // 
             // password
             // 
-            this.password.Location = new System.Drawing.Point(186, 162);
+            this.password.Location = new System.Drawing.Point(209, 162);
             this.password.Margin = new System.Windows.Forms.Padding(2);
             this.password.Name = "password";
-            this.password.Size = new System.Drawing.Size(240, 27);
+            this.password.Size = new System.Drawing.Size(270, 26);
             this.password.TabIndex = 1;
             this.password.TextChanged += new System.EventHandler(this.password_TextChanged);
             // 
             // loginBtn
             // 
-            this.loginBtn.Location = new System.Drawing.Point(262, 235);
+            this.loginBtn.Location = new System.Drawing.Point(295, 235);
             this.loginBtn.Margin = new System.Windows.Forms.Padding(2);
             this.loginBtn.Name = "loginBtn";
-            this.loginBtn.Size = new System.Drawing.Size(90, 27);
+            this.loginBtn.Size = new System.Drawing.Size(101, 27);
             this.loginBtn.TabIndex = 2;
             this.loginBtn.Text = "login";
             this.loginBtn.UseVisualStyleBackColor = true;
@@ -68,9 +69,9 @@ namespace DatabaseManager
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(186, 82);
+            this.label1.Location = new System.Drawing.Point(209, 82);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(75, 20);
+            this.label1.Size = new System.Drawing.Size(83, 20);
             this.label1.TabIndex = 3;
             this.label1.Text = "Username";
             this.label1.Click += new System.EventHandler(this.Username_Click);
@@ -78,17 +79,18 @@ namespace DatabaseManager
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(186, 140);
+            this.label2.Location = new System.Drawing.Point(209, 140);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(70, 20);
+            this.label2.Size = new System.Drawing.Size(78, 20);
             this.label2.TabIndex = 4;
             this.label2.Text = "Password";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // error
             // 
             this.error.AutoSize = true;
             this.error.ForeColor = System.Drawing.Color.Red;
-            this.error.Location = new System.Drawing.Point(201, 204);
+            this.error.Location = new System.Drawing.Point(226, 204);
             this.error.Name = "error";
             this.error.Size = new System.Drawing.Size(0, 20);
             this.error.TabIndex = 5;
@@ -96,9 +98,9 @@ namespace DatabaseManager
             // 
             // Login
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(640, 360);
+            this.ClientSize = new System.Drawing.Size(720, 360);
             this.Controls.Add(this.error);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);

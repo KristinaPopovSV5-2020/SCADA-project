@@ -119,6 +119,7 @@
     <None Include="Properties\DataSources\Models.DigitalInput.datasource" />
     <None Include="Properties\DataSources\Models.DigitalOutput.datasource" />
     <None Include="Properties\DataSources\Models.Tag.datasource" />
+    <None Include="Properties\DataSources\Models.User.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

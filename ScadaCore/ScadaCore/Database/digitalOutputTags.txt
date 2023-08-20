@@ -1,3 +1,2 @@
-3bd7805c-ef0e-4b3e-9a8d-87ca6d616b4c|aa|adresa|0
-dc5a3406-85c5-4c46-ae55-c28fcecf2a31|jj|adresa|0
-5377448e-576e-4ac8-aad2-c652163a4423|jj|adresa|0
+name3|description|address8|100
+name6|description|address6|100

@@ -66,12 +66,15 @@
     <Content Include="Database\analogOutputTags.txt" />
     <Content Include="Database\digitalInputTags.txt" />
     <Content Include="Database\digitalOutputTags.txt" />
+    <Content Include="Database\logs.txt" />
     <Content Include="Database\users.txt" />
     <Content Include="ScadaService.svc" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IAlarmDisplay.cs" />
+    <Compile Include="ILogin.cs" />
+    <Compile Include="IReportManager.cs" />
     <Compile Include="IRTU.cs" />
     <Compile Include="IDbManager.cs" />
     <Compile Include="ITrending.cs" />

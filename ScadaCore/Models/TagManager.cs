@@ -9,8 +9,11 @@ namespace Models
     public class TagManager
     {
         public Dictionary<string, Tag> tags = new Dictionary<string, Tag>();
+        public List<Log> logs = new List<Log>();
         public AlarmManager alarmManager;
         string path;
+        RealTimeDriver rtu;
+        SimulationDriver simulationDriver;
 
 
         public TagManager()
@@ -18,14 +21,17 @@ namespace Models
 
         }
 
-        public TagManager(AlarmManager alarmManager, string path)
+        public TagManager(AlarmManager alarmManager, string path, RealTimeDriver rtu, SimulationDriver simulationDriver)
         {
             this.path = path;
             this.alarmManager = alarmManager;
+            this.rtu = rtu;
+            this.simulationDriver = simulationDriver;
             LoadAIFromFile();
             LoadAOFromFile();
             LoadDIFromFile();
             LoadDOFromFile();
+            LoadLogsFromFile();
         }
 
         public void LoadDIFromFile()
@@ -35,7 +41,12 @@ namespace Models
             foreach (string line in lines)
             {
                 string[] parts = line.Split('|');
-                tags.Add(parts[0], new DigitalInput(parts[0], parts[1], parts[2], new Driver(), int.Parse(parts[4]), bool.Parse(parts[5]), double.Parse(parts[6])));
+                Driver driver;
+                if (parts[3] == "r")
+                    driver = rtu;
+                else
+                    driver = simulationDriver;
+                tags.Add(parts[0], new DigitalInput(parts[0], parts[1], parts[2], driver, int.Parse(parts[4]), bool.Parse(parts[5]), double.Parse(parts[6])));
             }
         }
 
@@ -57,7 +68,12 @@ namespace Models
             foreach (string line in lines)
             {
                 string[] parts = line.Split('|');
-                tags.Add(parts[0], new AnalogInput(parts[0], parts[1], parts[2], new Driver(), int.Parse(parts[4]), bool.Parse(parts[5]), alarmManager.findAlarmsForTag(parts[0]), double.Parse(parts[6]), double.Parse(parts[7]), parts[8], double.Parse(parts[9])));
+                Driver driver;
+                if (parts[3] == "r")
+                    driver = rtu;
+                else
+                    driver = simulationDriver;
+                tags.Add(parts[0], new AnalogInput(parts[0], parts[1], parts[2], driver, int.Parse(parts[4]), bool.Parse(parts[5]), alarmManager.findAlarmsForTag(parts[0]), double.Parse(parts[6]), double.Parse(parts[7]), parts[8], double.Parse(parts[9])));
             }
         }
 
@@ -149,6 +165,30 @@ namespace Models
         }
 
 
+        public void WriteToLog(Tag tag,double value)
+        {
+            using (StreamWriter writer = File.AppendText(this.path + "/Database/logs.txt"))
+            {
+                string type = "";
+                if (tag is AnalogInput)
+                    type = "ai";
+                else
+                    type = "di";
+                writer.WriteLine(tag.TagName+"|"+value+"|"+DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")+"|"+type);
+            }
+        }
+
+        public void LoadLogsFromFile()
+        {
+            string[] lines = File.ReadAllLines(this.path + "/Database/logs.txt");
+
+            foreach (string line in lines)
+            {
+                string[] parts = line.Split('|');
+                DateTime time = DateTime.ParseExact(parts[2], "yyyy-MM-dd HH:mm:ss", null);
+                logs.Add(new Log(parts[0],double.Parse(parts[1]),time,parts[3]));
+            }
+        }
     }
 
 }

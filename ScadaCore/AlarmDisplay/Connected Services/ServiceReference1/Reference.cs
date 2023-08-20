@@ -9,238 +9,7 @@
 //------------------------------------------------------------------------------
 
 namespace AlarmDisplay.ServiceReference1 {
-    using System.Runtime.Serialization;
-    using System;
     
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Tag", Namespace="http://schemas.datacontract.org/2004/07/Models")]
-    [System.SerializableAttribute()]
-    public partial class Tag : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string descriptionField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string ioAddressField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string tagNameField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string description {
-            get {
-                return this.descriptionField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.descriptionField, value) != true)) {
-                    this.descriptionField = value;
-                    this.RaisePropertyChanged("description");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string ioAddress {
-            get {
-                return this.ioAddressField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ioAddressField, value) != true)) {
-                    this.ioAddressField = value;
-                    this.RaisePropertyChanged("ioAddress");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string tagName {
-            get {
-                return this.tagNameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.tagNameField, value) != true)) {
-                    this.tagNameField = value;
-                    this.RaisePropertyChanged("tagName");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Alarm", Namespace="http://schemas.datacontract.org/2004/07/Models")]
-    [System.SerializableAttribute()]
-    public partial class Alarm : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string alarmIdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private double limitField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string priorityField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string tagIdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private double tagValueField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.DateTime timeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private AlarmDisplay.ServiceReference1.TypeOfAlarm typeField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string alarmId {
-            get {
-                return this.alarmIdField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.alarmIdField, value) != true)) {
-                    this.alarmIdField = value;
-                    this.RaisePropertyChanged("alarmId");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public double limit {
-            get {
-                return this.limitField;
-            }
-            set {
-                if ((this.limitField.Equals(value) != true)) {
-                    this.limitField = value;
-                    this.RaisePropertyChanged("limit");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string priority {
-            get {
-                return this.priorityField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.priorityField, value) != true)) {
-                    this.priorityField = value;
-                    this.RaisePropertyChanged("priority");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string tagId {
-            get {
-                return this.tagIdField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.tagIdField, value) != true)) {
-                    this.tagIdField = value;
-                    this.RaisePropertyChanged("tagId");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public double tagValue {
-            get {
-                return this.tagValueField;
-            }
-            set {
-                if ((this.tagValueField.Equals(value) != true)) {
-                    this.tagValueField = value;
-                    this.RaisePropertyChanged("tagValue");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.DateTime time {
-            get {
-                return this.timeField;
-            }
-            set {
-                if ((this.timeField.Equals(value) != true)) {
-                    this.timeField = value;
-                    this.RaisePropertyChanged("time");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public AlarmDisplay.ServiceReference1.TypeOfAlarm type {
-            get {
-                return this.typeField;
-            }
-            set {
-                if ((this.typeField.Equals(value) != true)) {
-                    this.typeField = value;
-                    this.RaisePropertyChanged("type");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="TypeOfAlarm", Namespace="http://schemas.datacontract.org/2004/07/Models")]
-    public enum TypeOfAlarm : int {
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        LOW = 0,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        HIGH = 1,
-    }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference1.IRTU")]
@@ -321,17 +90,23 @@ namespace AlarmDisplay.ServiceReference1 {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference1.IDbManager")]
     public interface IDbManager {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDbManager/DoWork", ReplyAction="http://tempuri.org/IDbManager/DoWorkResponse")]
-        void DoWork();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDbManager/DoWork", ReplyAction="http://tempuri.org/IDbManager/DoWorkResponse")]
-        System.Threading.Tasks.Task DoWorkAsync();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDbManager/AddTag", ReplyAction="http://tempuri.org/IDbManager/AddTagResponse")]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Models.InputTag))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Models.DigitalInput))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Models.AnalogInput))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Models.OutputTag))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Models.DigitalOutput))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Models.AnalogOutput))]
+        bool AddTag(Models.Tag tag, bool realTimeOn);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDbManager/AddTag", ReplyAction="http://tempuri.org/IDbManager/AddTagResponse")]
-        void AddTag(AlarmDisplay.ServiceReference1.Tag tag);
+        System.Threading.Tasks.Task<bool> AddTagAsync(Models.Tag tag, bool realTimeOn);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDbManager/AddTag", ReplyAction="http://tempuri.org/IDbManager/AddTagResponse")]
-        System.Threading.Tasks.Task AddTagAsync(AlarmDisplay.ServiceReference1.Tag tag);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDbManager/GetOutputTags", ReplyAction="http://tempuri.org/IDbManager/GetOutputTagsResponse")]
+        Models.Tag[] GetOutputTags();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDbManager/GetOutputTags", ReplyAction="http://tempuri.org/IDbManager/GetOutputTagsResponse")]
+        System.Threading.Tasks.Task<Models.Tag[]> GetOutputTagsAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -361,20 +136,20 @@ namespace AlarmDisplay.ServiceReference1 {
                 base(binding, remoteAddress) {
         }
         
-        public void DoWork() {
-            base.Channel.DoWork();
+        public bool AddTag(Models.Tag tag, bool realTimeOn) {
+            return base.Channel.AddTag(tag, realTimeOn);
         }
         
-        public System.Threading.Tasks.Task DoWorkAsync() {
-            return base.Channel.DoWorkAsync();
+        public System.Threading.Tasks.Task<bool> AddTagAsync(Models.Tag tag, bool realTimeOn) {
+            return base.Channel.AddTagAsync(tag, realTimeOn);
         }
         
-        public void AddTag(AlarmDisplay.ServiceReference1.Tag tag) {
-            base.Channel.AddTag(tag);
+        public Models.Tag[] GetOutputTags() {
+            return base.Channel.GetOutputTags();
         }
         
-        public System.Threading.Tasks.Task AddTagAsync(AlarmDisplay.ServiceReference1.Tag tag) {
-            return base.Channel.AddTagAsync(tag);
+        public System.Threading.Tasks.Task<Models.Tag[]> GetOutputTagsAsync() {
+            return base.Channel.GetOutputTagsAsync();
         }
     }
     
@@ -393,7 +168,7 @@ namespace AlarmDisplay.ServiceReference1 {
     public interface IAlarmDisplayCallback {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAlarmDisplay/showAlarmDisplay", ReplyAction="http://tempuri.org/IAlarmDisplay/showAlarmDisplayResponse")]
-        void showAlarmDisplay(AlarmDisplay.ServiceReference1.Alarm alarm);
+        void showAlarmDisplay(Models.Alarm alarm);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -430,6 +205,61 @@ namespace AlarmDisplay.ServiceReference1 {
         
         public System.Threading.Tasks.Task initializationAlarmDisplayAsync() {
             return base.Channel.initializationAlarmDisplayAsync();
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference1.ITrending", CallbackContract=typeof(AlarmDisplay.ServiceReference1.ITrendingCallback))]
+    public interface ITrending {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITrending/initTrending", ReplyAction="http://tempuri.org/ITrending/initTrendingResponse")]
+        void initTrending();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITrending/initTrending", ReplyAction="http://tempuri.org/ITrending/initTrendingResponse")]
+        System.Threading.Tasks.Task initTrendingAsync();
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface ITrendingCallback {
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ITrending/addTagValue")]
+        void addTagValue(string tagName, double value);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface ITrendingChannel : AlarmDisplay.ServiceReference1.ITrending, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class TrendingClient : System.ServiceModel.DuplexClientBase<AlarmDisplay.ServiceReference1.ITrending>, AlarmDisplay.ServiceReference1.ITrending {
+        
+        public TrendingClient(System.ServiceModel.InstanceContext callbackInstance) : 
+                base(callbackInstance) {
+        }
+        
+        public TrendingClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName) : 
+                base(callbackInstance, endpointConfigurationName) {
+        }
+        
+        public TrendingClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, string remoteAddress) : 
+                base(callbackInstance, endpointConfigurationName, remoteAddress) {
+        }
+        
+        public TrendingClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(callbackInstance, endpointConfigurationName, remoteAddress) {
+        }
+        
+        public TrendingClient(System.ServiceModel.InstanceContext callbackInstance, System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(callbackInstance, binding, remoteAddress) {
+        }
+        
+        public void initTrending() {
+            base.Channel.initTrending();
+        }
+        
+        public System.Threading.Tasks.Task initTrendingAsync() {
+            return base.Channel.initTrendingAsync();
         }
     }
 }
