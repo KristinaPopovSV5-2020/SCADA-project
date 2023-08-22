@@ -7,49 +7,13 @@
     <InitialValue>0</InitialValue>
     <Driver xsi:type="RealTimeDriver">
       <AddrValues>
+        <double>42.341802689405995</double>
         <double>0</double>
         <double>0</double>
         <double>0</double>
         <double>0</double>
         <double>0</double>
-        <double>0</double>
-        <double>0</double>
-        <double>0</double>
-        <double>0</double>
-        <double>0</double>
-      </AddrValues>
-    </Driver>
-    <ScanTime>3</ScanTime>
-    <Scan>true</Scan>
-    <Alarms>
-      <Alarm>
-        <AlarmId>88d7cb8c-a277-4f05-9716-475dc6a6cdd7</AlarmId>
-        <TagId>name4</TagId>
-        <Time>0001-01-01T00:00:00</Time>
-        <Type>Med</Type>
-        <Limit>200</Limit>
-        <Priority>1</Priority>
-        <TagValue>0</TagValue>
-      </Alarm>
-    </Alarms>
-    <LowLimit>20</LowLimit>
-    <HighLimit>80</HighLimit>
-    <Units>units</Units>
-  </Tag>
-  <Tag xsi:type="AnalogInput">
-    <TagName>name10</TagName>
-    <Description>description</Description>
-    <IOAddress>address3</IOAddress>
-    <InitialValue>0</InitialValue>
-    <Driver xsi:type="RealTimeDriver">
-      <AddrValues>
-        <double>0</double>
-        <double>0</double>
-        <double>0</double>
-        <double>0</double>
-        <double>0</double>
-        <double>0</double>
-        <double>0</double>
+        <double>54.4124776005803</double>
         <double>0</double>
         <double>0</double>
         <double>0</double>
@@ -63,23 +27,87 @@
     <Units>units</Units>
   </Tag>
   <Tag xsi:type="AnalogInput">
-    <TagName>name11</TagName>
+    <TagName>name7</TagName>
     <Description>description</Description>
-    <IOAddress>address5</IOAddress>
+    <IOAddress>address7</IOAddress>
     <InitialValue>0</InitialValue>
     <Driver xsi:type="RealTimeDriver">
       <AddrValues>
+        <double>42.341802689405995</double>
         <double>0</double>
         <double>0</double>
         <double>0</double>
         <double>0</double>
         <double>0</double>
-        <double>0</double>
-        <double>0</double>
+        <double>54.4124776005803</double>
         <double>0</double>
         <double>0</double>
         <double>0</double>
       </AddrValues>
+    </Driver>
+    <ScanTime>3</ScanTime>
+    <Scan>true</Scan>
+    <Alarms />
+    <LowLimit>20</LowLimit>
+    <HighLimit>80</HighLimit>
+    <Units>units</Units>
+  </Tag>
+  <Tag xsi:type="AnalogInput">
+    <TagName>name8</TagName>
+    <Description>description</Description>
+    <IOAddress>address8</IOAddress>
+    <InitialValue>0</InitialValue>
+    <Driver xsi:type="RealTimeDriver">
+      <AddrValues>
+        <double>42.341802689405995</double>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+        <double>54.4124776005803</double>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+      </AddrValues>
+    </Driver>
+    <ScanTime>3</ScanTime>
+    <Scan>true</Scan>
+    <Alarms />
+    <LowLimit>20</LowLimit>
+    <HighLimit>80</HighLimit>
+    <Units>units</Units>
+  </Tag>
+  <Tag xsi:type="AnalogInput">
+    <TagName>name10</TagName>
+    <Description>description</Description>
+    <IOAddress>address10</IOAddress>
+    <InitialValue>0</InitialValue>
+    <Driver xsi:type="SimulationDriver">
+      <TagValues>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+      </TagValues>
+      <Addresses>
+        <string>address1</string>
+        <string>address2</string>
+        <string>address3</string>
+        <string>address4</string>
+        <string>address5</string>
+        <string>address6</string>
+        <string>address7</string>
+        <string>address8</string>
+        <string>address9</string>
+        <string>address10</string>
+      </Addresses>
     </Driver>
     <ScanTime>3</ScanTime>
     <Scan>true</Scan>
@@ -91,7 +119,7 @@
   <Tag xsi:type="AnalogOutput">
     <TagName>name5</TagName>
     <Description>description</Description>
-    <IOAddress>address7</IOAddress>
+    <IOAddress>address5</IOAddress>
     <InitialValue>200</InitialValue>
     <LowLimit>20</LowLimit>
     <HighLimit>300</HighLimit>
@@ -104,13 +132,13 @@
     <InitialValue>0</InitialValue>
     <Driver xsi:type="RealTimeDriver">
       <AddrValues>
+        <double>42.341802689405995</double>
         <double>0</double>
         <double>0</double>
         <double>0</double>
         <double>0</double>
         <double>0</double>
-        <double>0</double>
-        <double>0</double>
+        <double>54.4124776005803</double>
         <double>0</double>
         <double>0</double>
         <double>0</double>
@@ -126,13 +154,13 @@
     <InitialValue>0</InitialValue>
     <Driver xsi:type="RealTimeDriver">
       <AddrValues>
+        <double>42.341802689405995</double>
         <double>0</double>
         <double>0</double>
         <double>0</double>
         <double>0</double>
         <double>0</double>
-        <double>0</double>
-        <double>0</double>
+        <double>54.4124776005803</double>
         <double>0</double>
         <double>0</double>
         <double>0</double>
@@ -144,7 +172,7 @@
   <Tag xsi:type="DigitalOutput">
     <TagName>name3</TagName>
     <Description>description</Description>
-    <IOAddress>address8</IOAddress>
+    <IOAddress>address3</IOAddress>
     <InitialValue>100</InitialValue>
   </Tag>
   <Tag xsi:type="DigitalOutput">
@@ -152,5 +180,11 @@
     <Description>description</Description>
     <IOAddress>address6</IOAddress>
     <InitialValue>100</InitialValue>
+  </Tag>
+  <Tag xsi:type="DigitalOutput">
+    <TagName>name9</TagName>
+    <Description>aa</Description>
+    <IOAddress>address9</IOAddress>
+    <InitialValue>0</InitialValue>
   </Tag>
 </ArrayOfTag>

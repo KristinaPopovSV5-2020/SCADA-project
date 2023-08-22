@@ -399,6 +399,12 @@
   <wsdl:message name="IDbManager_AddTag_OutputMessage">
     <wsdl:part name="parameters" element="tns:AddTagResponse" />
   </wsdl:message>
+  <wsdl:message name="IDbManager_Register_InputMessage">
+    <wsdl:part name="parameters" element="tns:Register" />
+  </wsdl:message>
+  <wsdl:message name="IDbManager_Register_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RegisterResponse" />
+  </wsdl:message>
   <wsdl:message name="IDbManager_GetAnalogOutputTags_InputMessage">
     <wsdl:part name="parameters" element="tns:GetAnalogOutputTags" />
   </wsdl:message>
@@ -547,6 +553,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IDbManager/AddTag" message="tns:IDbManager_AddTag_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IDbManager/AddTagResponse" message="tns:IDbManager_AddTag_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="Register">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDbManager/Register" message="tns:IDbManager_Register_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDbManager/RegisterResponse" message="tns:IDbManager_Register_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="GetAnalogOutputTags">
       <wsdl:input wsaw:Action="http://tempuri.org/IDbManager/GetAnalogOutputTags" message="tns:IDbManager_GetAnalogOutputTags_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IDbManager/GetAnalogOutputTagsResponse" message="tns:IDbManager_GetAnalogOutputTags_OutputMessage" />
@@ -675,6 +685,15 @@
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="AddTag">
       <soap:operation soapAction="http://tempuri.org/IDbManager/AddTag" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Register">
+      <soap:operation soapAction="http://tempuri.org/IDbManager/Register" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -908,7 +927,7 @@
       <wsa10:EndpointReference>
         <wsa10:Address>http://localhost:58039/ScadaService.svc/alarmDisplay</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>DESKTOP-3V82Q53\User</Upn>
+          <Upn>MASHA-PC\suput</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>
@@ -917,7 +936,7 @@
       <wsa10:EndpointReference>
         <wsa10:Address>http://localhost:58039/ScadaService.svc/trending</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>DESKTOP-3V82Q53\User</Upn>
+          <Upn>MASHA-PC\suput</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>

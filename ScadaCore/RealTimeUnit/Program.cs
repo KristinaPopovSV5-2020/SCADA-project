@@ -26,12 +26,12 @@ namespace RealTimeUnit
 
             while (true)
             {
-                int randomNumberAdd = random.Next(1, addresses.Count + 1);
+                int randomNumberAdd = random.Next(0, addresses.Count - 1);
                 address = addresses[randomNumberAdd];
 
                 double randomNumber = random.NextDouble() * (high_limit - low_limit) + low_limit;
 
-                Console.WriteLine("Sending " + randomNumber + "from RTU to Service on address " + address);
+                Console.WriteLine("Sending " + randomNumber + " from RTU to Service on address " + address);
                 service.sendToService(address, randomNumber);
 
                 Thread.Sleep(5000);

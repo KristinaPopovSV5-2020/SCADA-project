@@ -13,8 +13,8 @@ namespace Models
         public List<Log> logs = new List<Log>();
         public AlarmManager alarmManager;
         string path;
-        RealTimeDriver rtu;
-        SimulationDriver simulationDriver;
+        public static RealTimeDriver rtu = new RealTimeDriver();
+        public static SimulationDriver simulationDriver = new SimulationDriver();
         static object locker = new object();
 
         public TagManager()
@@ -22,18 +22,16 @@ namespace Models
 
         }
 
-        public TagManager(AlarmManager alarmManager, string path, RealTimeDriver rtu, SimulationDriver simulationDriver)
+        public TagManager(AlarmManager alarmManager, string path)
         {
             this.path = path;
             this.alarmManager = alarmManager;
-            this.rtu = rtu;
-            this.simulationDriver = simulationDriver;
-            //LoadAIFromFile();
-            //LoadAOFromFile();
-            //LoadDIFromFile();
-            //LoadDOFromFile();
+            LoadAIFromFile();
+            LoadAOFromFile();
+            LoadDIFromFile();
+            LoadDOFromFile();
             LoadLogsFromFile();
-            XmlDeserialisation();
+            //XmlDeserialisation();
         }
         public void XmlDeserialisation()
         {
@@ -52,26 +50,6 @@ namespace Models
                     if (tagsList != null)
                     {
                         tags = tagsList.ToDictionary(tag => tag.TagName);
-                    }
-                    foreach (var tag in tags.Values)
-                    {
-                        if (tag is InputTag) {
-                            InputTag inputTag = (InputTag)tag;
-                            if (inputTag.Driver is SimulationDriver)
-                                simulationDriver = (SimulationDriver)inputTag.Driver;
-                            break;
-                        }
-
-                    }
-                    foreach (var tag in tags.Values)
-                    {
-                        if (tag is InputTag) {
-                            InputTag inputTag = (InputTag)tag;
-                            if (inputTag.Driver is RealTimeDriver)
-                                rtu = (RealTimeDriver)inputTag.Driver;
-                            break;
-                        }
-
                     }
                 }
             }
@@ -125,7 +103,7 @@ namespace Models
                     driver = rtu;
                 else
                     driver = simulationDriver;
-                tags.Add(parts[0], new AnalogInput(parts[0], parts[1], parts[2], driver, int.Parse(parts[4]), bool.Parse(parts[5]), alarmManager.findAlarmsForTag(parts[0]), double.Parse(parts[6]), double.Parse(parts[7]), parts[8], double.Parse(parts[9])));
+                tags.Add(parts[0], new AnalogInput(parts[0], parts[1], parts[2], driver, int.Parse(parts[4]), bool.Parse(parts[5]), new List<Alarm>(), double.Parse(parts[6]), double.Parse(parts[7]), parts[8], double.Parse(parts[9])));
             }
         }
 

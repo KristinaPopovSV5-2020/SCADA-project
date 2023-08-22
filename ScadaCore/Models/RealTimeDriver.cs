@@ -54,11 +54,6 @@ namespace Models
             get { return addrValues.Values.ToList(); }
         }
 
-        public Dictionary<string, double> AddrValuesDict
-        {
-            get { return addrValues; }
-            
-        }
 
         public void AddNewAddress(string address)
         {

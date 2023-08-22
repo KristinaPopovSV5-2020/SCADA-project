@@ -102,6 +102,12 @@ namespace RealTimeUnit.ServiceReference1 {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDbManager/AddTag", ReplyAction="http://tempuri.org/IDbManager/AddTagResponse")]
         System.Threading.Tasks.Task<bool> AddTagAsync(Models.Tag tag, bool realTimeOn);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDbManager/Register", ReplyAction="http://tempuri.org/IDbManager/RegisterResponse")]
+        bool Register(string username, string password);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDbManager/Register", ReplyAction="http://tempuri.org/IDbManager/RegisterResponse")]
+        System.Threading.Tasks.Task<bool> RegisterAsync(string username, string password);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDbManager/GetAnalogOutputTags", ReplyAction="http://tempuri.org/IDbManager/GetAnalogOutputTagsResponse")]
         System.Collections.Generic.List<Models.AnalogOutput> GetAnalogOutputTags();
         
@@ -151,10 +157,10 @@ namespace RealTimeUnit.ServiceReference1 {
         System.Threading.Tasks.Task newAlarmAsync(Models.Alarm alarm);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDbManager/deleteAlarm", ReplyAction="http://tempuri.org/IDbManager/deleteAlarmResponse")]
-        void deleteAlarm(string alarmId);
+        void deleteAlarm(string alarmId, string tagId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDbManager/deleteAlarm", ReplyAction="http://tempuri.org/IDbManager/deleteAlarmResponse")]
-        System.Threading.Tasks.Task deleteAlarmAsync(string alarmId);
+        System.Threading.Tasks.Task deleteAlarmAsync(string alarmId, string tagId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDbManager/findAlarm", ReplyAction="http://tempuri.org/IDbManager/findAlarmResponse")]
         System.Collections.Generic.List<Models.Alarm> findAlarm(string tagId);
@@ -202,6 +208,14 @@ namespace RealTimeUnit.ServiceReference1 {
         
         public System.Threading.Tasks.Task<bool> AddTagAsync(Models.Tag tag, bool realTimeOn) {
             return base.Channel.AddTagAsync(tag, realTimeOn);
+        }
+        
+        public bool Register(string username, string password) {
+            return base.Channel.Register(username, password);
+        }
+        
+        public System.Threading.Tasks.Task<bool> RegisterAsync(string username, string password) {
+            return base.Channel.RegisterAsync(username, password);
         }
         
         public System.Collections.Generic.List<Models.AnalogOutput> GetAnalogOutputTags() {
@@ -268,12 +282,12 @@ namespace RealTimeUnit.ServiceReference1 {
             return base.Channel.newAlarmAsync(alarm);
         }
         
-        public void deleteAlarm(string alarmId) {
-            base.Channel.deleteAlarm(alarmId);
+        public void deleteAlarm(string alarmId, string tagId) {
+            base.Channel.deleteAlarm(alarmId, tagId);
         }
         
-        public System.Threading.Tasks.Task deleteAlarmAsync(string alarmId) {
-            return base.Channel.deleteAlarmAsync(alarmId);
+        public System.Threading.Tasks.Task deleteAlarmAsync(string alarmId, string tagId) {
+            return base.Channel.deleteAlarmAsync(alarmId, tagId);
         }
         
         public System.Collections.Generic.List<Models.Alarm> findAlarm(string tagId) {

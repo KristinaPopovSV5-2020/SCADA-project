@@ -21,6 +21,8 @@ namespace ScadaCore
        
 
         static RealTimeDriver rtu = new RealTimeDriver();
+        public static SimulationDriver simulationDriver = new SimulationDriver();
+
         static string currentPath = System.Web.Hosting.HostingEnvironment.ApplicationPhysicalPath;
 
         public static AlarmManager alarmManager = new AlarmManager(currentPath);
@@ -28,7 +30,6 @@ namespace ScadaCore
         public static UserManager userManager = new UserManager(currentPath);
 
         static ITrendingCB trending = null;
-        public static SimulationDriver simulationDriver = new SimulationDriver();
 
         static IAlarmDisplayCallback alarmProxy = null;
 
@@ -145,6 +146,7 @@ namespace ScadaCore
 
                 }
 
+
                 //provera za alarm da li se dogodio
                 if (tagManager.tags[tagName] is AnalogInput)
                 {
@@ -177,7 +179,9 @@ namespace ScadaCore
                 }
 
                 tagManager.WriteToLog(tagManager.tags[tagName], value);
-                trending.addTagValue(tagName, value);
+                tagManager.XmlSerialization();
+                if (trending != null)
+                    trending.addTagValue(tagName, value);
 
                 Thread.Sleep(1000*(tagManager.tags[tagName] as InputTag).ScanTime);
             }
@@ -186,8 +190,7 @@ namespace ScadaCore
         public void processOutputTag(object tag)
         {
             string tagName = (string)tag;
-
-            //nesto
+            tagManager.XmlSerialization();
 
         }
 
@@ -291,7 +294,7 @@ namespace ScadaCore
         {
             tagManager.tags[tagId].InitialValue = value;
             tagManager.WriteToLog(tagManager.tags[tagId], value);
-            tagManager.XmlSerialization();
+            processTag(tagId);
         }
 
         public void newAlarm(Alarm alarm)
