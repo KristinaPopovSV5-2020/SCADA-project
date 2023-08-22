@@ -3,10 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Web;
+using System.Xml.Serialization;
 
 namespace Models
 {
     [DataContract]
+    [XmlInclude(typeof(AnalogInput))]
+    [XmlInclude(typeof(AnalogOutput))]
+    [XmlInclude(typeof(DigitalInput))]
+    [XmlInclude(typeof(DigitalOutput))]
+    [XmlInclude(typeof(InputTag))]
+    [XmlInclude(typeof(OutputTag))]
     [KnownType(typeof(InputTag))]
     [KnownType(typeof(OutputTag))]
     [KnownType(typeof(DigitalInput))]

@@ -45,6 +45,7 @@ namespace DatabaseManager
         private void addTag_Click(object sender, EventArgs e)
         {
             AddTagForm newForm = new AddTagForm();
+            newForm.FormClosed += NewFormOutput_FormClosed;
             newForm.Show();
         }
 
@@ -76,7 +77,6 @@ namespace DatabaseManager
 
                 string tagId = selectedItem.SubItems[0].Text;
                 service.OnOffScan(tagId);
-                hint.Text = tagId;
             }
             listViewInputTags.Items.Clear();
             loadInputTags();
@@ -139,18 +139,23 @@ namespace DatabaseManager
 
         private void updateBtn_Click(object sender, EventArgs e)
         {
-            if (listViewTags.SelectedItems.Count > 0)
+            if (listViewTags.SelectedItems.Count == 0)
             {
+                MessageBox.Show("Select the output tag you want.");
+            } else { 
                 ListViewItem selectedItem = listViewTags.SelectedItems[0];
 
-                string tagId = selectedItem.SubItems[0].Text;
-                hint.Text = tagId;
-                service.UpdateValue(tagId, 6969);
-
+                    string tagId = selectedItem.SubItems[0].Text;
+                    if (!double.TryParse(textBoxValue.Text.ToString(), out _))
+                    {
+                        MessageBox.Show("Invalid update value.");
+                    } else
+                    {
+                        service.UpdateValue(tagId, double.Parse(textBoxValue.Text));
+                    }
             }
             listViewTags.Items.Clear();
             loadOutputTags();
-
         }
 
         private void label3_Click(object sender, EventArgs e)
@@ -161,22 +166,8 @@ namespace DatabaseManager
         private void buttonNewAlarm_Click(object sender, EventArgs e)
         {
             AddNewAlarm newForm = new AddNewAlarm(tagNameAlarm.Text);
+            newForm.FormClosed += NewFormAlarms_FormClosed;
             newForm.Show();
-            listViewAlarms.Items.Clear();
-
-            tagNameAlarm.Text = listViewInputTags.SelectedItems[0].SubItems[0].Text;
-
-            buttonNewAlarm.Enabled = true;
-
-            List<Alarm> found = service.findAlarm(listViewInputTags.SelectedItems[0].SubItems[0].Text);
-            foreach (Alarm alarm in found)
-            {
-                ListViewItem item = new ListViewItem(alarm.AlarmId);
-                item.SubItems.Add(alarm.Type.ToString());
-                item.SubItems.Add(alarm.Priority);
-
-                listViewAlarms.Items.Add(item);
-            }
 
         }
 
@@ -211,7 +202,7 @@ namespace DatabaseManager
             if (listViewAlarms.SelectedItems.Count > 0)
             {
                 string alarmId = listViewAlarms.SelectedItems[0].SubItems[0].Text;
-                service.deleteAlarm(alarmId);
+                service.deleteAlarm(alarmId, tagNameAlarm.Text);
                 listViewAlarms.Items.Clear();
 
                 tagNameAlarm.Text = listViewInputTags.SelectedItems[0].SubItems[0].Text;
@@ -284,6 +275,43 @@ namespace DatabaseManager
             }
             listViewInputTags.Items.Clear();
             loadInputTags();
+        }
+
+        private void buttonNewTag2_Click(object sender, EventArgs e)
+        {
+            AddTagForm newForm = new AddTagForm();
+            newForm.FormClosed += NewFormInput_FormClosed;
+            newForm.Show();
+        }
+        private void NewFormInput_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            listViewInputTags.Items.Clear();
+            loadInputTags();
+        }
+
+        private void NewFormOutput_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            listViewTags.Items.Clear();
+            loadOutputTags();
+        }
+
+        private void NewFormAlarms_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            listViewAlarms.Items.Clear();
+
+            tagNameAlarm.Text = listViewInputTags.SelectedItems[0].SubItems[0].Text;
+
+            buttonNewAlarm.Enabled = true;
+
+            List<Alarm> found = service.findAlarm(listViewInputTags.SelectedItems[0].SubItems[0].Text);
+            foreach (Alarm alarm in found)
+            {
+                ListViewItem item = new ListViewItem(alarm.AlarmId);
+                item.SubItems.Add(alarm.Type.ToString());
+                item.SubItems.Add(alarm.Priority);
+
+                listViewAlarms.Items.Add(item);
+            }
         }
     }
 }

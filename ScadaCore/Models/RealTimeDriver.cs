@@ -49,7 +49,12 @@ namespace Models
 
         }
 
-        public Dictionary<string, double> AddrValues
+        public List<double> AddrValues
+        {
+            get { return addrValues.Values.ToList(); }
+        }
+
+        public Dictionary<string, double> AddrValuesDict
         {
             get { return addrValues; }
             

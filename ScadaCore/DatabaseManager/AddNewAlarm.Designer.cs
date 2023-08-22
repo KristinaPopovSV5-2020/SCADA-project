@@ -37,11 +37,12 @@ namespace DatabaseManager
             this.comboBoxType = new System.Windows.Forms.ComboBox();
             this.textBoxLimit = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.labelAlarmAdded = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(326, 351);
+            this.buttonSave.Location = new System.Drawing.Point(324, 327);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(122, 45);
             this.buttonSave.TabIndex = 0;
@@ -116,11 +117,21 @@ namespace DatabaseManager
             this.label4.TabIndex = 7;
             this.label4.Text = "Limit";
             // 
+            // labelAlarmAdded
+            // 
+            this.labelAlarmAdded.AutoSize = true;
+            this.labelAlarmAdded.Location = new System.Drawing.Point(334, 388);
+            this.labelAlarmAdded.Name = "labelAlarmAdded";
+            this.labelAlarmAdded.Size = new System.Drawing.Size(103, 20);
+            this.labelAlarmAdded.TabIndex = 8;
+            this.labelAlarmAdded.Text = "Alarm added.";
+            // 
             // AddNewAlarm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.labelAlarmAdded);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.textBoxLimit);
             this.Controls.Add(this.comboBoxType);
@@ -146,5 +157,6 @@ namespace DatabaseManager
         private System.Windows.Forms.ComboBox comboBoxType;
         private System.Windows.Forms.TextBox textBoxLimit;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label labelAlarmAdded;
     }
 }

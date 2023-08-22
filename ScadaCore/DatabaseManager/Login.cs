@@ -19,6 +19,7 @@ namespace DatabaseManager
             InitializeComponent();
             this.error.Text = "Wrong username or password";
             this.error.Visible = false;
+            success.Visible = false;
         }
 
         private void loginBtn_Click(object sender, EventArgs e)
@@ -75,6 +76,19 @@ namespace DatabaseManager
         private void username_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            bool saved = service.Register(username.Text, password.Text);
+            if(saved)
+            {
+                success.Visible = true;
+            } else
+            {
+                MessageBox.Show("Username is already taken.");
+            }
+            
         }
     }
 }
