@@ -10,64 +10,70 @@ namespace Models
     [DataContract]
     public class RealTimeDriver: Driver
     {
-        [DataMember]
-        private int numberOfAddresses = 10;
+        
 
         [DataMember]
-        private Dictionary<string, double> addrValues;
+        private List<string> addresses;
+
+        [DataMember]
+        private List<double> tagValues;
 
 
         public RealTimeDriver()
         {
-            addrValues = new Dictionary<string, double>();
-            for (int i = 1; i <= numberOfAddresses; i++)
-            {
-                addrValues["address" + i] = 0;
-            }
+            addresses = new List<string>();
+            tagValues = new List<double>();
         }
 
         public double ReadValue(string address)
         {
-            if (addrValues.ContainsKey(address))
+            try
             {
-                return addrValues[address];
-
+                int i = addresses.IndexOf(address);
+                return tagValues[i];
             }
-            
-             return -3333;
-           
+            catch (Exception)
+            {
+                return -3333;
+            }
+
         }
 
         public bool WriteValue(string address, double value)
         {
-            if (addrValues.ContainsKey(address))
+            try
             {
-                addrValues[address] = value;
+                int i = addresses.IndexOf(address);
+                tagValues[i] = value;
                 return true;
             }
-            return false;
+            catch (Exception)
+            {
+                return false;
+            }
 
         }
 
         public List<double> AddrValues
         {
-            get { return addrValues.Values.ToList(); }
+            get { return tagValues; }
         }
 
 
         public void AddNewAddress(string address)
         {
-            this.addrValues.Add(address, 0);
+            this.addresses.Add(address);
+            this.tagValues.Add(0);
         }
 
         public List<string> getAvailableAddress()
         {
-             return addrValues.Keys.ToList<string>();
+             return addresses;
         }
 
         public bool checkAddressAvailable(string a)
         {
-            if (addrValues.ContainsKey(a))
+            if (addresses.Contains(a))
             {
                 return true;
             }
