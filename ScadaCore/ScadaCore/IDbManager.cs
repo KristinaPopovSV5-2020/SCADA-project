@@ -10,6 +10,9 @@ namespace ScadaCore
     {
         [OperationContract]
         bool AddTag(Tag tag, bool realTimeOn);
+
+        [OperationContract]
+        bool Register(string username, string password);
         [OperationContract]
         List<AnalogOutput> GetAnalogOutputTags();
         [OperationContract]
@@ -29,7 +32,7 @@ namespace ScadaCore
         [OperationContract]
         void newAlarm(Alarm alarm);
         [OperationContract]
-        void deleteAlarm(string alarmId);
+        void deleteAlarm(string alarmId, string tagId);
         [OperationContract]
         List<Alarm> findAlarm(string tagId);
 

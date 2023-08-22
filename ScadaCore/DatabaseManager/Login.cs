@@ -76,5 +76,11 @@ namespace DatabaseManager
         {
 
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            bool saved = service.Register(username.Text, password.Text);
+            
+        }
     }
 }

@@ -35,6 +35,7 @@ namespace DatabaseManager
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.error = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // username
@@ -57,10 +58,10 @@ namespace DatabaseManager
             // 
             // loginBtn
             // 
-            this.loginBtn.Location = new System.Drawing.Point(295, 235);
+            this.loginBtn.Location = new System.Drawing.Point(217, 235);
             this.loginBtn.Margin = new System.Windows.Forms.Padding(2);
             this.loginBtn.Name = "loginBtn";
-            this.loginBtn.Size = new System.Drawing.Size(101, 27);
+            this.loginBtn.Size = new System.Drawing.Size(124, 35);
             this.loginBtn.TabIndex = 2;
             this.loginBtn.Text = "login";
             this.loginBtn.UseVisualStyleBackColor = true;
@@ -90,17 +91,29 @@ namespace DatabaseManager
             // 
             this.error.AutoSize = true;
             this.error.ForeColor = System.Drawing.Color.Red;
-            this.error.Location = new System.Drawing.Point(226, 204);
+            this.error.Location = new System.Drawing.Point(230, 204);
             this.error.Name = "error";
             this.error.Size = new System.Drawing.Size(0, 20);
             this.error.TabIndex = 5;
             this.error.Click += new System.EventHandler(this.label3_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(345, 235);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(131, 35);
+            this.button1.TabIndex = 6;
+            this.button1.Text = "register";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(720, 360);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.error);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -124,5 +137,6 @@ namespace DatabaseManager
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label error;
+        private System.Windows.Forms.Button button1;
     }
 }

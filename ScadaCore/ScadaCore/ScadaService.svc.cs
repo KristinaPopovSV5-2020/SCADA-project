@@ -32,9 +32,6 @@ namespace ScadaCore
 
         static IAlarmDisplayCallback alarmProxy = null;
 
-        static Dictionary<string, Alarm> alarmConfig = new Dictionary<string, Alarm>();
-
-
 
         public bool addAddress(string address)
         {
@@ -202,7 +199,7 @@ namespace ScadaCore
                 {
                     InputTag iTag = (InputTag)tag;
                     if (realTimeOn)
-                        iTag.Driver = simulationDriver;
+                        iTag.Driver = rtu;
                     else
                         iTag.Driver = simulationDriver;
                     tagManager.SaveNewTagToFile(iTag);
@@ -213,8 +210,10 @@ namespace ScadaCore
                     tagManager.SaveNewTagToFile(oTag);
 
                 }
+                tagManager.XmlDeserialisation();
                 return true;
             }
+
         }
 
 
@@ -227,6 +226,7 @@ namespace ScadaCore
         {
             Tag selectedTag = tagManager.tags[tagId];
             tagManager.tags.Remove(tagId);
+            tagManager.XmlDeserialisation();
         }
 
         public List<AnalogOutput> GetAnalogOutputTags()
@@ -275,36 +275,39 @@ namespace ScadaCore
                 digitalInput.Scan = !digitalInput.Scan;
                 tagManager.tags[tagId] = digitalInput;
             }
+            tagManager.XmlDeserialisation();
         }
 
         public void UpdateValue(string tagId, double value)
         {
             tagManager.tags[tagId].InitialValue = value;
+            tagManager.WriteToLog(tagManager.tags[tagId], value);
+            tagManager.XmlDeserialisation();
         }
 
         public void newAlarm(Alarm alarm)
         {
-            alarmConfig.Add(alarm.AlarmId, alarm);
+            AnalogInput input = (AnalogInput)tagManager.tags[alarm.TagId];
+            input.Alarms.Add(alarm);
+            tagManager.tags[alarm.TagId] = input;
+            tagManager.XmlDeserialisation();
         }
 
-        public void deleteAlarm(string alarmId)
+        public void deleteAlarm(string alarmId, string tagId)
         {
-            alarmConfig.Remove(alarmId);
+            AnalogInput input = (AnalogInput)tagManager.tags[tagId];
+            foreach (Alarm alarm in input.Alarms)
+            {
+                if (alarm.AlarmId == alarmId) input.Alarms.Remove(alarm);
+                break;
+            }
+            tagManager.XmlDeserialisation();
         }
 
         public List<Alarm> findAlarm(string tagId)
         {
-            List<Alarm> foundAlarms = new List<Alarm>();
-
-            foreach (Alarm alarm in alarmConfig.Values)
-            {
-                if (alarm.TagId == tagId)
-                {
-                    foundAlarms.Add(alarm);
-                }
-            }
-
-            return foundAlarms;
+            AnalogInput input = (AnalogInput)tagManager.tags[tagId];
+            return input.Alarms;
         }
 
         public static void XmlSerialisation()
@@ -312,7 +315,7 @@ namespace ScadaCore
             using (var writer = new StreamWriter("/Database/scadaConfig.xml"))
             {
                 var serializer = new XmlSerializer(typeof(List<Tag>));
-                serializer.Serialize(writer, tags.Values.ToList());
+                serializer.Serialize(writer, tagManager.tags.Values.ToList());
                 Console.WriteLine("Serialization finished");
             }
 
@@ -373,6 +376,19 @@ namespace ScadaCore
                 .Where(log => log.tagName == tagId)
                 .OrderBy(log => log.value)
                 .ToList();
+        }
+
+        public bool Register(string username, string password)
+        {
+            if (userManager.users.Any(user => user.username == username))
+            {
+                return false; 
+            }
+
+            User newUser = new User(username, password);
+            userManager.users.Add(newUser);
+
+            return true; 
         }
     }
 }

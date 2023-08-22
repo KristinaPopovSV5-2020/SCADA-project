@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Web;
+using System.Xml.Serialization;
 
 namespace Models
 {
@@ -14,7 +15,7 @@ namespace Models
         string path;
         RealTimeDriver rtu;
         SimulationDriver simulationDriver;
-
+        static object locker = new object();
 
         public TagManager()
         {
@@ -27,13 +28,64 @@ namespace Models
             this.alarmManager = alarmManager;
             this.rtu = rtu;
             this.simulationDriver = simulationDriver;
-            LoadAIFromFile();
-            LoadAOFromFile();
-            LoadDIFromFile();
-            LoadDOFromFile();
+            //LoadAIFromFile();
+            //LoadAOFromFile();
+            //LoadDIFromFile();
+            //LoadDOFromFile();
             LoadLogsFromFile();
+            XmlDeserialisation();
         }
+        public void XmlDeserialisation()
+        {
+            if (!File.Exists(this.path + "Database/scadaConfig.xml"))
+            {
+                simulationDriver = new SimulationDriver();
+                return;
+            }
+            using (var reader = new StreamReader(this.path + "Database/scadaConfig.xml"))
+            {
+                XmlSerializer serializer = new XmlSerializer(typeof(List<Tag>));
+                var tagsList = (List<Tag>)serializer.Deserialize(reader);
 
+                lock (locker)
+                {
+                    if (tagsList != null)
+                    {
+                        tags = tagsList.ToDictionary(tag => tag.TagName);
+                    }
+                    foreach (var tag in tags.Values)
+                    {
+                        if (tag is InputTag) {
+                            InputTag inputTag = (InputTag)tag;
+                            if (inputTag.Driver is SimulationDriver)
+                                simulationDriver = (SimulationDriver)inputTag.Driver;
+                            break;
+                        }
+
+                    }
+                    foreach (var tag in tags.Values)
+                    {
+                        if (tag is InputTag) {
+                            InputTag inputTag = (InputTag)tag;
+                            if (inputTag.Driver is RealTimeDriver)
+                                rtu = (RealTimeDriver)inputTag.Driver;
+                            break;
+                        }
+
+                    }
+                }
+            }
+        }
+        public void XmlSerialization()
+        {
+            using (var writer = new StreamWriter(this.path + "/Database/scadaConfig.xml"))
+            {
+                var serializer = new XmlSerializer(typeof(List<Tag>));
+                serializer.Serialize(writer, tags.Values.ToList());
+                Console.WriteLine("Serialization finished");
+            }
+
+        }
         public void LoadDIFromFile()
         {
             string[] lines = File.ReadAllLines(this.path + "/Database/digitalInputTags.txt");

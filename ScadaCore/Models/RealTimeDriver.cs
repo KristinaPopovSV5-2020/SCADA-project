@@ -49,9 +49,9 @@ namespace Models
 
         }
 
-        public Dictionary<string, double> AddrValues
+        public List<double> AddrValues
         {
-            get { return addrValues; }
+            get { return addrValues.Values.ToList(); }
         }
 
         public List<string> getAvailableAddress()

@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfTag xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Tag xsi:type="AnalogInput">
+    <TagName>name4</TagName>
+    <Description>description</Description>
+    <IOAddress>address4</IOAddress>
+    <InitialValue>0</InitialValue>
+    <Driver xsi:type="RealTimeDriver">
+      <AddrValues>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+      </AddrValues>
+    </Driver>
+    <ScanTime>3</ScanTime>
+    <Scan>true</Scan>
+    <Alarms/>
+    <LowLimit>20</LowLimit>
+    <HighLimit>80</HighLimit>
+    <Units>units</Units>
+  </Tag>
+  <Tag xsi:type="AnalogInput">
+    <TagName>name10</TagName>
+    <Description>description</Description>
+    <IOAddress>address3</IOAddress>
+    <InitialValue>0</InitialValue>
+    <Driver xsi:type="RealTimeDriver">
+      <AddrValues>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+      </AddrValues>
+    </Driver>
+    <ScanTime>3</ScanTime>
+    <Scan>true</Scan>
+    <Alarms />
+    <LowLimit>20</LowLimit>
+    <HighLimit>80</HighLimit>
+    <Units>units</Units>
+  </Tag>
+  <Tag xsi:type="AnalogInput">
+    <TagName>name11</TagName>
+    <Description>description</Description>
+    <IOAddress>address5</IOAddress>
+    <InitialValue>0</InitialValue>
+    <Driver xsi:type="RealTimeDriver">
+      <AddrValues>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+      </AddrValues>
+    </Driver>
+    <ScanTime>3</ScanTime>
+    <Scan>true</Scan>
+    <Alarms />
+    <LowLimit>20</LowLimit>
+    <HighLimit>80</HighLimit>
+    <Units>units</Units>
+  </Tag>
+  <Tag xsi:type="AnalogOutput">
+    <TagName>name5</TagName>
+    <Description>description</Description>
+    <IOAddress>address7</IOAddress>
+    <InitialValue>200</InitialValue>
+    <LowLimit>20</LowLimit>
+    <HighLimit>300</HighLimit>
+    <Units>units</Units>
+  </Tag>
+  <Tag xsi:type="DigitalInput">
+    <TagName>name1</TagName>
+    <Description>description</Description>
+    <IOAddress>address1</IOAddress>
+    <InitialValue>0</InitialValue>
+    <Driver xsi:type="RealTimeDriver">
+      <AddrValues>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+      </AddrValues>
+    </Driver>
+    <ScanTime>1</ScanTime>
+    <Scan>true</Scan>
+  </Tag>
+  <Tag xsi:type="DigitalInput">
+    <TagName>name2</TagName>
+    <Description>description</Description>
+    <IOAddress>address2</IOAddress>
+    <InitialValue>0</InitialValue>
+    <Driver xsi:type="RealTimeDriver">
+      <AddrValues>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+      </AddrValues>
+    </Driver>
+    <ScanTime>2</ScanTime>
+    <Scan>false</Scan>
+  </Tag>
+  <Tag xsi:type="DigitalOutput">
+    <TagName>name3</TagName>
+    <Description>description</Description>
+    <IOAddress>address8</IOAddress>
+    <InitialValue>100</InitialValue>
+  </Tag>
+  <Tag xsi:type="DigitalOutput">
+    <TagName>name6</TagName>
+    <Description>description</Description>
+    <IOAddress>address6</IOAddress>
+    <InitialValue>100</InitialValue>
+  </Tag>
+</ArrayOfTag>

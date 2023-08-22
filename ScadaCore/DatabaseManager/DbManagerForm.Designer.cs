@@ -37,8 +37,6 @@ namespace DatabaseManager
             this.listViewInputTags = new System.Windows.Forms.ListView();
             this.onOffBtn = new System.Windows.Forms.Button();
             this.updateBtn = new System.Windows.Forms.Button();
-            this.hint = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.tagNameAlarm = new System.Windows.Forms.Label();
             this.listViewAlarms = new System.Windows.Forms.ListView();
@@ -46,14 +44,16 @@ namespace DatabaseManager
             this.buttonDeleteAlarm = new System.Windows.Forms.Button();
             this.deleteInputTag = new System.Windows.Forms.Button();
             this.buttonAlarms = new System.Windows.Forms.Button();
+            this.buttonNewTag2 = new System.Windows.Forms.Button();
+            this.textBoxValue = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // addTag
             // 
-            this.addTag.Location = new System.Drawing.Point(124, 21);
+            this.addTag.Location = new System.Drawing.Point(332, 46);
             this.addTag.Margin = new System.Windows.Forms.Padding(2);
             this.addTag.Name = "addTag";
-            this.addTag.Size = new System.Drawing.Size(142, 36);
+            this.addTag.Size = new System.Drawing.Size(164, 36);
             this.addTag.TabIndex = 1;
             this.addTag.Text = "+ New Tag";
             this.addTag.UseVisualStyleBackColor = true;
@@ -62,7 +62,7 @@ namespace DatabaseManager
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(47, 80);
+            this.label1.Location = new System.Drawing.Point(47, 54);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(97, 20);
@@ -72,7 +72,7 @@ namespace DatabaseManager
             // listViewTags
             // 
             this.listViewTags.HideSelection = false;
-            this.listViewTags.Location = new System.Drawing.Point(51, 113);
+            this.listViewTags.Location = new System.Drawing.Point(51, 87);
             this.listViewTags.Name = "listViewTags";
             this.listViewTags.Size = new System.Drawing.Size(445, 229);
             this.listViewTags.TabIndex = 3;
@@ -80,7 +80,7 @@ namespace DatabaseManager
             // 
             // deleteTagBtn
             // 
-            this.deleteTagBtn.Location = new System.Drawing.Point(332, 348);
+            this.deleteTagBtn.Location = new System.Drawing.Point(332, 322);
             this.deleteTagBtn.Name = "deleteTagBtn";
             this.deleteTagBtn.Size = new System.Drawing.Size(164, 36);
             this.deleteTagBtn.TabIndex = 4;
@@ -91,7 +91,7 @@ namespace DatabaseManager
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(552, 90);
+            this.label2.Location = new System.Drawing.Point(552, 54);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(85, 20);
@@ -101,7 +101,7 @@ namespace DatabaseManager
             // listViewInputTags
             // 
             this.listViewInputTags.HideSelection = false;
-            this.listViewInputTags.Location = new System.Drawing.Point(556, 113);
+            this.listViewInputTags.Location = new System.Drawing.Point(556, 87);
             this.listViewInputTags.Name = "listViewInputTags";
             this.listViewInputTags.Size = new System.Drawing.Size(448, 229);
             this.listViewInputTags.TabIndex = 6;
@@ -110,7 +110,7 @@ namespace DatabaseManager
             // 
             // onOffBtn
             // 
-            this.onOffBtn.Location = new System.Drawing.Point(556, 348);
+            this.onOffBtn.Location = new System.Drawing.Point(556, 322);
             this.onOffBtn.Margin = new System.Windows.Forms.Padding(2);
             this.onOffBtn.Name = "onOffBtn";
             this.onOffBtn.Size = new System.Drawing.Size(134, 40);
@@ -121,7 +121,7 @@ namespace DatabaseManager
             // 
             // updateBtn
             // 
-            this.updateBtn.Location = new System.Drawing.Point(51, 347);
+            this.updateBtn.Location = new System.Drawing.Point(51, 321);
             this.updateBtn.Name = "updateBtn";
             this.updateBtn.Size = new System.Drawing.Size(128, 37);
             this.updateBtn.TabIndex = 8;
@@ -129,30 +129,10 @@ namespace DatabaseManager
             this.updateBtn.UseVisualStyleBackColor = true;
             this.updateBtn.Click += new System.EventHandler(this.updateBtn_Click);
             // 
-            // hint
-            // 
-            this.hint.AutoSize = true;
-            this.hint.Location = new System.Drawing.Point(552, 37);
-            this.hint.Name = "hint";
-            this.hint.Size = new System.Drawing.Size(51, 20);
-            this.hint.TabIndex = 9;
-            this.hint.Text = "label3";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Cursor = System.Windows.Forms.Cursors.Default;
-            this.label3.Location = new System.Drawing.Point(47, 29);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(53, 20);
-            this.label3.TabIndex = 10;
-            this.label3.Text = "TAGS";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(47, 447);
+            this.label4.Location = new System.Drawing.Point(47, 415);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(130, 20);
             this.label4.TabIndex = 12;
@@ -161,7 +141,7 @@ namespace DatabaseManager
             // tagNameAlarm
             // 
             this.tagNameAlarm.AutoSize = true;
-            this.tagNameAlarm.Location = new System.Drawing.Point(183, 447);
+            this.tagNameAlarm.Location = new System.Drawing.Point(183, 415);
             this.tagNameAlarm.Name = "tagNameAlarm";
             this.tagNameAlarm.Size = new System.Drawing.Size(124, 20);
             this.tagNameAlarm.TabIndex = 13;
@@ -170,16 +150,16 @@ namespace DatabaseManager
             // listViewAlarms
             // 
             this.listViewAlarms.HideSelection = false;
-            this.listViewAlarms.Location = new System.Drawing.Point(51, 470);
+            this.listViewAlarms.Location = new System.Drawing.Point(51, 443);
             this.listViewAlarms.Name = "listViewAlarms";
-            this.listViewAlarms.Size = new System.Drawing.Size(586, 143);
+            this.listViewAlarms.Size = new System.Drawing.Size(586, 165);
             this.listViewAlarms.TabIndex = 14;
             this.listViewAlarms.UseCompatibleStateImageBehavior = false;
             this.listViewAlarms.SelectedIndexChanged += new System.EventHandler(this.listViewAlarms_SelectedIndexChanged);
             // 
             // buttonNewAlarm
             // 
-            this.buttonNewAlarm.Location = new System.Drawing.Point(656, 470);
+            this.buttonNewAlarm.Location = new System.Drawing.Point(656, 443);
             this.buttonNewAlarm.Name = "buttonNewAlarm";
             this.buttonNewAlarm.Size = new System.Drawing.Size(134, 40);
             this.buttonNewAlarm.TabIndex = 15;
@@ -189,7 +169,7 @@ namespace DatabaseManager
             // 
             // buttonDeleteAlarm
             // 
-            this.buttonDeleteAlarm.Location = new System.Drawing.Point(656, 525);
+            this.buttonDeleteAlarm.Location = new System.Drawing.Point(656, 498);
             this.buttonDeleteAlarm.Name = "buttonDeleteAlarm";
             this.buttonDeleteAlarm.Size = new System.Drawing.Size(134, 40);
             this.buttonDeleteAlarm.TabIndex = 16;
@@ -199,7 +179,7 @@ namespace DatabaseManager
             // 
             // deleteInputTag
             // 
-            this.deleteInputTag.Location = new System.Drawing.Point(840, 347);
+            this.deleteInputTag.Location = new System.Drawing.Point(840, 321);
             this.deleteInputTag.Name = "deleteInputTag";
             this.deleteInputTag.Size = new System.Drawing.Size(164, 40);
             this.deleteInputTag.TabIndex = 11;
@@ -209,7 +189,7 @@ namespace DatabaseManager
             // 
             // buttonAlarms
             // 
-            this.buttonAlarms.Location = new System.Drawing.Point(701, 348);
+            this.buttonAlarms.Location = new System.Drawing.Point(701, 322);
             this.buttonAlarms.Name = "buttonAlarms";
             this.buttonAlarms.Size = new System.Drawing.Size(129, 40);
             this.buttonAlarms.TabIndex = 17;
@@ -217,11 +197,31 @@ namespace DatabaseManager
             this.buttonAlarms.UseVisualStyleBackColor = true;
             this.buttonAlarms.Click += new System.EventHandler(this.buttonAlarms_Click);
             // 
+            // buttonNewTag2
+            // 
+            this.buttonNewTag2.Location = new System.Drawing.Point(840, 46);
+            this.buttonNewTag2.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonNewTag2.Name = "buttonNewTag2";
+            this.buttonNewTag2.Size = new System.Drawing.Size(164, 36);
+            this.buttonNewTag2.TabIndex = 18;
+            this.buttonNewTag2.Text = "+ New Tag";
+            this.buttonNewTag2.UseVisualStyleBackColor = true;
+            this.buttonNewTag2.Click += new System.EventHandler(this.buttonNewTag2_Click);
+            // 
+            // textBoxValue
+            // 
+            this.textBoxValue.Location = new System.Drawing.Point(185, 326);
+            this.textBoxValue.Name = "textBoxValue";
+            this.textBoxValue.Size = new System.Drawing.Size(139, 26);
+            this.textBoxValue.TabIndex = 19;
+            // 
             // DbManagerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1069, 643);
+            this.Controls.Add(this.textBoxValue);
+            this.Controls.Add(this.buttonNewTag2);
             this.Controls.Add(this.buttonAlarms);
             this.Controls.Add(this.buttonDeleteAlarm);
             this.Controls.Add(this.buttonNewAlarm);
@@ -229,8 +229,6 @@ namespace DatabaseManager
             this.Controls.Add(this.tagNameAlarm);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.deleteInputTag);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.hint);
             this.Controls.Add(this.updateBtn);
             this.Controls.Add(this.onOffBtn);
             this.Controls.Add(this.listViewInputTags);
@@ -257,8 +255,6 @@ namespace DatabaseManager
         private System.Windows.Forms.ListView listViewInputTags;
         private System.Windows.Forms.Button onOffBtn;
         private System.Windows.Forms.Button updateBtn;
-        private System.Windows.Forms.Label hint;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label tagNameAlarm;
         private System.Windows.Forms.ListView listViewAlarms;
@@ -266,5 +262,7 @@ namespace DatabaseManager
         private System.Windows.Forms.Button buttonDeleteAlarm;
         private System.Windows.Forms.Button deleteInputTag;
         private System.Windows.Forms.Button buttonAlarms;
+        private System.Windows.Forms.Button buttonNewTag2;
+        private System.Windows.Forms.TextBox textBoxValue;
     }
 }

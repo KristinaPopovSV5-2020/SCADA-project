@@ -399,6 +399,12 @@
   <wsdl:message name="IDbManager_AddTag_OutputMessage">
     <wsdl:part name="parameters" element="tns:AddTagResponse" />
   </wsdl:message>
+  <wsdl:message name="IDbManager_Register_InputMessage">
+    <wsdl:part name="parameters" element="tns:Register" />
+  </wsdl:message>
+  <wsdl:message name="IDbManager_Register_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RegisterResponse" />
+  </wsdl:message>
   <wsdl:message name="IDbManager_GetAnalogOutputTags_InputMessage">
     <wsdl:part name="parameters" element="tns:GetAnalogOutputTags" />
   </wsdl:message>
@@ -486,6 +492,48 @@
   <wsdl:message name="ITrending_addTagValue_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:addTagValue" />
   </wsdl:message>
+  <wsdl:message name="IReportManager_alarmsSpecifiedTimePeriodSortByPriority_InputMessage">
+    <wsdl:part name="parameters" element="tns:alarmsSpecifiedTimePeriodSortByPriority" />
+  </wsdl:message>
+  <wsdl:message name="IReportManager_alarmsSpecifiedTimePeriodSortByPriority_OutputMessage">
+    <wsdl:part name="parameters" element="tns:alarmsSpecifiedTimePeriodSortByPriorityResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReportManager_alarmsSpecifiedTimePeriodSortByTime_InputMessage">
+    <wsdl:part name="parameters" element="tns:alarmsSpecifiedTimePeriodSortByTime" />
+  </wsdl:message>
+  <wsdl:message name="IReportManager_alarmsSpecifiedTimePeriodSortByTime_OutputMessage">
+    <wsdl:part name="parameters" element="tns:alarmsSpecifiedTimePeriodSortByTimeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReportManager_alarmsSpecifiedPrioritySortByTime_InputMessage">
+    <wsdl:part name="parameters" element="tns:alarmsSpecifiedPrioritySortByTime" />
+  </wsdl:message>
+  <wsdl:message name="IReportManager_alarmsSpecifiedPrioritySortByTime_OutputMessage">
+    <wsdl:part name="parameters" element="tns:alarmsSpecifiedPrioritySortByTimeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReportManager_tagsSpecifiedTimePeriodSortByTime_InputMessage">
+    <wsdl:part name="parameters" element="tns:tagsSpecifiedTimePeriodSortByTime" />
+  </wsdl:message>
+  <wsdl:message name="IReportManager_tagsSpecifiedTimePeriodSortByTime_OutputMessage">
+    <wsdl:part name="parameters" element="tns:tagsSpecifiedTimePeriodSortByTimeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReportManager_lastValueOfAITagsSortByTime_InputMessage">
+    <wsdl:part name="parameters" element="tns:lastValueOfAITagsSortByTime" />
+  </wsdl:message>
+  <wsdl:message name="IReportManager_lastValueOfAITagsSortByTime_OutputMessage">
+    <wsdl:part name="parameters" element="tns:lastValueOfAITagsSortByTimeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReportManager_lastValueOfDITagsSortByTime_InputMessage">
+    <wsdl:part name="parameters" element="tns:lastValueOfDITagsSortByTime" />
+  </wsdl:message>
+  <wsdl:message name="IReportManager_lastValueOfDITagsSortByTime_OutputMessage">
+    <wsdl:part name="parameters" element="tns:lastValueOfDITagsSortByTimeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReportManager_tagValuesSpecificIdSortByValue_InputMessage">
+    <wsdl:part name="parameters" element="tns:tagValuesSpecificIdSortByValue" />
+  </wsdl:message>
+  <wsdl:message name="IReportManager_tagValuesSpecificIdSortByValue_OutputMessage">
+    <wsdl:part name="parameters" element="tns:tagValuesSpecificIdSortByValueResponse" />
+  </wsdl:message>
   <wsdl:portType name="IRTU">
     <wsdl:operation name="getAvailableAddresses">
       <wsdl:input wsaw:Action="http://tempuri.org/IRTU/getAvailableAddresses" message="tns:IRTU_getAvailableAddresses_InputMessage" />
@@ -504,6 +552,10 @@
     <wsdl:operation name="AddTag">
       <wsdl:input wsaw:Action="http://tempuri.org/IDbManager/AddTag" message="tns:IDbManager_AddTag_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IDbManager/AddTagResponse" message="tns:IDbManager_AddTag_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Register">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDbManager/Register" message="tns:IDbManager_Register_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDbManager/RegisterResponse" message="tns:IDbManager_Register_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetAnalogOutputTags">
       <wsdl:input wsaw:Action="http://tempuri.org/IDbManager/GetAnalogOutputTags" message="tns:IDbManager_GetAnalogOutputTags_InputMessage" />
@@ -569,6 +621,36 @@
       <wsdl:output wsaw:Action="http://tempuri.org/ITrending/addTagValue" message="tns:ITrending_addTagValue_OutputCallbackMessage" />
     </wsdl:operation>
   </wsdl:portType>
+  <wsdl:portType name="IReportManager">
+    <wsdl:operation name="alarmsSpecifiedTimePeriodSortByPriority">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReportManager/alarmsSpecifiedTimePeriodSortByPriority" message="tns:IReportManager_alarmsSpecifiedTimePeriodSortByPriority_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReportManager/alarmsSpecifiedTimePeriodSortByPriorityResponse" message="tns:IReportManager_alarmsSpecifiedTimePeriodSortByPriority_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="alarmsSpecifiedTimePeriodSortByTime">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReportManager/alarmsSpecifiedTimePeriodSortByTime" message="tns:IReportManager_alarmsSpecifiedTimePeriodSortByTime_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReportManager/alarmsSpecifiedTimePeriodSortByTimeResponse" message="tns:IReportManager_alarmsSpecifiedTimePeriodSortByTime_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="alarmsSpecifiedPrioritySortByTime">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReportManager/alarmsSpecifiedPrioritySortByTime" message="tns:IReportManager_alarmsSpecifiedPrioritySortByTime_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReportManager/alarmsSpecifiedPrioritySortByTimeResponse" message="tns:IReportManager_alarmsSpecifiedPrioritySortByTime_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="tagsSpecifiedTimePeriodSortByTime">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReportManager/tagsSpecifiedTimePeriodSortByTime" message="tns:IReportManager_tagsSpecifiedTimePeriodSortByTime_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReportManager/tagsSpecifiedTimePeriodSortByTimeResponse" message="tns:IReportManager_tagsSpecifiedTimePeriodSortByTime_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="lastValueOfAITagsSortByTime">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReportManager/lastValueOfAITagsSortByTime" message="tns:IReportManager_lastValueOfAITagsSortByTime_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReportManager/lastValueOfAITagsSortByTimeResponse" message="tns:IReportManager_lastValueOfAITagsSortByTime_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="lastValueOfDITagsSortByTime">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReportManager/lastValueOfDITagsSortByTime" message="tns:IReportManager_lastValueOfDITagsSortByTime_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReportManager/lastValueOfDITagsSortByTimeResponse" message="tns:IReportManager_lastValueOfDITagsSortByTime_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="tagValuesSpecificIdSortByValue">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReportManager/tagValuesSpecificIdSortByValue" message="tns:IReportManager_tagValuesSpecificIdSortByValue_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReportManager/tagValuesSpecificIdSortByValueResponse" message="tns:IReportManager_tagValuesSpecificIdSortByValue_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IRTU" type="tns:IRTU">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="getAvailableAddresses">
@@ -603,6 +685,15 @@
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="AddTag">
       <soap:operation soapAction="http://tempuri.org/IDbManager/AddTag" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Register">
+      <soap:operation soapAction="http://tempuri.org/IDbManager/Register" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -758,6 +849,72 @@
       </wsdl:output>
     </wsdl:operation>
   </wsdl:binding>
+  <wsdl:binding name="BasicHttpBinding_IReportManager" type="tns:IReportManager">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="alarmsSpecifiedTimePeriodSortByPriority">
+      <soap:operation soapAction="http://tempuri.org/IReportManager/alarmsSpecifiedTimePeriodSortByPriority" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="alarmsSpecifiedTimePeriodSortByTime">
+      <soap:operation soapAction="http://tempuri.org/IReportManager/alarmsSpecifiedTimePeriodSortByTime" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="alarmsSpecifiedPrioritySortByTime">
+      <soap:operation soapAction="http://tempuri.org/IReportManager/alarmsSpecifiedPrioritySortByTime" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="tagsSpecifiedTimePeriodSortByTime">
+      <soap:operation soapAction="http://tempuri.org/IReportManager/tagsSpecifiedTimePeriodSortByTime" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="lastValueOfAITagsSortByTime">
+      <soap:operation soapAction="http://tempuri.org/IReportManager/lastValueOfAITagsSortByTime" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="lastValueOfDITagsSortByTime">
+      <soap:operation soapAction="http://tempuri.org/IReportManager/lastValueOfDITagsSortByTime" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="tagValuesSpecificIdSortByValue">
+      <soap:operation soapAction="http://tempuri.org/IReportManager/tagValuesSpecificIdSortByValue" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
   <wsdl:service name="ScadaService">
     <wsdl:port name="BasicHttpBinding_IRTU" binding="tns:BasicHttpBinding_IRTU">
       <soap:address location="http://localhost:58039/ScadaService.svc/rtu" />
@@ -770,7 +927,7 @@
       <wsa10:EndpointReference>
         <wsa10:Address>http://localhost:58039/ScadaService.svc/alarmDisplay</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>DESKTOP-46SMTTS\zoric</Upn>
+          <Upn>MASHA-PC\suput</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>
@@ -779,9 +936,12 @@
       <wsa10:EndpointReference>
         <wsa10:Address>http://localhost:58039/ScadaService.svc/trending</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>DESKTOP-46SMTTS\zoric</Upn>
+          <Upn>MASHA-PC\suput</Upn>
         </Identity>
       </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="BasicHttpBinding_IReportManager" binding="tns:BasicHttpBinding_IReportManager">
+      <soap:address location="http://localhost:58039/ScadaService.svc/report" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>
