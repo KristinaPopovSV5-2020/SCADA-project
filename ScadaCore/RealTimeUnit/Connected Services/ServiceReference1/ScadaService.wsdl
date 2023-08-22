@@ -927,7 +927,7 @@
       <wsa10:EndpointReference>
         <wsa10:Address>http://localhost:58039/ScadaService.svc/alarmDisplay</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>MASHA-PC\suput</Upn>
+          <Upn>DESKTOP-46SMTTS\zoric</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>
@@ -936,7 +936,7 @@
       <wsa10:EndpointReference>
         <wsa10:Address>http://localhost:58039/ScadaService.svc/trending</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>MASHA-PC\suput</Upn>
+          <Upn>DESKTOP-46SMTTS\zoric</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>

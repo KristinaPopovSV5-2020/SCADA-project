@@ -16,6 +16,8 @@ namespace Models
         public static RealTimeDriver rtu = new RealTimeDriver();
         public static SimulationDriver simulationDriver = new SimulationDriver();
         static object locker = new object();
+        public List<string> addresses = new List<string>();
+        public List<double> values = new List<double>();
 
         public TagManager()
         {
@@ -26,20 +28,24 @@ namespace Models
         {
             this.path = path;
             this.alarmManager = alarmManager;
-            LoadAIFromFile();
-            LoadAOFromFile();
-            LoadDIFromFile();
-            LoadDOFromFile();
-            LoadLogsFromFile();
-            //XmlDeserialisation();
+            //LoadAIFromFile();
+            //LoadAOFromFile();
+            //LoadDIFromFile();
+            //LoadDOFromFile();
+            //LoadLogsFromFile();
+            XmlDeserialisation();
+            rtu.addresses = addresses;
+            rtu.tagValues = values;
+            simulationDriver.Addresses = addresses;
+            simulationDriver.TagValues = values;
         }
         public void XmlDeserialisation()
         {
-            if (!File.Exists(this.path + "Database/scadaConfig.xml"))
+           /* if (!File.Exists(this.path + "Database/scadaConfig.xml"))
             {
                 simulationDriver = new SimulationDriver();
                 return;
-            }
+            }*/
             using (var reader = new StreamReader(this.path + "Database/scadaConfig.xml"))
             {
                 XmlSerializer serializer = new XmlSerializer(typeof(List<Tag>));
@@ -51,17 +57,45 @@ namespace Models
                     {
                         tags = tagsList.ToDictionary(tag => tag.TagName);
                     }
+
+                    foreach (Tag tag in tags.Values)
+                    {
+                        if (tag is InputTag)
+                        {
+                            InputTag inputTag = (InputTag)tag;
+                            if (inputTag.Driver is SimulationDriver)
+                            {
+                                
+                                addresses = ((SimulationDriver)inputTag.Driver).Addresses;
+                                values = ((SimulationDriver)inputTag.Driver).TagValues;
+                                ((InputTag)tag).Driver = simulationDriver;
+                            }
+                            else
+                            {
+                                InputTag inputTag1 = (InputTag)tag;
+                                
+                                addresses = ((RealTimeDriver)inputTag1.Driver).addresses;
+                                values = ((RealTimeDriver)inputTag1.Driver).tagValues;
+                                ((InputTag)tag).Driver = rtu;
+                            }
+                        }
+
+                    }
                 }
             }
         }
         public void XmlSerialization()
         {
-            using (var writer = new StreamWriter(this.path + "/Database/scadaConfig.xml"))
+            try
             {
-                var serializer = new XmlSerializer(typeof(List<Tag>));
-                serializer.Serialize(writer, tags.Values.ToList());
-                Console.WriteLine("Serialization finished");
+                using (var writer = new StreamWriter(this.path + "/Database/scadaConfig.xml"))
+                {
+                    var serializer = new XmlSerializer(typeof(List<Tag>));
+                    serializer.Serialize(writer, tags.Values.ToList());
+                    Console.WriteLine("Serialization finished");
+                }
             }
+            catch { }
 
         }
         public void LoadDIFromFile()
@@ -197,15 +231,19 @@ namespace Models
 
         public void WriteToLog(Tag tag,double value)
         {
-            using (StreamWriter writer = File.AppendText(this.path + "/Database/logs.txt"))
+            try
             {
-                string type = "";
-                if (tag is AnalogInput)
-                    type = "ai";
-                else
-                    type = "di";
-                writer.WriteLine(tag.TagName+"|"+value+"|"+DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")+"|"+type);
+                using (StreamWriter writer = File.AppendText(this.path + "/Database/logs.txt"))
+                {
+                    string type = "";
+                    if (tag is AnalogInput)
+                        type = "ai";
+                    else
+                        type = "di";
+                    writer.WriteLine(tag.TagName + "|" + value + "|" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "|" + type);
+                }
             }
+            catch { }
         }
 
         public void LoadLogsFromFile()

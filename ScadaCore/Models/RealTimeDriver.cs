@@ -13,10 +13,10 @@ namespace Models
         
 
         [DataMember]
-        private List<string> addresses;
+        public List<string> addresses;
 
         [DataMember]
-        private List<double> tagValues;
+        public List<double> tagValues;
 
 
         public RealTimeDriver()
@@ -52,11 +52,6 @@ namespace Models
                 return false;
             }
 
-        }
-
-        public List<double> AddrValues
-        {
-            get { return tagValues; }
         }
 
 

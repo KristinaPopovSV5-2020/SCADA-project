@@ -21,15 +21,6 @@ namespace Models
 
         public SimulationDriver()
         {
-            this.addresses = new List<string>();
-            this.tagValues = new List<double>();
-
-            //inicijalizujemo adrese i vrednosti 
-            for (int i = 1; i <= numberOfAddresses; i++)
-            {
-                addresses.Add("address" + i);
-                tagValues.Add(0);
-            }
 
         }
 

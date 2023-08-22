@@ -18,10 +18,6 @@ namespace ScadaCore
     {
         static Dictionary<string, Thread> threads = new Dictionary<string, Thread>();
 
-       
-
-        static RealTimeDriver rtu = new RealTimeDriver();
-        public static SimulationDriver simulationDriver = new SimulationDriver();
 
         static string currentPath = System.Web.Hosting.HostingEnvironment.ApplicationPhysicalPath;
 
@@ -36,19 +32,19 @@ namespace ScadaCore
 
         public bool addAddress(string address)
         {
-            lock (rtu)
+            lock (TagManager.rtu)
             {
-                if (!rtu.checkAddressAvailable(address))
+                if (!TagManager.rtu.checkAddressAvailable(address))
                 {
-                    rtu.AddNewAddress(address);
+                    TagManager.rtu.AddNewAddress(address);
                     return true;
                 }
             }
-            lock (simulationDriver)
+            lock (TagManager.simulationDriver)
             {
-                if (!simulationDriver.checkAddressAvailable(address))
+                if (!TagManager.simulationDriver.checkAddressAvailable(address))
                 {
-                    simulationDriver.AddNewAddress(address);
+                    TagManager.simulationDriver.AddNewAddress(address);
                     return true;
                 }
             }
@@ -58,17 +54,17 @@ namespace ScadaCore
 
         public List<string> getAvailableAddresses()
         {
-            lock (rtu)
+            lock (TagManager.rtu)
             {
-                return rtu.getAvailableAddress();
+                return TagManager.rtu.getAvailableAddress();
             }
         }
 
         public void sendToService(string address, double value)
         {
-            lock (rtu)
+            lock (TagManager.rtu)
             {
-                rtu.WriteValue(address, value);
+                TagManager.rtu.WriteValue(address, value);
 
             }
             Tag ta = new Tag();
@@ -117,9 +113,9 @@ namespace ScadaCore
 
                 if ((tagManager.tags[tagName] as InputTag).Driver is RealTimeDriver)
                 {
-                    lock (rtu)
+                    lock (TagManager.rtu)
                     {
-                        value = rtu.ReadValue(tagManager.tags[tagName].IOAddress);
+                        value = TagManager.rtu.ReadValue(tagManager.tags[tagName].IOAddress);
                     }
 
                 }
@@ -129,17 +125,17 @@ namespace ScadaCore
                     //ako je simulacioni
                     if ((tagManager.tags[tagName] as InputTag).Scan == true) //ako je ukljuceno skeniranje
                     {
-                        lock (simulationDriver)
+                        lock (TagManager.simulationDriver)
                         {
-                            value = simulationDriver.ReadValue(tagManager.tags[tagName].IOAddress);
+                            value = TagManager.simulationDriver.ReadValue(tagManager.tags[tagName].IOAddress);
                         }
                     }
                     else
                     {
-                        lock (simulationDriver)
+                        lock (TagManager.simulationDriver)
                         {
-                            value = simulationDriver.ReadCurrentValue(tagManager.tags[tagName].IOAddress); 
-                            simulationDriver.WriteDefaultValue(tagManager.tags[tagName].IOAddress, 0);
+                            value = TagManager.simulationDriver.ReadCurrentValue(tagManager.tags[tagName].IOAddress);
+                            TagManager.simulationDriver.WriteDefaultValue(tagManager.tags[tagName].IOAddress, 0);
 
                         }
                     }
@@ -201,7 +197,7 @@ namespace ScadaCore
         
         public bool AddTag(Tag tag, bool realTimeOn)
         {
-            if (tagManager.tags.ContainsKey(tag.TagName) || simulationDriver.Addresses.Contains(tag.IOAddress)) return false;
+            if (tagManager.tags.ContainsKey(tag.TagName) || TagManager.simulationDriver.Addresses.Contains(tag.IOAddress)) return false;
 
             else
             {
@@ -210,9 +206,9 @@ namespace ScadaCore
                 {
                     InputTag iTag = (InputTag)tag;
                     if (realTimeOn)
-                        iTag.Driver = rtu;
+                        iTag.Driver = TagManager.rtu;
                     else
-                        iTag.Driver = simulationDriver;
+                        iTag.Driver = TagManager.simulationDriver;
                     addAddress(iTag.IOAddress);
                     tagManager.SaveNewTagToFile(iTag);
                 }
