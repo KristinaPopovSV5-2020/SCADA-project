@@ -18,7 +18,7 @@ namespace ScadaCore
     {
         static Dictionary<string, Thread> threads = new Dictionary<string, Thread>();
 
-        static Dictionary<int, string> realTimeUnits = new Dictionary<int, string>();
+       
 
         static RealTimeDriver rtu = new RealTimeDriver();
         static string currentPath = System.Web.Hosting.HostingEnvironment.ApplicationPhysicalPath;
@@ -37,9 +37,17 @@ namespace ScadaCore
         {
             lock (rtu)
             {
-                if (rtu.checkAddressAvailable(address))
+                if (!rtu.checkAddressAvailable(address))
                 {
-                    realTimeUnits[realTimeUnits.Count + 1] = address;
+                    rtu.AddNewAddress(address);
+                    return true;
+                }
+            }
+            lock (simulationDriver)
+            {
+                if (!simulationDriver.checkAddressAvailable(address))
+                {
+                    simulationDriver.AddNewAddress(address);
                     return true;
                 }
             }
@@ -202,6 +210,7 @@ namespace ScadaCore
                         iTag.Driver = rtu;
                     else
                         iTag.Driver = simulationDriver;
+                    addAddress(iTag.IOAddress);
                     tagManager.SaveNewTagToFile(iTag);
                 }
                 else

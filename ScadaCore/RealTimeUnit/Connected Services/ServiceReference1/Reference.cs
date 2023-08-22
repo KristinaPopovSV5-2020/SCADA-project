@@ -16,10 +16,10 @@ namespace RealTimeUnit.ServiceReference1 {
     public interface IRTU {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRTU/getAvailableAddresses", ReplyAction="http://tempuri.org/IRTU/getAvailableAddressesResponse")]
-        string[] getAvailableAddresses();
+        System.Collections.Generic.List<string> getAvailableAddresses();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRTU/getAvailableAddresses", ReplyAction="http://tempuri.org/IRTU/getAvailableAddressesResponse")]
-        System.Threading.Tasks.Task<string[]> getAvailableAddressesAsync();
+        System.Threading.Tasks.Task<System.Collections.Generic.List<string>> getAvailableAddressesAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRTU/sendToService", ReplyAction="http://tempuri.org/IRTU/sendToServiceResponse")]
         void sendToService(string address, double value);
@@ -61,11 +61,11 @@ namespace RealTimeUnit.ServiceReference1 {
                 base(binding, remoteAddress) {
         }
         
-        public string[] getAvailableAddresses() {
+        public System.Collections.Generic.List<string> getAvailableAddresses() {
             return base.Channel.getAvailableAddresses();
         }
         
-        public System.Threading.Tasks.Task<string[]> getAvailableAddressesAsync() {
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<string>> getAvailableAddressesAsync() {
             return base.Channel.getAvailableAddressesAsync();
         }
         
@@ -102,17 +102,71 @@ namespace RealTimeUnit.ServiceReference1 {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDbManager/AddTag", ReplyAction="http://tempuri.org/IDbManager/AddTagResponse")]
         System.Threading.Tasks.Task<bool> AddTagAsync(Models.Tag tag, bool realTimeOn);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDbManager/GetOutputTags", ReplyAction="http://tempuri.org/IDbManager/GetOutputTagsResponse")]
-        Models.Tag[] GetOutputTags();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDbManager/GetAnalogOutputTags", ReplyAction="http://tempuri.org/IDbManager/GetAnalogOutputTagsResponse")]
+        System.Collections.Generic.List<Models.AnalogOutput> GetAnalogOutputTags();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDbManager/GetOutputTags", ReplyAction="http://tempuri.org/IDbManager/GetOutputTagsResponse")]
-        System.Threading.Tasks.Task<Models.Tag[]> GetOutputTagsAsync();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDbManager/GetAnalogOutputTags", ReplyAction="http://tempuri.org/IDbManager/GetAnalogOutputTagsResponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.List<Models.AnalogOutput>> GetAnalogOutputTagsAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDbManager/GetAnalogInputTags", ReplyAction="http://tempuri.org/IDbManager/GetAnalogInputTagsResponse")]
+        System.Collections.Generic.List<Models.AnalogInput> GetAnalogInputTags();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDbManager/GetAnalogInputTags", ReplyAction="http://tempuri.org/IDbManager/GetAnalogInputTagsResponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.List<Models.AnalogInput>> GetAnalogInputTagsAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDbManager/GetDigitalInputTags", ReplyAction="http://tempuri.org/IDbManager/GetDigitalInputTagsResponse")]
+        System.Collections.Generic.List<Models.DigitalInput> GetDigitalInputTags();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDbManager/GetDigitalInputTags", ReplyAction="http://tempuri.org/IDbManager/GetDigitalInputTagsResponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.List<Models.DigitalInput>> GetDigitalInputTagsAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDbManager/GetDigitalOutputTags", ReplyAction="http://tempuri.org/IDbManager/GetDigitalOutputTagsResponse")]
+        System.Collections.Generic.List<Models.DigitalOutput> GetDigitalOutputTags();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDbManager/GetDigitalOutputTags", ReplyAction="http://tempuri.org/IDbManager/GetDigitalOutputTagsResponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.List<Models.DigitalOutput>> GetDigitalOutputTagsAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDbManager/DeleteTag", ReplyAction="http://tempuri.org/IDbManager/DeleteTagResponse")]
+        void DeleteTag(string tagId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDbManager/DeleteTag", ReplyAction="http://tempuri.org/IDbManager/DeleteTagResponse")]
+        System.Threading.Tasks.Task DeleteTagAsync(string tagId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDbManager/OnOffScan", ReplyAction="http://tempuri.org/IDbManager/OnOffScanResponse")]
+        void OnOffScan(string tagId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDbManager/OnOffScan", ReplyAction="http://tempuri.org/IDbManager/OnOffScanResponse")]
+        System.Threading.Tasks.Task OnOffScanAsync(string tagId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDbManager/UpdateValue", ReplyAction="http://tempuri.org/IDbManager/UpdateValueResponse")]
+        void UpdateValue(string tagId, double value);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDbManager/UpdateValue", ReplyAction="http://tempuri.org/IDbManager/UpdateValueResponse")]
+        System.Threading.Tasks.Task UpdateValueAsync(string tagId, double value);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDbManager/newAlarm", ReplyAction="http://tempuri.org/IDbManager/newAlarmResponse")]
+        void newAlarm(Models.Alarm alarm);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDbManager/newAlarm", ReplyAction="http://tempuri.org/IDbManager/newAlarmResponse")]
+        System.Threading.Tasks.Task newAlarmAsync(Models.Alarm alarm);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDbManager/deleteAlarm", ReplyAction="http://tempuri.org/IDbManager/deleteAlarmResponse")]
+        void deleteAlarm(string alarmId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDbManager/deleteAlarm", ReplyAction="http://tempuri.org/IDbManager/deleteAlarmResponse")]
+        System.Threading.Tasks.Task deleteAlarmAsync(string alarmId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDbManager/findAlarm", ReplyAction="http://tempuri.org/IDbManager/findAlarmResponse")]
+        System.Collections.Generic.List<Models.Alarm> findAlarm(string tagId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDbManager/findAlarm", ReplyAction="http://tempuri.org/IDbManager/findAlarmResponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.List<Models.Alarm>> findAlarmAsync(string tagId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDbManager/GetAllUsers", ReplyAction="http://tempuri.org/IDbManager/GetAllUsersResponse")]
-        Models.User[] GetAllUsers();
+        System.Collections.Generic.List<Models.User> GetAllUsers();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDbManager/GetAllUsers", ReplyAction="http://tempuri.org/IDbManager/GetAllUsersResponse")]
-        System.Threading.Tasks.Task<Models.User[]> GetAllUsersAsync();
+        System.Threading.Tasks.Task<System.Collections.Generic.List<Models.User>> GetAllUsersAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -150,19 +204,91 @@ namespace RealTimeUnit.ServiceReference1 {
             return base.Channel.AddTagAsync(tag, realTimeOn);
         }
         
-        public Models.Tag[] GetOutputTags() {
-            return base.Channel.GetOutputTags();
+        public System.Collections.Generic.List<Models.AnalogOutput> GetAnalogOutputTags() {
+            return base.Channel.GetAnalogOutputTags();
         }
         
-        public System.Threading.Tasks.Task<Models.Tag[]> GetOutputTagsAsync() {
-            return base.Channel.GetOutputTagsAsync();
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<Models.AnalogOutput>> GetAnalogOutputTagsAsync() {
+            return base.Channel.GetAnalogOutputTagsAsync();
         }
         
-        public Models.User[] GetAllUsers() {
+        public System.Collections.Generic.List<Models.AnalogInput> GetAnalogInputTags() {
+            return base.Channel.GetAnalogInputTags();
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<Models.AnalogInput>> GetAnalogInputTagsAsync() {
+            return base.Channel.GetAnalogInputTagsAsync();
+        }
+        
+        public System.Collections.Generic.List<Models.DigitalInput> GetDigitalInputTags() {
+            return base.Channel.GetDigitalInputTags();
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<Models.DigitalInput>> GetDigitalInputTagsAsync() {
+            return base.Channel.GetDigitalInputTagsAsync();
+        }
+        
+        public System.Collections.Generic.List<Models.DigitalOutput> GetDigitalOutputTags() {
+            return base.Channel.GetDigitalOutputTags();
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<Models.DigitalOutput>> GetDigitalOutputTagsAsync() {
+            return base.Channel.GetDigitalOutputTagsAsync();
+        }
+        
+        public void DeleteTag(string tagId) {
+            base.Channel.DeleteTag(tagId);
+        }
+        
+        public System.Threading.Tasks.Task DeleteTagAsync(string tagId) {
+            return base.Channel.DeleteTagAsync(tagId);
+        }
+        
+        public void OnOffScan(string tagId) {
+            base.Channel.OnOffScan(tagId);
+        }
+        
+        public System.Threading.Tasks.Task OnOffScanAsync(string tagId) {
+            return base.Channel.OnOffScanAsync(tagId);
+        }
+        
+        public void UpdateValue(string tagId, double value) {
+            base.Channel.UpdateValue(tagId, value);
+        }
+        
+        public System.Threading.Tasks.Task UpdateValueAsync(string tagId, double value) {
+            return base.Channel.UpdateValueAsync(tagId, value);
+        }
+        
+        public void newAlarm(Models.Alarm alarm) {
+            base.Channel.newAlarm(alarm);
+        }
+        
+        public System.Threading.Tasks.Task newAlarmAsync(Models.Alarm alarm) {
+            return base.Channel.newAlarmAsync(alarm);
+        }
+        
+        public void deleteAlarm(string alarmId) {
+            base.Channel.deleteAlarm(alarmId);
+        }
+        
+        public System.Threading.Tasks.Task deleteAlarmAsync(string alarmId) {
+            return base.Channel.deleteAlarmAsync(alarmId);
+        }
+        
+        public System.Collections.Generic.List<Models.Alarm> findAlarm(string tagId) {
+            return base.Channel.findAlarm(tagId);
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<Models.Alarm>> findAlarmAsync(string tagId) {
+            return base.Channel.findAlarmAsync(tagId);
+        }
+        
+        public System.Collections.Generic.List<Models.User> GetAllUsers() {
             return base.Channel.GetAllUsers();
         }
         
-        public System.Threading.Tasks.Task<Models.User[]> GetAllUsersAsync() {
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<Models.User>> GetAllUsersAsync() {
             return base.Channel.GetAllUsersAsync();
         }
     }
@@ -283,47 +409,47 @@ namespace RealTimeUnit.ServiceReference1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReportManager/alarmsSpecifiedTimePeriodSortByPriority", ReplyAction="http://tempuri.org/IReportManager/alarmsSpecifiedTimePeriodSortByPriorityResponse" +
             "")]
-        Models.Alarm[] alarmsSpecifiedTimePeriodSortByPriority(System.DateTime start, System.DateTime end);
+        System.Collections.Generic.List<Models.Alarm> alarmsSpecifiedTimePeriodSortByPriority(System.DateTime start, System.DateTime end);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReportManager/alarmsSpecifiedTimePeriodSortByPriority", ReplyAction="http://tempuri.org/IReportManager/alarmsSpecifiedTimePeriodSortByPriorityResponse" +
             "")]
-        System.Threading.Tasks.Task<Models.Alarm[]> alarmsSpecifiedTimePeriodSortByPriorityAsync(System.DateTime start, System.DateTime end);
+        System.Threading.Tasks.Task<System.Collections.Generic.List<Models.Alarm>> alarmsSpecifiedTimePeriodSortByPriorityAsync(System.DateTime start, System.DateTime end);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReportManager/alarmsSpecifiedTimePeriodSortByTime", ReplyAction="http://tempuri.org/IReportManager/alarmsSpecifiedTimePeriodSortByTimeResponse")]
-        Models.Alarm[] alarmsSpecifiedTimePeriodSortByTime(System.DateTime start, System.DateTime end);
+        System.Collections.Generic.List<Models.Alarm> alarmsSpecifiedTimePeriodSortByTime(System.DateTime start, System.DateTime end);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReportManager/alarmsSpecifiedTimePeriodSortByTime", ReplyAction="http://tempuri.org/IReportManager/alarmsSpecifiedTimePeriodSortByTimeResponse")]
-        System.Threading.Tasks.Task<Models.Alarm[]> alarmsSpecifiedTimePeriodSortByTimeAsync(System.DateTime start, System.DateTime end);
+        System.Threading.Tasks.Task<System.Collections.Generic.List<Models.Alarm>> alarmsSpecifiedTimePeriodSortByTimeAsync(System.DateTime start, System.DateTime end);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReportManager/alarmsSpecifiedPrioritySortByTime", ReplyAction="http://tempuri.org/IReportManager/alarmsSpecifiedPrioritySortByTimeResponse")]
-        Models.Alarm[] alarmsSpecifiedPrioritySortByTime(string priority);
+        System.Collections.Generic.List<Models.Alarm> alarmsSpecifiedPrioritySortByTime(string priority);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReportManager/alarmsSpecifiedPrioritySortByTime", ReplyAction="http://tempuri.org/IReportManager/alarmsSpecifiedPrioritySortByTimeResponse")]
-        System.Threading.Tasks.Task<Models.Alarm[]> alarmsSpecifiedPrioritySortByTimeAsync(string priority);
+        System.Threading.Tasks.Task<System.Collections.Generic.List<Models.Alarm>> alarmsSpecifiedPrioritySortByTimeAsync(string priority);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReportManager/tagsSpecifiedTimePeriodSortByTime", ReplyAction="http://tempuri.org/IReportManager/tagsSpecifiedTimePeriodSortByTimeResponse")]
-        Models.Log[] tagsSpecifiedTimePeriodSortByTime(System.DateTime start, System.DateTime end);
+        System.Collections.Generic.List<Models.Log> tagsSpecifiedTimePeriodSortByTime(System.DateTime start, System.DateTime end);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReportManager/tagsSpecifiedTimePeriodSortByTime", ReplyAction="http://tempuri.org/IReportManager/tagsSpecifiedTimePeriodSortByTimeResponse")]
-        System.Threading.Tasks.Task<Models.Log[]> tagsSpecifiedTimePeriodSortByTimeAsync(System.DateTime start, System.DateTime end);
+        System.Threading.Tasks.Task<System.Collections.Generic.List<Models.Log>> tagsSpecifiedTimePeriodSortByTimeAsync(System.DateTime start, System.DateTime end);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReportManager/lastValueOfAITagsSortByTime", ReplyAction="http://tempuri.org/IReportManager/lastValueOfAITagsSortByTimeResponse")]
-        Models.Tag[] lastValueOfAITagsSortByTime();
+        System.Collections.Generic.List<Models.Log> lastValueOfAITagsSortByTime();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReportManager/lastValueOfAITagsSortByTime", ReplyAction="http://tempuri.org/IReportManager/lastValueOfAITagsSortByTimeResponse")]
-        System.Threading.Tasks.Task<Models.Tag[]> lastValueOfAITagsSortByTimeAsync();
+        System.Threading.Tasks.Task<System.Collections.Generic.List<Models.Log>> lastValueOfAITagsSortByTimeAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReportManager/lastValueOfDITagsSortByTime", ReplyAction="http://tempuri.org/IReportManager/lastValueOfDITagsSortByTimeResponse")]
-        Models.Tag[] lastValueOfDITagsSortByTime();
+        System.Collections.Generic.List<Models.Log> lastValueOfDITagsSortByTime();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReportManager/lastValueOfDITagsSortByTime", ReplyAction="http://tempuri.org/IReportManager/lastValueOfDITagsSortByTimeResponse")]
-        System.Threading.Tasks.Task<Models.Tag[]> lastValueOfDITagsSortByTimeAsync();
+        System.Threading.Tasks.Task<System.Collections.Generic.List<Models.Log>> lastValueOfDITagsSortByTimeAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReportManager/tagValuesSpecificIdSortByValue", ReplyAction="http://tempuri.org/IReportManager/tagValuesSpecificIdSortByValueResponse")]
-        Models.Tag[] tagValuesSpecificIdSortByValue(string tagId);
+        System.Collections.Generic.List<Models.Log> tagValuesSpecificIdSortByValue(string tagId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReportManager/tagValuesSpecificIdSortByValue", ReplyAction="http://tempuri.org/IReportManager/tagValuesSpecificIdSortByValueResponse")]
-        System.Threading.Tasks.Task<Models.Tag[]> tagValuesSpecificIdSortByValueAsync(string tagId);
+        System.Threading.Tasks.Task<System.Collections.Generic.List<Models.Log>> tagValuesSpecificIdSortByValueAsync(string tagId);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -353,59 +479,59 @@ namespace RealTimeUnit.ServiceReference1 {
                 base(binding, remoteAddress) {
         }
         
-        public Models.Alarm[] alarmsSpecifiedTimePeriodSortByPriority(System.DateTime start, System.DateTime end) {
+        public System.Collections.Generic.List<Models.Alarm> alarmsSpecifiedTimePeriodSortByPriority(System.DateTime start, System.DateTime end) {
             return base.Channel.alarmsSpecifiedTimePeriodSortByPriority(start, end);
         }
         
-        public System.Threading.Tasks.Task<Models.Alarm[]> alarmsSpecifiedTimePeriodSortByPriorityAsync(System.DateTime start, System.DateTime end) {
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<Models.Alarm>> alarmsSpecifiedTimePeriodSortByPriorityAsync(System.DateTime start, System.DateTime end) {
             return base.Channel.alarmsSpecifiedTimePeriodSortByPriorityAsync(start, end);
         }
         
-        public Models.Alarm[] alarmsSpecifiedTimePeriodSortByTime(System.DateTime start, System.DateTime end) {
+        public System.Collections.Generic.List<Models.Alarm> alarmsSpecifiedTimePeriodSortByTime(System.DateTime start, System.DateTime end) {
             return base.Channel.alarmsSpecifiedTimePeriodSortByTime(start, end);
         }
         
-        public System.Threading.Tasks.Task<Models.Alarm[]> alarmsSpecifiedTimePeriodSortByTimeAsync(System.DateTime start, System.DateTime end) {
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<Models.Alarm>> alarmsSpecifiedTimePeriodSortByTimeAsync(System.DateTime start, System.DateTime end) {
             return base.Channel.alarmsSpecifiedTimePeriodSortByTimeAsync(start, end);
         }
         
-        public Models.Alarm[] alarmsSpecifiedPrioritySortByTime(string priority) {
+        public System.Collections.Generic.List<Models.Alarm> alarmsSpecifiedPrioritySortByTime(string priority) {
             return base.Channel.alarmsSpecifiedPrioritySortByTime(priority);
         }
         
-        public System.Threading.Tasks.Task<Models.Alarm[]> alarmsSpecifiedPrioritySortByTimeAsync(string priority) {
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<Models.Alarm>> alarmsSpecifiedPrioritySortByTimeAsync(string priority) {
             return base.Channel.alarmsSpecifiedPrioritySortByTimeAsync(priority);
         }
         
-        public Models.Log[] tagsSpecifiedTimePeriodSortByTime(System.DateTime start, System.DateTime end) {
+        public System.Collections.Generic.List<Models.Log> tagsSpecifiedTimePeriodSortByTime(System.DateTime start, System.DateTime end) {
             return base.Channel.tagsSpecifiedTimePeriodSortByTime(start, end);
         }
         
-        public System.Threading.Tasks.Task<Models.Log[]> tagsSpecifiedTimePeriodSortByTimeAsync(System.DateTime start, System.DateTime end) {
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<Models.Log>> tagsSpecifiedTimePeriodSortByTimeAsync(System.DateTime start, System.DateTime end) {
             return base.Channel.tagsSpecifiedTimePeriodSortByTimeAsync(start, end);
         }
         
-        public Models.Tag[] lastValueOfAITagsSortByTime() {
+        public System.Collections.Generic.List<Models.Log> lastValueOfAITagsSortByTime() {
             return base.Channel.lastValueOfAITagsSortByTime();
         }
         
-        public System.Threading.Tasks.Task<Models.Tag[]> lastValueOfAITagsSortByTimeAsync() {
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<Models.Log>> lastValueOfAITagsSortByTimeAsync() {
             return base.Channel.lastValueOfAITagsSortByTimeAsync();
         }
         
-        public Models.Tag[] lastValueOfDITagsSortByTime() {
+        public System.Collections.Generic.List<Models.Log> lastValueOfDITagsSortByTime() {
             return base.Channel.lastValueOfDITagsSortByTime();
         }
         
-        public System.Threading.Tasks.Task<Models.Tag[]> lastValueOfDITagsSortByTimeAsync() {
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<Models.Log>> lastValueOfDITagsSortByTimeAsync() {
             return base.Channel.lastValueOfDITagsSortByTimeAsync();
         }
         
-        public Models.Tag[] tagValuesSpecificIdSortByValue(string tagId) {
+        public System.Collections.Generic.List<Models.Log> tagValuesSpecificIdSortByValue(string tagId) {
             return base.Channel.tagValuesSpecificIdSortByValue(tagId);
         }
         
-        public System.Threading.Tasks.Task<Models.Tag[]> tagValuesSpecificIdSortByValueAsync(string tagId) {
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<Models.Log>> tagValuesSpecificIdSortByValueAsync(string tagId) {
             return base.Channel.tagValuesSpecificIdSortByValueAsync(tagId);
         }
     }

@@ -57,30 +57,24 @@ namespace Models
         public Dictionary<string, double> AddrValuesDict
         {
             get { return addrValues; }
+            
+        }
+
+        public void AddNewAddress(string address)
+        {
+            this.addrValues.Add(address, 0);
         }
 
         public List<string> getAvailableAddress()
         {
-            List<string> addresses = new List<string>();
-            foreach(string address in addrValues.Keys)
-            {
-                if (addrValues[address] == 0)
-                {
-                    addresses.Add(address);
-                }
-                
-            }
-            return addresses;
+             return addrValues.Keys.ToList<string>();
         }
 
         public bool checkAddressAvailable(string a)
         {
             if (addrValues.ContainsKey(a))
             {
-                if (addrValues[a] == 0)
-                {
-                    return true;
-                }
+                return true;
             }
 
             return false;
