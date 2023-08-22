@@ -22,11 +22,12 @@ namespace RealTimeUnit
         {
             string address = "";
             Random random = new Random();
+            List<string> addresses = service.getAvailableAddresses();
 
             while (true)
             {
-                int randomNumberAdd = random.Next(1, 6);
-                address = "address" + randomNumberAdd;
+                int randomNumberAdd = random.Next(1, addresses.Count + 1);
+                address = addresses[randomNumberAdd];
 
                 double randomNumber = random.NextDouble() * (high_limit - low_limit) + low_limit;
 

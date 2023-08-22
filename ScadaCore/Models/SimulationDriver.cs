@@ -50,6 +50,20 @@ namespace Models
 
         }
 
+        public void AddNewAddress(string address)
+        {
+            addresses.Add(address);
+            tagValues.Add(0);
+        }
+
+        public bool checkAddressAvailable(string address)
+        {
+            if (addresses.Contains(address))
+            {
+                return true;
+            }
+            return false;
+        }
         public double ReturnRandomValue(int i)
         {
             double v = 0;
