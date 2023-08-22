@@ -36,6 +36,7 @@ namespace DatabaseManager
             this.label2 = new System.Windows.Forms.Label();
             this.error = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
+            this.success = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // username
@@ -58,7 +59,7 @@ namespace DatabaseManager
             // 
             // loginBtn
             // 
-            this.loginBtn.Location = new System.Drawing.Point(217, 235);
+            this.loginBtn.Location = new System.Drawing.Point(214, 235);
             this.loginBtn.Margin = new System.Windows.Forms.Padding(2);
             this.loginBtn.Name = "loginBtn";
             this.loginBtn.Size = new System.Drawing.Size(124, 35);
@@ -99,7 +100,7 @@ namespace DatabaseManager
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(345, 235);
+            this.button1.Location = new System.Drawing.Point(342, 235);
             this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(131, 35);
@@ -108,11 +109,21 @@ namespace DatabaseManager
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // success
+            // 
+            this.success.AutoSize = true;
+            this.success.Location = new System.Drawing.Point(230, 290);
+            this.success.Name = "success";
+            this.success.Size = new System.Drawing.Size(211, 20);
+            this.success.TabIndex = 7;
+            this.success.Text = "User successfully registered.";
+            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(720, 360);
+            this.Controls.Add(this.success);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.error);
             this.Controls.Add(this.label2);
@@ -138,5 +149,6 @@ namespace DatabaseManager
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label error;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label success;
     }
 }

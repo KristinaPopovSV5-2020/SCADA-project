@@ -54,6 +54,11 @@ namespace Models
             get { return addrValues.Values.ToList(); }
         }
 
+        public Dictionary<string, double> AddrValuesDict
+        {
+            get { return addrValues; }
+        }
+
         public List<string> getAvailableAddress()
         {
             List<string> addresses = new List<string>();

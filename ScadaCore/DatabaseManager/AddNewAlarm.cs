@@ -21,6 +21,7 @@ namespace DatabaseManager
         {
             InitializeComponent();
             this.tagName = (string)tagName;
+            labelAlarmAdded.Visible = false;
         }
 
         private void buttonSave_Click(object sender, EventArgs e)
@@ -49,6 +50,7 @@ namespace DatabaseManager
             }
                 Alarm alarm = new Alarm(uuidString, tagName, selectedType, double.Parse(textBoxLimit.Text), comboBoxPriority.Text);
                 service.newAlarm(alarm);
+                labelAlarmAdded.Visible = true;
             }
             else
             {

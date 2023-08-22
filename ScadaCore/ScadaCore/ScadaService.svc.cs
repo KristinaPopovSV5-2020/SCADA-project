@@ -210,7 +210,7 @@ namespace ScadaCore
                     tagManager.SaveNewTagToFile(oTag);
 
                 }
-                tagManager.XmlDeserialisation();
+                tagManager.XmlSerialization();
                 return true;
             }
 
@@ -226,7 +226,7 @@ namespace ScadaCore
         {
             Tag selectedTag = tagManager.tags[tagId];
             tagManager.tags.Remove(tagId);
-            tagManager.XmlDeserialisation();
+            tagManager.XmlSerialization();
         }
 
         public List<AnalogOutput> GetAnalogOutputTags()
@@ -275,14 +275,14 @@ namespace ScadaCore
                 digitalInput.Scan = !digitalInput.Scan;
                 tagManager.tags[tagId] = digitalInput;
             }
-            tagManager.XmlDeserialisation();
+            tagManager.XmlSerialization();
         }
 
         public void UpdateValue(string tagId, double value)
         {
             tagManager.tags[tagId].InitialValue = value;
             tagManager.WriteToLog(tagManager.tags[tagId], value);
-            tagManager.XmlDeserialisation();
+            tagManager.XmlSerialization();
         }
 
         public void newAlarm(Alarm alarm)
@@ -290,7 +290,7 @@ namespace ScadaCore
             AnalogInput input = (AnalogInput)tagManager.tags[alarm.TagId];
             input.Alarms.Add(alarm);
             tagManager.tags[alarm.TagId] = input;
-            tagManager.XmlDeserialisation();
+            tagManager.XmlSerialization();
         }
 
         public void deleteAlarm(string alarmId, string tagId)
@@ -301,7 +301,8 @@ namespace ScadaCore
                 if (alarm.AlarmId == alarmId) input.Alarms.Remove(alarm);
                 break;
             }
-            tagManager.XmlDeserialisation();
+            tagManager.tags[tagId] = input;
+            tagManager.XmlSerialization();
         }
 
         public List<Alarm> findAlarm(string tagId)
@@ -387,6 +388,7 @@ namespace ScadaCore
 
             User newUser = new User(username, password);
             userManager.users.Add(newUser);
+            userManager.SaveUsersToFile();
 
             return true; 
         }

@@ -21,7 +21,17 @@
     </Driver>
     <ScanTime>3</ScanTime>
     <Scan>true</Scan>
-    <Alarms/>
+    <Alarms>
+      <Alarm>
+        <AlarmId>88d7cb8c-a277-4f05-9716-475dc6a6cdd7</AlarmId>
+        <TagId>name4</TagId>
+        <Time>0001-01-01T00:00:00</Time>
+        <Type>Med</Type>
+        <Limit>200</Limit>
+        <Priority>1</Priority>
+        <TagValue>0</TagValue>
+      </Alarm>
+    </Alarms>
     <LowLimit>20</LowLimit>
     <HighLimit>80</HighLimit>
     <Units>units</Units>
