@@ -17,6 +17,7 @@ namespace ScadaCore
         [OperationContract]
         bool addAddress(string address);
 
-
+        [OperationContract]
+        Tag GetTagForAddress(string address);
     }
 }

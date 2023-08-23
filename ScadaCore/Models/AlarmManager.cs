@@ -54,7 +54,7 @@ namespace Models
             {
                 foreach (Alarm alarm in alarms)
                 {
-                    writer.WriteLine(alarm.AlarmId + "|" + alarm.TagId + "|" + alarm.Time.ToString() + "|" + alarm.Type + "|" + alarm.Limit + "|" + alarm.Priority + "|" + alarm.TagValue);
+                    writer.WriteLine(alarm.AlarmId + "|" + alarm.TagId + "|" + alarm.Time.ToString() + "|" + alarm.Type + "|" + alarm.Limit + "|" + alarm.Priority + "|" + alarm.TagValue+"\n");
                 }
             }
         }
@@ -63,7 +63,8 @@ namespace Models
         {
             using (StreamWriter writer = File.AppendText(this.path + "/Database/alarms.txt"))
             {
-                writer.WriteLine(alarm.AlarmId + "|" + alarm.TagId + "|" + alarm.Time.ToString() + "|" + alarm.Type + "|" + alarm.Limit + "|" + alarm.Priority + "|" + alarm.TagValue);
+                string currentDate = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+                writer.WriteLine(alarm.AlarmId + "|" + alarm.TagId + "|" + currentDate+ "|" + alarm.Type + "|" + alarm.Limit + "|" + alarm.Priority + "|" + alarm.TagValue);
             }
 
         }

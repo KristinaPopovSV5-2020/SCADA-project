@@ -6,15 +6,13 @@ using System.ServiceModel;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using Models;
 using ScadaCore;
 
 namespace RealTimeUnit
 {
     class Program
     {
-        public const int low_limit = 10;
-        public const int high_limit = 100;
-
         static ServiceReference1.RTUClient service = new ServiceReference1.RTUClient();
  
 
@@ -26,11 +24,16 @@ namespace RealTimeUnit
 
             while (true)
             {
-                int randomNumberAdd = random.Next(0, addresses.Count - 1);
+                int randomNumberAdd = random.Next(0, addresses.Count);
                 address = addresses[randomNumberAdd];
 
-                double randomNumber = random.NextDouble() * (high_limit - low_limit) + low_limit;
+                double randomNumber = 0;
 
+                Tag tag = service.GetTagForAddress(address);
+                if (tag is AnalogInput)
+                    randomNumber = random.NextDouble() * (((AnalogInput)tag).HighLimit - ((AnalogInput)tag).LowLimit) + ((AnalogInput)tag).LowLimit;
+                else
+                    randomNumber = random.Next(0, 2);
                 Console.WriteLine("Sending " + randomNumber + " from RTU to Service on address " + address);
                 service.sendToService(address, randomNumber);
 

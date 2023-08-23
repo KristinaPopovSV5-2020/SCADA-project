@@ -89,7 +89,7 @@ namespace ReportManager
                             switch (choiceopt1)
                             {
                                 case "1":
-                                    alarms = service.alarmsSpecifiedTimePeriodSortByPriority(startDate, endDate);
+                                    alarms = service.alarmsSpecifiedTimePeriodSortByTime(startDate, endDate);
                                     foreach (var a in alarms)
                                     {
                                         Console.WriteLine($"│{a.alarmId.PadRight(11)}│{a.tagId.PadRight(11)}│{a.time.ToString().PadRight(6)}│{a.type.ToString().PadRight(6)}|{a.limit.ToString().PadRight(6)}|{a.priority.ToString().PadRight(6)}|{a.tagValue.ToString().PadRight(6)}");
@@ -98,6 +98,11 @@ namespace ReportManager
 
                                     break;
                                 case "2":
+                                    alarms = service.alarmsSpecifiedTimePeriodSortByPriority(startDate, endDate);
+                                    foreach (var a in alarms)
+                                    {
+                                        Console.WriteLine($"│{a.alarmId.PadRight(11)}│{a.tagId.PadRight(11)}│{a.time.ToString().PadRight(6)}│{a.type.ToString().PadRight(6)}|{a.limit.ToString().PadRight(6)}|{a.priority.ToString().PadRight(6)}|{a.tagValue.ToString().PadRight(6)}");
+                                    }
                                     break;
 
                                 default:
@@ -114,9 +119,9 @@ namespace ReportManager
                         Console.WriteLine("All alarms of a certain priority");
                         while (true)
                         {
-                            Console.WriteLine("Choose priority (Low, Med, High)");
+                            Console.WriteLine("Choose priority (1,2,3)");
                             string cho = Console.ReadLine();
-                            if (cho == "Low" || cho == "Med" || cho == "High")
+                            if (cho == "1" || cho == "2" || cho == "3")
                             {
                                 alarms=service.alarmsSpecifiedPrioritySortByTime(cho);
                                 foreach (var a in alarms)

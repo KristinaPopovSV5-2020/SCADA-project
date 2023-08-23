@@ -41,10 +41,24 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="GetTagForAddress">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="address" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTagForAddressResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Models" minOccurs="0" name="GetTagForAddressResult" nillable="true" type="q2:Tag" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="AddTag">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Models" minOccurs="0" name="tag" nillable="true" type="q2:Tag" />
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/Models" minOccurs="0" name="tag" nillable="true" type="q3:Tag" />
         <xs:element minOccurs="0" name="realTimeOn" type="xs:boolean" />
       </xs:sequence>
     </xs:complexType>
@@ -56,6 +70,21 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="Register">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="username" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RegisterResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="RegisterResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="GetAnalogOutputTags">
     <xs:complexType>
       <xs:sequence />
@@ -64,7 +93,7 @@
   <xs:element name="GetAnalogOutputTagsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/Models" minOccurs="0" name="GetAnalogOutputTagsResult" nillable="true" type="q3:ArrayOfAnalogOutput" />
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/Models" minOccurs="0" name="GetAnalogOutputTagsResult" nillable="true" type="q4:ArrayOfAnalogOutput" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -76,7 +105,7 @@
   <xs:element name="GetAnalogInputTagsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/Models" minOccurs="0" name="GetAnalogInputTagsResult" nillable="true" type="q4:ArrayOfAnalogInput" />
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/Models" minOccurs="0" name="GetAnalogInputTagsResult" nillable="true" type="q5:ArrayOfAnalogInput" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -88,7 +117,7 @@
   <xs:element name="GetDigitalInputTagsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/Models" minOccurs="0" name="GetDigitalInputTagsResult" nillable="true" type="q5:ArrayOfDigitalInput" />
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/Models" minOccurs="0" name="GetDigitalInputTagsResult" nillable="true" type="q6:ArrayOfDigitalInput" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -100,7 +129,7 @@
   <xs:element name="GetDigitalOutputTagsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/Models" minOccurs="0" name="GetDigitalOutputTagsResult" nillable="true" type="q6:ArrayOfDigitalOutput" />
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/Models" minOccurs="0" name="GetDigitalOutputTagsResult" nillable="true" type="q7:ArrayOfDigitalOutput" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -144,7 +173,7 @@
   <xs:element name="newAlarm">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/Models" minOccurs="0" name="alarm" nillable="true" type="q7:Alarm" />
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/Models" minOccurs="0" name="alarm" nillable="true" type="q8:Alarm" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -157,6 +186,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="alarmId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="tagId" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -175,7 +205,7 @@
   <xs:element name="findAlarmResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/Models" minOccurs="0" name="findAlarmResult" nillable="true" type="q8:ArrayOfAlarm" />
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/Models" minOccurs="0" name="findAlarmResult" nillable="true" type="q9:ArrayOfAlarm" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -187,7 +217,7 @@
   <xs:element name="GetAllUsersResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/Models" minOccurs="0" name="GetAllUsersResult" nillable="true" type="q9:ArrayOfUser" />
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/Models" minOccurs="0" name="GetAllUsersResult" nillable="true" type="q10:ArrayOfUser" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -204,7 +234,7 @@
   <xs:element name="showAlarmDisplay">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/Models" minOccurs="0" name="alarm" nillable="true" type="q10:Alarm" />
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/Models" minOccurs="0" name="alarm" nillable="true" type="q11:Alarm" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -242,7 +272,7 @@
   <xs:element name="alarmsSpecifiedTimePeriodSortByPriorityResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/Models" minOccurs="0" name="alarmsSpecifiedTimePeriodSortByPriorityResult" nillable="true" type="q11:ArrayOfAlarm" />
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/Models" minOccurs="0" name="alarmsSpecifiedTimePeriodSortByPriorityResult" nillable="true" type="q12:ArrayOfAlarm" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -257,7 +287,7 @@
   <xs:element name="alarmsSpecifiedTimePeriodSortByTimeResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/Models" minOccurs="0" name="alarmsSpecifiedTimePeriodSortByTimeResult" nillable="true" type="q12:ArrayOfAlarm" />
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/Models" minOccurs="0" name="alarmsSpecifiedTimePeriodSortByTimeResult" nillable="true" type="q13:ArrayOfAlarm" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -271,7 +301,7 @@
   <xs:element name="alarmsSpecifiedPrioritySortByTimeResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/Models" minOccurs="0" name="alarmsSpecifiedPrioritySortByTimeResult" nillable="true" type="q13:ArrayOfAlarm" />
+        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/Models" minOccurs="0" name="alarmsSpecifiedPrioritySortByTimeResult" nillable="true" type="q14:ArrayOfAlarm" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -286,7 +316,7 @@
   <xs:element name="tagsSpecifiedTimePeriodSortByTimeResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/Models" minOccurs="0" name="tagsSpecifiedTimePeriodSortByTimeResult" nillable="true" type="q14:ArrayOfLog" />
+        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/Models" minOccurs="0" name="tagsSpecifiedTimePeriodSortByTimeResult" nillable="true" type="q15:ArrayOfLog" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -298,7 +328,7 @@
   <xs:element name="lastValueOfAITagsSortByTimeResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/Models" minOccurs="0" name="lastValueOfAITagsSortByTimeResult" nillable="true" type="q15:ArrayOfLog" />
+        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/Models" minOccurs="0" name="lastValueOfAITagsSortByTimeResult" nillable="true" type="q16:ArrayOfLog" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -310,7 +340,7 @@
   <xs:element name="lastValueOfDITagsSortByTimeResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/Models" minOccurs="0" name="lastValueOfDITagsSortByTimeResult" nillable="true" type="q16:ArrayOfLog" />
+        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/Models" minOccurs="0" name="lastValueOfDITagsSortByTimeResult" nillable="true" type="q17:ArrayOfLog" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -324,7 +354,7 @@
   <xs:element name="tagValuesSpecificIdSortByValueResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/Models" minOccurs="0" name="tagValuesSpecificIdSortByValueResult" nillable="true" type="q17:ArrayOfLog" />
+        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/Models" minOccurs="0" name="tagValuesSpecificIdSortByValueResult" nillable="true" type="q18:ArrayOfLog" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

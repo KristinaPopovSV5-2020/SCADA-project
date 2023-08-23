@@ -393,6 +393,12 @@
   <wsdl:message name="IRTU_addAddress_OutputMessage">
     <wsdl:part name="parameters" element="tns:addAddressResponse" />
   </wsdl:message>
+  <wsdl:message name="IRTU_GetTagForAddress_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTagForAddress" />
+  </wsdl:message>
+  <wsdl:message name="IRTU_GetTagForAddress_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTagForAddressResponse" />
+  </wsdl:message>
   <wsdl:message name="IDbManager_AddTag_InputMessage">
     <wsdl:part name="parameters" element="tns:AddTag" />
   </wsdl:message>
@@ -547,6 +553,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IRTU/addAddress" message="tns:IRTU_addAddress_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IRTU/addAddressResponse" message="tns:IRTU_addAddress_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="GetTagForAddress">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRTU/GetTagForAddress" message="tns:IRTU_GetTagForAddress_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRTU/GetTagForAddressResponse" message="tns:IRTU_GetTagForAddress_OutputMessage" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IDbManager">
     <wsdl:operation name="AddTag">
@@ -673,6 +683,15 @@
     </wsdl:operation>
     <wsdl:operation name="addAddress">
       <soap:operation soapAction="http://tempuri.org/IRTU/addAddress" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTagForAddress">
+      <soap:operation soapAction="http://tempuri.org/IRTU/GetTagForAddress" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

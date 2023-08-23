@@ -1,6 +1,7 @@
 using Models;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -28,6 +29,7 @@ namespace ScadaCore
         static ITrendingCB trending = null;
 
         static IAlarmDisplayCallback alarmProxy = null;
+
 
 
         public bool addAddress(string address)
@@ -105,11 +107,7 @@ namespace ScadaCore
         private void processInputTag(object tag)
         {
             string tagName = (string) tag;
-
-            while (true)
-            {
-                double value = 0;
-
+            double value = 0;
 
                 if ((tagManager.tags[tagName] as InputTag).Driver is RealTimeDriver)
                 {
@@ -165,7 +163,7 @@ namespace ScadaCore
 
                                 lock (alarmManager)
                                 {
-                                    alarmManager.SaveNewAlarmToFile(alarm);
+                                alarmManager.SaveNewAlarmToFile(alarm);
                                 }
 
                             }
@@ -174,13 +172,14 @@ namespace ScadaCore
 
                 }
 
-                tagManager.WriteToLog(tagManager.tags[tagName], value);
-                tagManager.XmlSerialization();
+                
                 if (trending != null)
                     trending.addTagValue(tagName, value);
 
-                Thread.Sleep(1000*(tagManager.tags[tagName] as InputTag).ScanTime);
-            }
+            tagManager.WriteToLog(tagManager.tags[tagName], value);
+            tagManager.XmlSerialization();
+            Thread.Sleep(1000*(tagManager.tags[tagName] as InputTag).ScanTime);
+            
         }
  
         public void processOutputTag(object tag)
@@ -233,6 +232,8 @@ namespace ScadaCore
         public void DeleteTag(string tagId)
         {
             Tag selectedTag = tagManager.tags[tagId];
+            tagManager.addresses.Remove(selectedTag.IOAddress);
+            tagManager.values.Remove(tagManager.values[tagManager.addresses.IndexOf(selectedTag.IOAddress)]);
             tagManager.tags.Remove(tagId);
             tagManager.XmlSerialization();
         }
@@ -290,6 +291,7 @@ namespace ScadaCore
         {
             tagManager.tags[tagId].InitialValue = value;
             tagManager.WriteToLog(tagManager.tags[tagId], value);
+
             processTag(tagId);
         }
 
@@ -319,6 +321,7 @@ namespace ScadaCore
             return input.Alarms;
         }
 
+
         public static void XmlSerialisation()
         {
             using (var writer = new StreamWriter("/Database/scadaConfig.xml"))
@@ -341,7 +344,11 @@ namespace ScadaCore
 
         public List<Alarm> alarmsSpecifiedTimePeriodSortByTime(DateTime start, DateTime end)
         {
-            throw new NotImplementedException();
+            var sortedAlarms = alarmManager.alarms
+            .Where(alarm => alarm.Time >= start && alarm.Time <= end)
+            .OrderBy(alarm => alarm.Time).ToList<Alarm>();
+
+            return sortedAlarms;
         }
 
         public List<Alarm> alarmsSpecifiedPrioritySortByTime(string priority)
@@ -385,6 +392,17 @@ namespace ScadaCore
                 .Where(log => log.tagName == tagId)
                 .OrderBy(log => log.value)
                 .ToList();
+        }
+
+        public Tag GetTagForAddress(string address)
+        {
+            Tag t = new Tag();
+            foreach (Tag tag in tagManager.tags.Values)
+            {
+                if (tag.IOAddress == address)
+                    t = tag;
+            }
+            return t;
         }
 
         public bool Register(string username, string password)

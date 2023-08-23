@@ -32,7 +32,7 @@ namespace Models
             //LoadAOFromFile();
             //LoadDIFromFile();
             //LoadDOFromFile();
-            //LoadLogsFromFile();
+            LoadLogsFromFile();
             XmlDeserialisation();
             rtu.addresses = addresses;
             rtu.tagValues = values;
@@ -240,7 +240,7 @@ namespace Models
                         type = "ai";
                     else
                         type = "di";
-                    writer.WriteLine(tag.TagName + "|" + value + "|" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "|" + type);
+                    writer.WriteLine(tag.TagName + "|" + value + "|" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "|" + type);             
                 }
             }
             catch { }

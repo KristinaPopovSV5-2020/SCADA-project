@@ -36,10 +36,6 @@ namespace DatabaseManager
             {
                 selectedType = TypeOfAlarm.High;
             }
-            else if (selectedItem == "Medium")
-            {
-                selectedType = TypeOfAlarm.Med;
-            }
             else if (selectedItem == "Low")
             {
                 selectedType = TypeOfAlarm.Low;

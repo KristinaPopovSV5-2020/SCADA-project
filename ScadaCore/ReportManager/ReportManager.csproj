@@ -58,10 +58,19 @@
     <None Include="Connected Services\ServiceReference1\ReportManager.ServiceReference1.Alarm.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\ServiceReference1\ReportManager.ServiceReference1.Log.datasource">
+    <None Include="Connected Services\ServiceReference1\ReportManager.ServiceReference1.AnalogInput.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\ServiceReference1\ReportManager.ServiceReference1.Tag.datasource">
+    <None Include="Connected Services\ServiceReference1\ReportManager.ServiceReference1.AnalogOutput.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference1\ReportManager.ServiceReference1.DigitalInput.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference1\ReportManager.ServiceReference1.DigitalOutput.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference1\ReportManager.ServiceReference1.Log.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\ServiceReference1\ReportManager.ServiceReference1.User.datasource">

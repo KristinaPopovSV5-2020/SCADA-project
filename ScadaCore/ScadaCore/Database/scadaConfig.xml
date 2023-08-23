@@ -4,7 +4,7 @@
     <TagName>name4</TagName>
     <Description>description</Description>
     <IOAddress>address4</IOAddress>
-    <InitialValue>0</InitialValue>
+    <InitialValue>45.00329968752493</InitialValue>
     <Driver xsi:type="RealTimeDriver">
       <addresses>
         <string>address1</string>
@@ -17,23 +17,35 @@
         <string>address8</string>
         <string>address9</string>
         <string>address10</string>
+        <string>address12</string>
       </addresses>
       <tagValues>
-        <double>42.341802689405995</double>
+        <double>1</double>
+        <double>1</double>
         <double>0</double>
-        <double>41.728026388086391</double>
-        <double>32.812098037829671</double>
-        <double>98.885406073595121</double>
-        <double>0</double>
-        <double>54.4124776005803</double>
-        <double>77.695515843897837</double>
-        <double>75.99942000862184</double>
+        <double>37.668361951442606</double>
+        <double>1</double>
+        <double>1</double>
+        <double>41.213627122907724</double>
+        <double>26.634753833820465</double>
+        <double>1</double>
+        <double>93.358042649720176</double>
         <double>0</double>
       </tagValues>
     </Driver>
     <ScanTime>3</ScanTime>
     <Scan>true</Scan>
-    <Alarms />
+    <Alarms>
+      <Alarm>
+        <AlarmId>3f17df16-8490-443f-b155-1cfdd88e16f6</AlarmId>
+        <TagId>name4</TagId>
+        <Time>2023-08-23T16:46:53.1338621+02:00</Time>
+        <Type>Low</Type>
+        <Limit>40</Limit>
+        <Priority>2</Priority>
+        <TagValue>37.716894870492112</TagValue>
+      </Alarm>
+    </Alarms>
     <LowLimit>20</LowLimit>
     <HighLimit>80</HighLimit>
     <Units>units</Units>
@@ -42,7 +54,7 @@
     <TagName>name7</TagName>
     <Description>description</Description>
     <IOAddress>address7</IOAddress>
-    <InitialValue>0</InitialValue>
+    <InitialValue>83.723905707580926</InitialValue>
     <Driver xsi:type="RealTimeDriver">
       <addresses>
         <string>address1</string>
@@ -55,17 +67,19 @@
         <string>address8</string>
         <string>address9</string>
         <string>address10</string>
+        <string>address12</string>
       </addresses>
       <tagValues>
-        <double>42.341802689405995</double>
+        <double>1</double>
+        <double>1</double>
         <double>0</double>
-        <double>41.728026388086391</double>
-        <double>32.812098037829671</double>
-        <double>98.885406073595121</double>
-        <double>0</double>
-        <double>54.4124776005803</double>
-        <double>77.695515843897837</double>
-        <double>75.99942000862184</double>
+        <double>37.668361951442606</double>
+        <double>1</double>
+        <double>1</double>
+        <double>41.213627122907724</double>
+        <double>26.634753833820465</double>
+        <double>1</double>
+        <double>93.358042649720176</double>
         <double>0</double>
       </tagValues>
     </Driver>
@@ -80,7 +94,7 @@
     <TagName>name8</TagName>
     <Description>description</Description>
     <IOAddress>address8</IOAddress>
-    <InitialValue>0</InitialValue>
+    <InitialValue>62.901203438127979</InitialValue>
     <Driver xsi:type="RealTimeDriver">
       <addresses>
         <string>address1</string>
@@ -93,23 +107,35 @@
         <string>address8</string>
         <string>address9</string>
         <string>address10</string>
+        <string>address12</string>
       </addresses>
       <tagValues>
-        <double>42.341802689405995</double>
+        <double>1</double>
+        <double>1</double>
         <double>0</double>
-        <double>41.728026388086391</double>
-        <double>32.812098037829671</double>
-        <double>98.885406073595121</double>
-        <double>0</double>
-        <double>54.4124776005803</double>
-        <double>77.695515843897837</double>
-        <double>75.99942000862184</double>
+        <double>37.668361951442606</double>
+        <double>1</double>
+        <double>1</double>
+        <double>41.213627122907724</double>
+        <double>26.634753833820465</double>
+        <double>1</double>
+        <double>93.358042649720176</double>
         <double>0</double>
       </tagValues>
     </Driver>
     <ScanTime>3</ScanTime>
     <Scan>true</Scan>
-    <Alarms />
+    <Alarms>
+      <Alarm>
+        <AlarmId>2378aa06-98bd-490e-abf4-1442fd999094</AlarmId>
+        <TagId>name8</TagId>
+        <Time>0001-01-01T00:00:00</Time>
+        <Type>High</Type>
+        <Limit>50</Limit>
+        <Priority>1</Priority>
+        <TagValue>0</TagValue>
+      </Alarm>
+    </Alarms>
     <LowLimit>20</LowLimit>
     <HighLimit>80</HighLimit>
     <Units>units</Units>
@@ -118,18 +144,19 @@
     <TagName>name10</TagName>
     <Description>description</Description>
     <IOAddress>address10</IOAddress>
-    <InitialValue>0</InitialValue>
+    <InitialValue>-62.93203910498373</InitialValue>
     <Driver xsi:type="SimulationDriver">
       <TagValues>
-        <double>42.341802689405995</double>
+        <double>1</double>
+        <double>1</double>
         <double>0</double>
-        <double>41.728026388086391</double>
-        <double>32.812098037829671</double>
-        <double>98.885406073595121</double>
-        <double>0</double>
-        <double>54.4124776005803</double>
-        <double>77.695515843897837</double>
-        <double>75.99942000862184</double>
+        <double>37.668361951442606</double>
+        <double>1</double>
+        <double>1</double>
+        <double>41.213627122907724</double>
+        <double>26.634753833820465</double>
+        <double>1</double>
+        <double>93.358042649720176</double>
         <double>0</double>
       </TagValues>
       <Addresses>
@@ -143,6 +170,7 @@
         <string>address8</string>
         <string>address9</string>
         <string>address10</string>
+        <string>address12</string>
       </Addresses>
     </Driver>
     <ScanTime>3</ScanTime>
@@ -156,7 +184,7 @@
     <TagName>name5</TagName>
     <Description>description</Description>
     <IOAddress>address5</IOAddress>
-    <InitialValue>200</InitialValue>
+    <InitialValue>68.4123921992315</InitialValue>
     <LowLimit>20</LowLimit>
     <HighLimit>300</HighLimit>
     <Units>units</Units>
@@ -165,7 +193,7 @@
     <TagName>name1</TagName>
     <Description>description</Description>
     <IOAddress>address1</IOAddress>
-    <InitialValue>0</InitialValue>
+    <InitialValue>43.466615119700606</InitialValue>
     <Driver xsi:type="RealTimeDriver">
       <addresses>
         <string>address1</string>
@@ -178,28 +206,30 @@
         <string>address8</string>
         <string>address9</string>
         <string>address10</string>
+        <string>address12</string>
       </addresses>
       <tagValues>
-        <double>42.341802689405995</double>
+        <double>1</double>
+        <double>1</double>
         <double>0</double>
-        <double>41.728026388086391</double>
-        <double>32.812098037829671</double>
-        <double>98.885406073595121</double>
-        <double>0</double>
-        <double>54.4124776005803</double>
-        <double>77.695515843897837</double>
-        <double>75.99942000862184</double>
+        <double>37.668361951442606</double>
+        <double>1</double>
+        <double>1</double>
+        <double>41.213627122907724</double>
+        <double>26.634753833820465</double>
+        <double>1</double>
+        <double>93.358042649720176</double>
         <double>0</double>
       </tagValues>
     </Driver>
     <ScanTime>1</ScanTime>
-    <Scan>true</Scan>
+    <Scan>false</Scan>
   </Tag>
   <Tag xsi:type="DigitalInput">
     <TagName>name2</TagName>
     <Description>description</Description>
     <IOAddress>address2</IOAddress>
-    <InitialValue>0</InitialValue>
+    <InitialValue>54.011425578040736</InitialValue>
     <Driver xsi:type="RealTimeDriver">
       <addresses>
         <string>address1</string>
@@ -212,17 +242,19 @@
         <string>address8</string>
         <string>address9</string>
         <string>address10</string>
+        <string>address12</string>
       </addresses>
       <tagValues>
-        <double>42.341802689405995</double>
+        <double>1</double>
+        <double>1</double>
         <double>0</double>
-        <double>41.728026388086391</double>
-        <double>32.812098037829671</double>
-        <double>98.885406073595121</double>
-        <double>0</double>
-        <double>54.4124776005803</double>
-        <double>77.695515843897837</double>
-        <double>75.99942000862184</double>
+        <double>37.668361951442606</double>
+        <double>1</double>
+        <double>1</double>
+        <double>41.213627122907724</double>
+        <double>26.634753833820465</double>
+        <double>1</double>
+        <double>93.358042649720176</double>
         <double>0</double>
       </tagValues>
     </Driver>
@@ -233,18 +265,18 @@
     <TagName>name3</TagName>
     <Description>description</Description>
     <IOAddress>address3</IOAddress>
-    <InitialValue>100</InitialValue>
+    <InitialValue>67.356576662211012</InitialValue>
   </Tag>
   <Tag xsi:type="DigitalOutput">
     <TagName>name6</TagName>
     <Description>description</Description>
     <IOAddress>address6</IOAddress>
-    <InitialValue>100</InitialValue>
+    <InitialValue>99.684852971548608</InitialValue>
   </Tag>
   <Tag xsi:type="DigitalOutput">
     <TagName>name9</TagName>
     <Description>aa</Description>
     <IOAddress>address9</IOAddress>
-    <InitialValue>0</InitialValue>
+    <InitialValue>20.04949</InitialValue>
   </Tag>
 </ArrayOfTag>

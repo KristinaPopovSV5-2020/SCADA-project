@@ -32,6 +32,18 @@ namespace DatabaseManager.ServiceReference1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRTU/addAddress", ReplyAction="http://tempuri.org/IRTU/addAddressResponse")]
         System.Threading.Tasks.Task<bool> addAddressAsync(string address);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRTU/GetTagForAddress", ReplyAction="http://tempuri.org/IRTU/GetTagForAddressResponse")]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Models.InputTag))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Models.DigitalInput))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Models.AnalogInput))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Models.OutputTag))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Models.DigitalOutput))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Models.AnalogOutput))]
+        Models.Tag GetTagForAddress(string address);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRTU/GetTagForAddress", ReplyAction="http://tempuri.org/IRTU/GetTagForAddressResponse")]
+        System.Threading.Tasks.Task<Models.Tag> GetTagForAddressAsync(string address);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -83,6 +95,14 @@ namespace DatabaseManager.ServiceReference1 {
         
         public System.Threading.Tasks.Task<bool> addAddressAsync(string address) {
             return base.Channel.addAddressAsync(address);
+        }
+        
+        public Models.Tag GetTagForAddress(string address) {
+            return base.Channel.GetTagForAddress(address);
+        }
+        
+        public System.Threading.Tasks.Task<Models.Tag> GetTagForAddressAsync(string address) {
+            return base.Channel.GetTagForAddressAsync(address);
         }
     }
     

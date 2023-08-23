@@ -94,7 +94,6 @@ namespace DatabaseManager
             this.comboBoxType.FormattingEnabled = true;
             this.comboBoxType.Items.AddRange(new object[] {
             "Low",
-            "Medium",
             "High"});
             this.comboBoxType.Location = new System.Drawing.Point(393, 135);
             this.comboBoxType.Name = "comboBoxType";

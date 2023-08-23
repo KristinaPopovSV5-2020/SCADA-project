@@ -30,8 +30,8 @@
     <xs:complexContent mixed="false">
       <xs:extension base="tns:Driver">
         <xs:sequence>
-          <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="addrValues" nillable="true" type="q1:ArrayOfKeyValueOfstringdouble" />
-          <xs:element minOccurs="0" name="numberOfAddresses" type="xs:int" />
+          <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="addresses" nillable="true" type="q1:ArrayOfstring" />
+          <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="tagValues" nillable="true" type="q2:ArrayOfdouble" />
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
@@ -41,9 +41,9 @@
     <xs:complexContent mixed="false">
       <xs:extension base="tns:Driver">
         <xs:sequence>
-          <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="addresses" nillable="true" type="q2:ArrayOfstring" />
+          <xs:element xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="addresses" nillable="true" type="q3:ArrayOfstring" />
           <xs:element minOccurs="0" name="numberOfAddresses" type="xs:int" />
-          <xs:element xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="tagValues" nillable="true" type="q3:ArrayOfdouble" />
+          <xs:element xmlns:q4="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="tagValues" nillable="true" type="q4:ArrayOfdouble" />
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>

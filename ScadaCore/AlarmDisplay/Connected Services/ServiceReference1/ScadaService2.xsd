@@ -30,8 +30,8 @@
     <xs:complexContent mixed="false">
       <xs:extension base="tns:Driver">
         <xs:sequence>
-          <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="addrValues" nillable="true" type="q1:ArrayOfKeyValueOfstringdouble" />
-          <xs:element minOccurs="0" name="numberOfAddresses" type="xs:int" />
+          <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="addresses" nillable="true" type="q1:ArrayOfstring" />
+          <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="tagValues" nillable="true" type="q2:ArrayOfdouble" />
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
@@ -41,9 +41,9 @@
     <xs:complexContent mixed="false">
       <xs:extension base="tns:Driver">
         <xs:sequence>
-          <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="addresses" nillable="true" type="q2:ArrayOfstring" />
+          <xs:element xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="addresses" nillable="true" type="q3:ArrayOfstring" />
           <xs:element minOccurs="0" name="numberOfAddresses" type="xs:int" />
-          <xs:element xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="tagValues" nillable="true" type="q3:ArrayOfdouble" />
+          <xs:element xmlns:q4="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="tagValues" nillable="true" type="q4:ArrayOfdouble" />
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
@@ -124,10 +124,56 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="AnalogOutput" nillable="true" type="tns:AnalogOutput" />
-  <xs:complexType name="ArrayOfTag">
+  <xs:complexType name="ArrayOfAnalogOutput">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="Tag" nillable="true" type="tns:Tag" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="AnalogOutput" nillable="true" type="tns:AnalogOutput" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="ArrayOfTag" nillable="true" type="tns:ArrayOfTag" />
+  <xs:element name="ArrayOfAnalogOutput" nillable="true" type="tns:ArrayOfAnalogOutput" />
+  <xs:complexType name="ArrayOfAnalogInput">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="AnalogInput" nillable="true" type="tns:AnalogInput" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAnalogInput" nillable="true" type="tns:ArrayOfAnalogInput" />
+  <xs:complexType name="ArrayOfDigitalInput">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DigitalInput" nillable="true" type="tns:DigitalInput" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDigitalInput" nillable="true" type="tns:ArrayOfDigitalInput" />
+  <xs:complexType name="ArrayOfDigitalOutput">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DigitalOutput" nillable="true" type="tns:DigitalOutput" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDigitalOutput" nillable="true" type="tns:ArrayOfDigitalOutput" />
+  <xs:complexType name="ArrayOfUser">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="User" nillable="true" type="tns:User" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfUser" nillable="true" type="tns:ArrayOfUser" />
+  <xs:complexType name="User">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="username" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="User" nillable="true" type="tns:User" />
+  <xs:complexType name="ArrayOfLog">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Log" nillable="true" type="tns:Log" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfLog" nillable="true" type="tns:ArrayOfLog" />
+  <xs:complexType name="Log">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="dateTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="tagName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="type" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="value" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Log" nillable="true" type="tns:Log" />
 </xs:schema>

@@ -27,6 +27,9 @@ namespace Trending
 
             dataGridView1.Columns.Add("Name", "Name");
             dataGridView1.Columns.Add("Value", "Value");
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridView1.Columns[0].Width = dataGridView1.Width / 2;
+            dataGridView1.Columns[1].Width = dataGridView1.Width / 2;
 
 
         }
