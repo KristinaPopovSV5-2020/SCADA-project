@@ -38,6 +38,7 @@ namespace RealTimeUnit
                 service.sendToService(address, randomNumber);
 
                 Thread.Sleep(5000);
+                addresses = service.getAvailableAddresses();
             }
 
 

@@ -53,7 +53,7 @@ namespace DatabaseManager
                 case "Analog Input":
                     tag = new AnalogInput(uuidString, description.Text,
                         address.Text, null, int.Parse(scanTime.Text),
-                        scanOn.Checked, null,
+                        scanOn.Checked, new List<Alarm>(),
                         double.Parse(lowLimit.Text), double.Parse(highLimit.Text),
                         units.Text, 0);
                     break;

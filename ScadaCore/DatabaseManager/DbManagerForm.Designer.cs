@@ -103,7 +103,7 @@ namespace DatabaseManager
             this.listViewInputTags.HideSelection = false;
             this.listViewInputTags.Location = new System.Drawing.Point(556, 87);
             this.listViewInputTags.Name = "listViewInputTags";
-            this.listViewInputTags.Size = new System.Drawing.Size(448, 229);
+            this.listViewInputTags.Size = new System.Drawing.Size(458, 229);
             this.listViewInputTags.TabIndex = 6;
             this.listViewInputTags.UseCompatibleStateImageBehavior = false;
             this.listViewInputTags.SelectedIndexChanged += new System.EventHandler(this.listViewInputTags_SelectedIndexChanged_1);
@@ -179,7 +179,7 @@ namespace DatabaseManager
             // 
             // deleteInputTag
             // 
-            this.deleteInputTag.Location = new System.Drawing.Point(840, 321);
+            this.deleteInputTag.Location = new System.Drawing.Point(850, 321);
             this.deleteInputTag.Name = "deleteInputTag";
             this.deleteInputTag.Size = new System.Drawing.Size(164, 40);
             this.deleteInputTag.TabIndex = 11;
@@ -191,7 +191,7 @@ namespace DatabaseManager
             // 
             this.buttonAlarms.Location = new System.Drawing.Point(701, 322);
             this.buttonAlarms.Name = "buttonAlarms";
-            this.buttonAlarms.Size = new System.Drawing.Size(129, 40);
+            this.buttonAlarms.Size = new System.Drawing.Size(143, 40);
             this.buttonAlarms.TabIndex = 17;
             this.buttonAlarms.Text = "Alarms";
             this.buttonAlarms.UseVisualStyleBackColor = true;
@@ -199,7 +199,7 @@ namespace DatabaseManager
             // 
             // buttonNewTag2
             // 
-            this.buttonNewTag2.Location = new System.Drawing.Point(840, 46);
+            this.buttonNewTag2.Location = new System.Drawing.Point(850, 46);
             this.buttonNewTag2.Margin = new System.Windows.Forms.Padding(2);
             this.buttonNewTag2.Name = "buttonNewTag2";
             this.buttonNewTag2.Size = new System.Drawing.Size(164, 36);

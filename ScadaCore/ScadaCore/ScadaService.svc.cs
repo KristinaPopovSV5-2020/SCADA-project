@@ -232,8 +232,8 @@ namespace ScadaCore
         public void DeleteTag(string tagId)
         {
             Tag selectedTag = tagManager.tags[tagId];
-            tagManager.addresses.Remove(selectedTag.IOAddress);
             tagManager.values.Remove(tagManager.values[tagManager.addresses.IndexOf(selectedTag.IOAddress)]);
+            tagManager.addresses.Remove(selectedTag.IOAddress);
             tagManager.tags.Remove(tagId);
             tagManager.XmlSerialization();
         }

@@ -26,9 +26,13 @@ namespace DatabaseManager
 
             listViewTags.Columns.Add("Tag ID");
             listViewTags.Columns.Add("Value");
+            listViewTags.Columns.Add("Type");
 
             listViewInputTags.Columns.Add("Tag ID");
             listViewInputTags.Columns.Add("Scan");
+            listViewInputTags.Columns.Add("Type");
+            listViewInputTags.Columns.Add("Low");
+            listViewInputTags.Columns.Add("High");
 
             listViewAlarms.View = View.Details;
 
@@ -89,20 +93,22 @@ namespace DatabaseManager
             List<DigitalOutput> listedTags2 = service.GetDigitalOutputTags();
             foreach (AnalogOutput tag in listedTags1)
             {
-                string[] arr = new string[2];
+                string[] arr = new string[3];
                 ListViewItem item;
                 arr[0] = tag.TagName;
                 arr[1] = tag.InitialValue.ToString();
+                arr[2] = "Analog";
 
                 item = new ListViewItem(arr) { Tag = tag };
                 listViewTags.Items.Add(item);
             }
             foreach (DigitalOutput tag in listedTags2)
             {
-                string[] arr = new string[2];
+                string[] arr = new string[3];
                 ListViewItem item;
                 arr[0] = tag.TagName;
                 arr[1] = tag.InitialValue.ToString();
+                arr[2] = "Digital";
 
                 item = new ListViewItem(arr) { Tag = tag };
                 listViewTags.Items.Add(item);
@@ -117,20 +123,26 @@ namespace DatabaseManager
 
             foreach (AnalogInput tag in listedTags3)
             {
-                string[] arr = new string[2];
+                string[] arr = new string[5];
                 ListViewItem item;
                 arr[0] = tag.TagName;
                 arr[1] = tag.Scan.ToString();
+                arr[2] = "Analog";
+                arr[3] = tag.LowLimit.ToString();
+                arr[4] = tag.HighLimit.ToString();
 
                 item = new ListViewItem(arr) { Tag = tag };
                 listViewInputTags.Items.Add(item);
             }
             foreach (DigitalInput tag in listedTags4)
             {
-                string[] arr = new string[2];
+                string[] arr = new string[5];
                 ListViewItem item;
                 arr[0] = tag.TagName;
                 arr[1] = tag.Scan.ToString();
+                arr[2] = "Digital";
+                arr[3] = "/";
+                arr[4] = "/";
 
                 item = new ListViewItem(arr) { Tag = tag };
                 listViewInputTags.Items.Add(item);
